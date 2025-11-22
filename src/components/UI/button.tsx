@@ -2,6 +2,7 @@
 import styles from "@/styles/components/buttons.module.css";
 import { ButtonHTMLAttributes, FC, ReactNode } from "react";
 import clsx from "clsx";
+import { signOut } from "next-auth/react";
 
 export interface ButtonProps
   extends Omit<
@@ -72,4 +73,16 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
-export { Button };
+const LogOutButton = () => {
+  const handleKeycloakLogin = () => {
+    signOut();
+  };
+
+  return (
+    <Button type="danger" rounded onClick={handleKeycloakLogin}>
+      Desconectar
+    </Button>
+  );
+};
+
+export { Button, LogOutButton };

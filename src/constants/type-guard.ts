@@ -21,4 +21,5 @@ export enum NIVEIS_USUARIO {
 
 export const API_ROUTES = {
   lista_unidades: "v1/unidades/",
+  lista_entidades: "v1/entidades",
 };

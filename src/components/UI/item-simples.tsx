@@ -1,0 +1,26 @@
+import styles from "@/styles/components/commons.module.css";
+import { ItemBasic } from "@/types/entidade";
+import { LuShieldCheck, LuShieldX } from "react-icons/lu";
+
+import { FaAngleRight } from "react-icons/fa";
+import Link from "next/link";
+
+export default function ItemSimples({
+  item,
+  tipo,
+}: {
+  item: ItemBasic;
+  tipo: "entidade" | "unidade";
+}) {
+  return (
+    <Link className={styles.item_simples} href={`/${tipo}/${item.id}`}>
+      {item.status === 1 ? (
+        <LuShieldCheck color="green" />
+      ) : (
+        <LuShieldX color="red" />
+      )}
+      <p>{item.nome}</p>
+      <FaAngleRight color="6c7072" />
+    </Link>
+  );
+}
