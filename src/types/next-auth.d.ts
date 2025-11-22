@@ -15,6 +15,10 @@ declare module "next-auth" {
     login: string;
     expires_on: number;
     nivel: string;
+    entidade_nome: string;
+    entidade_id: string;
+    unidade_id: string;
+    unidade_nome: string;
   }
 
   interface Session extends DefaultSession {
@@ -32,5 +36,9 @@ declare module "next-auth/jwt" {
     descricao?: string;
     login?: string;
     expires_on?: number;
+    entidade_nome?: string;
+    entidade_id?: string;
+    unidade_id?: string;
+    unidade_nome?: string;
   }
 }

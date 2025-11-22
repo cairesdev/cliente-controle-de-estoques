@@ -67,6 +67,10 @@ export default {
         token.login = user.login;
         token.descricao = user.descricao;
         token.nivel = user.nivel;
+        token.unidade_id = user.unidade_id;
+        token.unidade_nome = user.unidade_nome;
+        token.entidade_id = user.entidade_id;
+        token.entidade_nome = user.entidade_nome;
 
         if (user.expires_on) {
           token.expires_on = Math.floor(
@@ -95,6 +99,10 @@ export default {
         email: "",
         id: "",
         emailVerified: null,
+        entidade_id: token.entidade_id!,
+        entidade_nome: token.entidade_nome!,
+        unidade_id: token.unidade_id!,
+        unidade_nome: token.unidade_nome!,
       };
 
       return session;
