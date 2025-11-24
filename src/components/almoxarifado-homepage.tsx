@@ -12,17 +12,19 @@ import { Suspense } from "react";
 import { User } from "next-auth";
 import Link from "next/link";
 
-export default async function AdminHomepage({
+export default async function AlmoxarifeHomepage({
   search,
   user,
+  handler,
 }: {
   search: string;
   user: User;
+  handler?: string;
 }) {
   const pesquisaText = search?.toLowerCase();
 
   const entidadeRepository = await EntidadeRepository.create();
-  const data = await entidadeRepository.getEntidades();
+  const data = await entidadeRepository.getUnidades({ id: handler as string });
 
   const filtred = search
     ? data?.filter((item) =>
@@ -35,7 +37,7 @@ export default async function AdminHomepage({
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(3, user.entidade_nome!, user.unidade_nome!)}
+          {tituloPagina(2, user.entidade_nome!, user.unidade_nome!)}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>
@@ -58,7 +60,7 @@ export default async function AdminHomepage({
       <div className={styles.titulo_sessao}>
         <h2>
           <FaFingerprint />
-          Entidades Registradas
+          Unidades Registradas
         </h2>
         <div className="ghost_bar" />
       </div>
@@ -69,7 +71,7 @@ export default async function AdminHomepage({
 
       <div className={styles.lista_entidades}>
         {filtred?.map((item) => (
-          <ItemSimples tipo="entidade" item={item} key={item.id} />
+          <ItemSimples tipo="unidade" item={item} key={item.id} />
         ))}
       </div>
 
