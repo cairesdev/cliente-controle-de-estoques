@@ -1,0 +1,39 @@
+.pesquisar_container {
+  width: 100%;
+}
+.input_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f7f8fc;
+  border: 2px solid #d3d4dc;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.search_icon {
+  font-size: 22px;
+  color: #85868d;
+  flex-shrink: 0;
+}
+
+.input_field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 18px;
+  color: #444;
+}
+
+.input_field::placeholder {
+  color: #b4b5bd;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.input_wrapper:focus-within {
+  border-color: #9fa1aa;
+}

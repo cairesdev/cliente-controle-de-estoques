@@ -10,8 +10,12 @@ interface AuthenticatedRequest extends NextRequest {
 
 export default auth((req: AuthenticatedRequest) => {
   const isLoggedIn = !!req.auth;
+  const userToken = req.auth?.user.access_token;
 
-  if (!req.nextUrl.pathname.startsWith("/log-in") && !isLoggedIn) {
+  if (
+    (!req.nextUrl.pathname.startsWith("/log-in") && !isLoggedIn) ||
+    (!userToken && !req.nextUrl.pathname.startsWith("/log-in"))
+  ) {
     return NextResponse.redirect(new URL("/log-in", req.url));
   }
 });

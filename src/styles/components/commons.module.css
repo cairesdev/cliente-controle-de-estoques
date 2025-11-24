@@ -9,3 +9,9 @@
   border-radius: 16px;
   text-decoration: none;
 }
+
+.item_simples span {
+  background-color: var(--sky-ligther);
+  border-radius: 100%;
+  padding: 4px;
+}

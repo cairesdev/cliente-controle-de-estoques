@@ -8,6 +8,7 @@
 
   --sky-dark: #6c7072;
   --sky-ligth: #cdcfd0;
+  --sky-ligther: #e8e9f1;
   --sky-lightest: #f8f9fe;
 
   --red-base: #ff5247;
@@ -36,12 +37,45 @@ h1 {
 
 h2 {
   color: var(--primary-darkest);
-  font-weight: bold;
-  font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 p {
   color: var(--sky-dark);
   font-weight: 400;
   font-size: 0.875rem;
+}
+
+.icon {
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.ghost_bar {
+  background: #0065d0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 101, 208, 1) 40%,
+    rgba(0, 101, 208, 0.63) 60%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  height: 1px;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.ghost_traco {
+  background: #cdcfd0;
+  background: linear-gradient(
+    90deg,
+    rgba(205, 207, 208, 0.5) 0%,
+    rgba(108, 112, 114, 1) 50%,
+    rgba(205, 207, 208, 0.5) 100%
+  );
+
+  height: 1px;
+  width: 100%;
+  opacity: 0.5;
 }

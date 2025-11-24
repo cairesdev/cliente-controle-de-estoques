@@ -14,11 +14,13 @@ export default function ItemSimples({
 }) {
   return (
     <Link className={styles.item_simples} href={`/${tipo}/${item.id}`}>
-      {item.status === 1 ? (
-        <LuShieldCheck color="green" />
-      ) : (
-        <LuShieldX color="red" />
-      )}
+      <span>
+        {item.status === 1 ? (
+          <LuShieldCheck className="icon" color="green" />
+        ) : (
+          <LuShieldX className="icon" color="red" />
+        )}
+      </span>
       <p>{item.nome}</p>
       <FaAngleRight color="6c7072" />
     </Link>

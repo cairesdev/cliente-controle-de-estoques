@@ -1,3 +1,5 @@
+import { ReadonlyURLSearchParams } from "next/navigation";
+
 export function formatSeconds(totalSeconds: number) {
   const min = Math.floor(totalSeconds / 60);
   const sec = totalSeconds % 60;
@@ -16,7 +18,27 @@ export function tituloPagina(
       return unidade_nome;
     case 2:
       return entidade_nome;
-    default:
+    case 3:
       return "Dashboard Administrativo";
+    default:
+      return "Dashboard do Desenvolvedor";
   }
+}
+
+export const createUrl = (
+  pathname: string,
+  params: URLSearchParams | ReadonlyURLSearchParams
+) => {
+  const paramsString = params.toString();
+  const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
+
+  return `${pathname}${queryString}`;
+};
+
+export function normalizeSearch(str: string) {
+  return str
+    ?.toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // remove acentos
+    .replace(/[^a-z0-9]/g, ""); // remove caracteres especiais/espaços
 }
