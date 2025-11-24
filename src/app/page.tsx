@@ -1,18 +1,7 @@
-import { EntidadeRepository } from "@/services/getters/entidade";
-import SessionExpiration from "@/components/session-expiration";
-import ItemSimples from "@/components/UI/item-simples";
-import { LogOutButton } from "@/components/UI/button";
-import styles from "@/styles/homepage.module.css";
-import { normalizeSearch, tituloPagina } from "@/utils";
 import { auth } from "@/auth";
-import { HiOutlineCog6Tooth } from "react-icons/hi2";
-import { RiDashboardLine } from "react-icons/ri";
-import { FaFingerprint } from "react-icons/fa";
-import { FiUser } from "react-icons/fi";
-
-import { Suspense } from "react";
-import SearchInput, { SearchSkeleton } from "@/components/UI/search";
-import Link from "next/link";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
+import AdminHomepage from "@/components/admin-homepage";
+import { User } from "next-auth";
 
 export default async function Home({
   searchParams,
@@ -25,67 +14,15 @@ export default async function Home({
     [key: string]: string;
   };
 
-  const pesquisaText = q?.toLowerCase();
+  switch (parseInt(session?.user.nivel as string)) {
+    case NIVEIS_USUARIO.GERENCIA:
+      return <AdminHomepage user={session?.user as User} search={q} />;
 
-  const entidadeRepository = await EntidadeRepository.create();
-  const data = await entidadeRepository.getEntidades();
-
-  const filtred = q
-    ? data?.filter((item) =>
-        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
-      )
-    : data;
-
-  return (
-    <main className={styles.homepage}>
-      <div className={styles.header_section}>
-        <h1>
-          <RiDashboardLine />
-          {tituloPagina(
-            parseInt(session?.user.nivel!),
-            session?.user.entidade_nome!,
-            session?.user.unidade_nome!
-          )}
-        </h1>
-        <div className="ghost_traco" />
-        <div className={styles.user_section}>
-          <span>
-            <FiUser className="icon" />
-          </span>
-          <p>
-            {session?.user.nome} - {session?.user.descricao}
-          </p>
-          <Link
-            href="/configuracoes/administrativo"
-            passHref
-            className={styles.options_user}
-          >
-            <HiOutlineCog6Tooth className="icon" />
-          </Link>
+    default:
+      return (
+        <div>
+          <p>Não autorizado.</p>
         </div>
-      </div>
-
-      <div className={styles.titulo_sessao}>
-        <h2>
-          <FaFingerprint />
-          Entidades Registradas
-        </h2>
-        <div className="ghost_bar" />
-      </div>
-
-      <Suspense fallback={<SearchSkeleton />}>
-        <SearchInput />
-      </Suspense>
-
-      <div className={styles.lista_entidades}>
-        {filtred?.map((item) => (
-          <ItemSimples tipo="entidade" item={item} key={item.id} />
-        ))}
-      </div>
-
-      <div className={styles.rodape}>
-        <SessionExpiration />
-      </div>
-    </main>
-  );
+      );
+  }
 }
