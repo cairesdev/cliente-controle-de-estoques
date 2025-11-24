@@ -22,7 +22,7 @@ export class EntidadeRepository {
       method: "GET",
       cache: "force-cache",
       token: this.token,
-      next: { tags: ["entidaes"] },
+      next: { tags: ["entidades"] },
     });
 
     return response.body.res;

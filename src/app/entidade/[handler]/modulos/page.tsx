@@ -1,3 +1,4 @@
+import FormModulo from "@/components/website-forms/entidade/modulo";
 import styles from "@/styles/entidade.module.css";
 import { LuBlocks } from "react-icons/lu";
 
@@ -23,9 +24,7 @@ export default async function ModulosPage({
         <p>Marque as opções disponíveis a esta entidadel.</p>
       </div>
       <div className="ghost_traco" />
-
-      <h2>Olá Mundo</h2>
-      <p>{handler}</p>
+      <FormModulo idEntidade={handler as string} />
     </main>
   );
 }

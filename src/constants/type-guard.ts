@@ -23,6 +23,7 @@ export const API_ROUTES = {
   lista_unidades: "v1/unidades/",
   lista_entidades: "v1/entidades",
   cadastro_entidade: "v1/entidade",
+  cadastro_modulo: "v1/modulos",
 };
 
 export const HttpStatus = {

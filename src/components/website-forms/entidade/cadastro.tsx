@@ -2,7 +2,7 @@
 import { Button } from "@/components/UI/button";
 import styles from "@/styles/components/forms.module.css";
 import React from "react";
-import addEntidade from "./action";
+import { addEntidade } from "./action";
 import { useRouter } from "next/navigation";
 
 export default function FormEntidade() {

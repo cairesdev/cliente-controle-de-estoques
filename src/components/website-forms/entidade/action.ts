@@ -4,7 +4,7 @@ import { API_ROUTES, HttpStatus } from "@/constants/type-guard";
 import { backendFetch } from "@/services/adapter";
 import { redirect } from "next/navigation";
 
-export default async function addEntidade(data: any) {
+export async function addEntidade(data: any) {
   const session = await auth();
   const token = session?.user.access_token;
 
@@ -24,5 +24,24 @@ export default async function addEntidade(data: any) {
         response.body.message as string
       )}`
     );
+  }
+}
+
+export async function addModulos(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: API_ROUTES.cadastro_modulo + "/" + data.ENTIDADE,
+    next: { tags: ["entidades"] },
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    redirect(`/tracks/cadastrado?ref=Entidade&callback=/`);
+  } else {
+    redirect(`/tracks/redirect?message=${response.body.message}&callback=/`);
   }
 }
