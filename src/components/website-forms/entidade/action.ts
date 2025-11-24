@@ -17,7 +17,7 @@ export default async function addEntidade(data: any) {
   });
 
   if (response.status === HttpStatus.CREATED) {
-    redirect("/");
+    redirect(`/entidade/${response.body.res as string}/modulos?ref=new`);
   } else {
     redirect(
       `/entidade/nova-entidade?code=${response.status}&message=${encodeURI(

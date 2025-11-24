@@ -19,7 +19,7 @@ export default async function NovaEntidadePage({
         </h1>
         <p>Adicione uma nova entidade gerenciavel.</p>
       </div>
-      {message ? message : null}
+      <span className="error_message">{message ? message : null}</span>
       <div className="ghost_traco" />
       <FormEntidade />
     </main>
