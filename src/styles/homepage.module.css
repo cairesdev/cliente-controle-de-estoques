@@ -32,11 +32,34 @@
 .rodape {
   position: fixed;
   bottom: 0;
-  left: 36%;
+  left: 0;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  padding: 18px;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
   z-index: 10;
+}
+
+.user_section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.user_section span {
+  border: 1px solid var(--sky-ligther);
+  color: var(--primary-base);
+  background: var(--sky-lightest);
+  border-radius: 40%;
+  padding: 6px;
+  font-size: 21px;
+}
+
+.user_section .options_user {
+  color: var(--sky-lightest);
+  background: var(--primary-darkest);
 }

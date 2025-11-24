@@ -3,6 +3,7 @@
   --foreground: #171717;
 
   --primary-darkest: #0065d0;
+  --primary-base: #48a7f8;
 
   --ink-darker: #404446;
 
@@ -11,7 +12,7 @@
   --sky-ligther: #e8e9f1;
   --sky-lightest: #f8f9fe;
 
-  --red-base: #ff5247;
+  --red-base: #ff6d6d;
 }
 
 * {

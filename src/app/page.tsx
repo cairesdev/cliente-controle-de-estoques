@@ -5,8 +5,11 @@ import { LogOutButton } from "@/components/UI/button";
 import styles from "@/styles/homepage.module.css";
 import { normalizeSearch, tituloPagina } from "@/utils";
 import { auth } from "@/auth";
+import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { RiDashboardLine } from "react-icons/ri";
 import { FaFingerprint } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
+
 import { Suspense } from "react";
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 
@@ -44,9 +47,17 @@ export default async function Home({
           )}
         </h1>
         <div className="ghost_traco" />
-        <p>
-          {session?.user.nome} - {session?.user.descricao}
-        </p>
+        <div className={styles.user_section}>
+          <span>
+            <FiUser className="icon" />
+          </span>
+          <p>
+            {session?.user.nome} - {session?.user.descricao}
+          </p>
+          <span className={styles.options_user}>
+            <HiOutlineCog6Tooth className="icon" />
+          </span>
+        </div>
       </div>
 
       <div className={styles.titulo_sessao}>

@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f7f8fc;
-  border: 2px solid #d3d4dc;
+  background: var(--sky-lightest);
+  border: 2px solid var(--sky-ligther);
   padding: 12px 20px;
   border-radius: 9999px;
   width: 100%;
