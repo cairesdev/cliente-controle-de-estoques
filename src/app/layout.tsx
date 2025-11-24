@@ -15,13 +15,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  modals,
 }: Readonly<{
   children: React.ReactNode;
+  modals: React.ReactNode;
 }>) {
   const session = await auth();
   return (
     <html lang="pt-br">
       <body className={interSans.variable}>
+        {modals}
         {children}
         <script
           id="session-data"

@@ -12,6 +12,7 @@ import { FiUser } from "react-icons/fi";
 
 import { Suspense } from "react";
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -54,9 +55,13 @@ export default async function Home({
           <p>
             {session?.user.nome} - {session?.user.descricao}
           </p>
-          <span className={styles.options_user}>
+          <Link
+            href="/configuracoes/administrativo"
+            passHref
+            className={styles.options_user}
+          >
             <HiOutlineCog6Tooth className="icon" />
-          </span>
+          </Link>
         </div>
       </div>
 
@@ -79,7 +84,6 @@ export default async function Home({
       </div>
 
       <div className={styles.rodape}>
-        <LogOutButton />
         <SessionExpiration />
       </div>
     </main>

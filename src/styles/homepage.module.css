@@ -50,7 +50,8 @@
   width: 100%;
 }
 
-.user_section span {
+.user_section span,
+.user_section a {
   border: 1px solid var(--sky-ligther);
   color: var(--primary-base);
   background: var(--sky-lightest);
