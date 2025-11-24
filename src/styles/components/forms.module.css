@@ -1,0 +1,31 @@
+.formulario {
+  max-width: 28.125rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+}
+
+.input_container label {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: var(--ink-darker);
+}
+
+.input_container input {
+  width: 100%;
+  padding: 1.063rem 1rem;
+  border-radius: 0.75rem;
+  outline: none;
+  border: 1px solid var(--sky-ligth);
+}
+
+.input_container input:focus {
+  border-color: var(--primary-darkest);
+}

@@ -1,8 +1,7 @@
 import styles from "@/styles/components/commons.module.css";
-import { ItemBasic } from "@/types/entidade";
 import { LuShieldCheck, LuShieldX } from "react-icons/lu";
-
 import { FaAngleRight } from "react-icons/fa";
+import { ItemBasic } from "@/types/entidade";
 import Link from "next/link";
 
 export default function ItemSimples({

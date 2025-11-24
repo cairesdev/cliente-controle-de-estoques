@@ -10,7 +10,12 @@ export default async function AdmConfigPage() {
     <ModalComponent label="Configurações Gerais">
       <ul className={styles.lista}>
         <li>
-          <Link href={"/"}>
+          <Link
+            href={"/entidade/nova-entidade"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
             <span>
               <FaPenToSquare className="icon" />
             </span>

@@ -22,6 +22,7 @@ export class EntidadeRepository {
       method: "GET",
       cache: "force-cache",
       token: this.token,
+      next: { tags: ["entidaes"] },
     });
 
     return response.body.res;
@@ -33,6 +34,7 @@ export class EntidadeRepository {
       method: "GET",
       cache: "force-cache",
       token: this.token,
+      next: { tags: ["unidades"] },
     });
 
     return response.body.res;
