@@ -11,6 +11,9 @@ import { FiUser } from "react-icons/fi";
 import { Suspense } from "react";
 import { User } from "next-auth";
 import Link from "next/link";
+import { IoLayersOutline } from "react-icons/io5";
+import { EstoqueRepository } from "@/services/getters/estoque";
+import ItemArmazenado from "./UI/item-estoque";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -25,6 +28,11 @@ export default async function AlmoxarifeHomepage({
 
   const entidadeRepository = await EntidadeRepository.create();
   const data = await entidadeRepository.getUnidades({ id: handler as string });
+
+  const estoqueRepository = await EstoqueRepository.create();
+  const itens = await estoqueRepository.getItensEntidade({
+    id: handler as string,
+  });
 
   const filtred = search
     ? data?.filter((item) =>
@@ -48,7 +56,7 @@ export default async function AlmoxarifeHomepage({
             {user.nome} - {user.descricao}
           </p>
           <Link
-            href="/configuracoes/administrativo"
+            href="/configuracoes/almoxarifado"
             passHref
             className={styles.options_user}
           >
@@ -74,6 +82,18 @@ export default async function AlmoxarifeHomepage({
           <ItemSimples tipo="unidade" item={item} key={item.id} />
         ))}
       </div>
+
+      <div className={styles.titulo_sessao}>
+        <h2>
+          <IoLayersOutline />
+          Itens no estoque
+        </h2>
+        <div className="ghost_bar" />
+      </div>
+
+      {itens?.map((item) => (
+        <ItemArmazenado key={item.id} item={item} />
+      ))}
 
       <div className={styles.rodape}>
         <SessionExpiration />

@@ -14,3 +14,13 @@ export type BackendFetchResponse<T> = {
   message?: string;
   res?: T;
 };
+
+export type ItemEstocado = {
+  id: string;
+  nome: string;
+  data_validade: string;
+  qnt_entrada: number;
+  qnt_disponivel: number;
+  und_medida: string;
+  data_entrada: string;
+};

@@ -1,0 +1,54 @@
+.card {
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.nome {
+  margin-bottom: 20px;
+}
+
+.info_row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: var(--sky-dark);
+}
+
+.valor {
+  font-weight: 700;
+  color: var(--ink-base);
+}
+
+.vencimento_container {
+  background: var(--blue-lightest);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dias {
+  font-weight: 700;
+  color: var(--ink-base);
+}
+
+.alerta {
+  background: var(--yellow-lightest);
+  color: var(--yellow-base);
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alerta_icon {
+  font-size: 16px;
+}

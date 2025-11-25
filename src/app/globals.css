@@ -5,7 +5,9 @@
   --primary-darkest: #0065d0;
   --primary-base: #48a7f8;
 
-  --ink-darker: #404446;
+  --ink-darker: #202325;
+  --ink-dark: #303437;
+  --ink-base: #404446;
 
   --sky-dark: #6c7072;
   --sky-ligth: #cdcfd0;
@@ -13,6 +15,11 @@
   --sky-lightest: #f8f9fe;
 
   --red-base: #ff6d6d;
+
+  --yellow-base: #ffb323;
+  --yellow-lightest: #ffefd7;
+
+  --blue-lightest: #c9f0ff;
 }
 
 * {
@@ -40,6 +47,12 @@ h2 {
   color: var(--primary-darkest);
   font-weight: 600;
   font-size: 1.2rem;
+}
+
+h4 {
+  color: var(--primary-darkest);
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 p {

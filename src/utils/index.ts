@@ -39,6 +39,12 @@ export function normalizeSearch(str: string) {
   return str
     ?.toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // remove acentos
-    .replace(/[^a-z0-9]/g, ""); // remove caracteres especiais/espaços
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+export function transformData(dataString: string): string {
+  const data = new Date(dataString);
+  data.setMinutes(data.getTimezoneOffset());
+  return data.toLocaleDateString("pt-BR");
 }
