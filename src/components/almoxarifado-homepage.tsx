@@ -56,7 +56,7 @@ export default async function AlmoxarifeHomepage({
             {user.nome} - {user.descricao}
           </p>
           <Link
-            href="/configuracoes/almoxarifado"
+            href={`/configuracoes/almoxarifado?trackId=${handler}`}
             passHref
             className={styles.options_user}
           >

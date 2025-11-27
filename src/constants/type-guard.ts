@@ -26,6 +26,8 @@ export const API_ROUTES = {
   cadastro_modulo: "v1/modulos",
   entidade: "v1/entidade/",
   lista_itens_entidade: "v1/armazem/estoque/",
+  solicitacoes: "v1/solicitacoes/",
+  solicitacao: "v1/solicitacao/",
 };
 
 export const HttpStatus = {

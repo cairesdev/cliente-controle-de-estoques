@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { backendFetch } from "../adapter";
 import { API_ROUTES } from "@/constants/type-guard";
-import { ItemEstocado } from "@/types/commons";
+import { DetalheSolicitacao, ItemEstocado, Solicitacao } from "@/types/commons";
 
 export class EstoqueRepository {
   private constructor(private readonly token: string) {}
@@ -19,6 +19,35 @@ export class EstoqueRepository {
       cache: "force-cache",
       token: this.token,
       next: { tags: ["itens-unidade", id] },
+    });
+
+    return response.body.res;
+  }
+
+  async getSolicitacoes({ id }: { id: string }) {
+    const response = await backendFetch<Solicitacao[]>({
+      url: API_ROUTES.solicitacoes + id,
+      method: "GET",
+      cache: "force-cache",
+      token: this.token,
+      next: { tags: ["solicitacoes", id] },
+    });
+
+    return response.body.res;
+  }
+  async getSolicitacao({
+    id,
+    tipo,
+  }: {
+    id: string;
+    tipo: "administrativa" | "unidade" | "almoxarifado";
+  }) {
+    const response = await backendFetch<DetalheSolicitacao>({
+      url: API_ROUTES.solicitacao + id + `?visualizacao=${tipo}`,
+      method: "GET",
+      cache: "force-cache",
+      token: this.token,
+      next: { tags: ["solicitacoes", id] },
     });
 
     return response.body.res;

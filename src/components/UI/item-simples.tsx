@@ -12,7 +12,10 @@ export default function ItemSimples({
   tipo: "entidade" | "unidade";
 }) {
   return (
-    <Link className={styles.item_simples} href={`/${tipo}/${item.id}/unidades`}>
+    <Link
+      className={styles.item_simples}
+      href={`/${tipo}/${item.id}/almoxarifado`}
+    >
       <span>
         {item.status === 1 ? (
           <LuShieldCheck className="icon" color="green" />

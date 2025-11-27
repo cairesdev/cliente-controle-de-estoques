@@ -2,6 +2,7 @@ import { LogOutButton } from "@/components/UI/button";
 import { ModalComponent } from "@/components/UI/modal";
 import styles from "@/styles/components/lista_config.module.css";
 import Link from "next/link";
+import { AiOutlineProduct } from "react-icons/ai";
 import { FaAngleRight, FaUserEdit } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 
@@ -28,6 +29,14 @@ export default async function AdmConfigPage() {
               <FaUserEdit className="icon" />
             </span>
             Cadastrar Usuário <FaAngleRight color="6c7072" />
+          </Link>
+        </li>
+        <li>
+          <Link href={"#"} prefetch={false} target="_top" passHref>
+            <span>
+              <AiOutlineProduct className="icon" />
+            </span>
+            Catálogo de Produtos <FaAngleRight color="6c7072" />
           </Link>
         </li>
       </ul>

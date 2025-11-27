@@ -24,3 +24,24 @@ export type ItemEstocado = {
   und_medida: string;
   data_entrada: string;
 };
+
+export type Solicitacao = {
+  id: string;
+  nome: string;
+  data_solicitacao: string;
+  status: string;
+  solicitante: string;
+  unidade: string;
+};
+
+export type ProdutoSolicitacao = {
+  id: string;
+  qnt_solicitada: number;
+  nome: string;
+  und_medida: string;
+};
+
+export type DetalheSolicitacao = {
+  solicitacao: Solicitacao;
+  itens: ProdutoSolicitacao[];
+};
