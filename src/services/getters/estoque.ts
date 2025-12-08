@@ -1,7 +1,12 @@
 import { auth } from "@/auth";
 import { backendFetch } from "../adapter";
 import { API_ROUTES } from "@/constants/type-guard";
-import { DetalheSolicitacao, ItemEstocado, Solicitacao } from "@/types/commons";
+import {
+  DetalheSolicitacao,
+  ItemEstocado,
+  LiberaProduto,
+  Solicitacao,
+} from "@/types/commons";
 
 export class EstoqueRepository {
   private constructor(private readonly token: string) {}
@@ -35,6 +40,7 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
   async getSolicitacao({
     id,
     tipo,
@@ -48,6 +54,24 @@ export class EstoqueRepository {
       cache: "force-cache",
       token: this.token,
       next: { tags: ["solicitacoes", id] },
+    });
+
+    return response.body.res;
+  }
+
+  async getSolicitacaoeComparaEstoque({
+    id,
+    entidade,
+  }: {
+    id: string;
+    entidade: string;
+  }) {
+    const response = await backendFetch<LiberaProduto[]>({
+      url: API_ROUTES.solicitacao + id + "/" + entidade,
+      method: "GET",
+      cache: "force-cache",
+      token: this.token,
+      next: { tags: ["solicitacoes", id, entidade] },
     });
 
     return response.body.res;

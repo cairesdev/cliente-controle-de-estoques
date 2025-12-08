@@ -11,13 +11,17 @@ import { Button } from "./button";
 export function SolicitacaoItem({
   data,
   track,
+  trackId,
 }: {
   data: Solicitacao;
   track: "entidade" | "unidade";
+  trackId: string;
 }) {
   return (
     <div className={styles.card}>
-      <Link href={`/${track}/solicitacao/${data.id}`}>
+      <Link
+        href={`/${track}/solicitacao/${data.id}?trackId=${trackId}&unId=${data.id_unidade}`}
+      >
         <h4 className={styles.nome}>{data.nome}</h4>
 
         <div className={styles.info_row}>
@@ -48,7 +52,15 @@ export function SolicitacaoItem({
   );
 }
 
-export function ItemSolicitacao({ data }: { data: DetalheSolicitacao }) {
+export function ItemSolicitacao({
+  data,
+  trackId,
+  unId,
+}: {
+  data: DetalheSolicitacao;
+  trackId: string;
+  unId: string;
+}) {
   const router = useRouter();
   return (
     <main className={styles2.entidade_page}>
@@ -67,7 +79,7 @@ export function ItemSolicitacao({ data }: { data: DetalheSolicitacao }) {
         <h2>{data?.solicitacao.nome}</h2>
       </div>
       {data?.itens.map((item) => (
-        <div className={styles.card}>
+        <div key={item.id} className={styles.card}>
           <h4 className={styles.nome}>{item.nome}</h4>
 
           <div className={styles.info_row}>
@@ -84,7 +96,9 @@ export function ItemSolicitacao({ data }: { data: DetalheSolicitacao }) {
         type="primary"
         rounded
         onClick={() =>
-          router.push(`/entidae/solicitacao/${data.solicitacao.id}/liberar`)
+          router.push(
+            `/entidade/solicitacao/${data.solicitacao.id}/liberar?trackId=${trackId}&unId=${unId}`
+          )
         }
       >
         Liberar produtos

@@ -32,6 +32,7 @@ export type Solicitacao = {
   status: string;
   solicitante: string;
   unidade: string;
+  id_unidade: string;
 };
 
 export type ProdutoSolicitacao = {
@@ -45,3 +46,12 @@ export type DetalheSolicitacao = {
   solicitacao: Solicitacao;
   itens: ProdutoSolicitacao[];
 };
+
+export type LiberaProduto = {
+  id_produto: string;
+  disponiveis: ItemEstocadoDetalhe[];
+} & ProdutoSolicitacao;
+
+export type ItemEstocadoDetalhe = {
+  id_estoque_origem: string;
+} & ItemEstocado;

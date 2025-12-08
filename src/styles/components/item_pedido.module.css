@@ -1,0 +1,41 @@
+.page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+}
+
+.header_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.header_section h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardItem {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+  background: #f9f9f9;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
