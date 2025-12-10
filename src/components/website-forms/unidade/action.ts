@@ -29,7 +29,7 @@ export async function criarArmazenamento(data: any) {
   const session = await auth();
   const token = session?.user.access_token;
 
-  const response = await backendFetch<string>({
+  const response = await backendFetch<{ codigo: string; id: string }>({
     url: API_ROUTES.armazem_estoque + data.ENTIDADE,
     next: { tags: ["solicitacoes"] },
     method: "POST",
@@ -39,7 +39,7 @@ export async function criarArmazenamento(data: any) {
 
   if (response.status === HttpStatus.CREATED) {
     redirect(
-      `/nova-remessa/${data.ENTIDADE}/${response.body.res}?type=new&method=${data.PLAN_TIPO}`
+      `/nova-remessa/${data.ENTIDADE}/${response.body.res?.id}?type=new&method=${data.PLAN_TIPO}&code=${response.body.res?.codigo}`
     );
   } else {
     console.log(response.body);

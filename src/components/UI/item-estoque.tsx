@@ -1,6 +1,5 @@
 import { ItemEstocado } from "@/types/commons";
 import { LuCircleAlert } from "react-icons/lu";
-
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_estoque.module.css";
 
@@ -16,30 +15,39 @@ export default function ItemArmazenado({ item }: { item: ItemEstocado }) {
       <h4 className={styles.nome}>{item.nome}</h4>
 
       <div className={styles.info_row}>
-        <div>
-          <p className={styles.label}>Registrado em</p>
-          <b className={styles.valor}>{transformData(item.data_entrada)}</b>
-        </div>
+        {item.data_entrada ? (
+          <div>
+            <p className={styles.label}>Registrado em</p>
+            <b className={styles.valor}>{transformData(item.data_entrada)}</b>
+          </div>
+        ) : null}
 
         <div>
           <p className={styles.label}>Validade</p>
-          <b className={styles.valor}>{transformData(item.data_validade)}</b>
+          <b className={styles.valor}>
+            {item.data_validade
+              ? transformData(item.data_validade)
+              : "Indeterminado"}
+          </b>
         </div>
         <div>
           <p className={styles.label}>Disponível</p>
           <b className={styles.valor}>
-            {item.qnt_disponivel} {item.und_medida}
+            {item.qnt_disponivel ?? item.qnt_entrada} {item.und_medida}
           </b>
         </div>
       </div>
 
       <div className={styles.vencimento_container}>
         <div>
-          <p className={styles.label}>Vencimento</p>
-          <b className={styles.dias}>{diasRestantes} dias</b>
+          <b className={styles.dias}>
+            {item.data_validade
+              ? `Dias até o vencimento: ${diasRestantes}`
+              : "Indeterminado"}
+          </b>
         </div>
 
-        {diasRestantes <= 30 && (
+        {item.data_validade && diasRestantes <= 30 && (
           <div className={styles.alerta}>
             <span className={styles.alerta_icon}>
               <LuCircleAlert />

@@ -6,6 +6,7 @@ import {
   DetalheSolicitacao,
   ItemEstocado,
   LiberaProduto,
+  ResumoRemessa,
   Solicitacao,
 } from "@/types/commons";
 
@@ -91,6 +92,18 @@ export class EstoqueRepository {
       cache: "force-cache",
       token: this.token,
       next: { tags: ["solicitacoes", id, comprovante] },
+    });
+
+    return response.body.res;
+  }
+
+  async getResumo({ id }: { id: string }) {
+    const response = await backendFetch<ResumoRemessa>({
+      url: API_ROUTES.resumo_estoque + id,
+      method: "GET",
+      cache: "default",
+      token: this.token,
+      next: { tags: ["remessa", id] },
     });
 
     return response.body.res;

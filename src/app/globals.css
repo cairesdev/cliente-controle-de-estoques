@@ -93,3 +93,12 @@ p {
   width: 100%;
   opacity: 0.6;
 }
+
+.error_message {
+  background: #ffe1e1;
+  color: var(--red-base);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}

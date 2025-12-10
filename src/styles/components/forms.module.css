@@ -86,3 +86,90 @@
   color: #444;
   cursor: pointer;
 }
+
+.uploadBox {
+  position: relative;
+  border: 3px dashed #66b8ff;
+  background: #d9f2ff;
+  border-radius: 16px;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.uploadBox:hover {
+  background: #ccecff;
+}
+.uploadBox input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.uploadContent {
+  text-align: center;
+  color: #57a9ff;
+  font-size: 20px;
+  font-weight: 500;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.fileSelected {
+  background: #eaf7ff;
+  border: 2px solid #92ceff;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 200px;
+}
+
+.fileSelected p {
+  margin: 0;
+  color: #1681e6;
+  font-size: 15px;
+}
+.fileSelected span {
+  font-size: 14px;
+  color: #2c7ac2;
+}
+
+.changeBtn {
+  background: #66b8ff;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.changeBtn:hover {
+  background: #4aa7f7;
+}
+.changeBtn input {
+  display: none;
+}
+
+.removeBtn {
+  background: transparent;
+  color: #ff5757;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.removeBtn:hover {
+  color: #ff2626;
+}

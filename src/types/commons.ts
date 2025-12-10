@@ -25,19 +25,23 @@ export type ItemEstocado = {
   data_entrada: string;
 };
 
+export type SampleEstoque = {
+  codigo: string;
+  data_entrada: string;
+  local_estocado: string;
+  nome: string;
+  qnt_registrada: number | null;
+};
+
 export type ComprovanteCriacao = {
   itens: ItemEstocado[];
   estoque: {
-    codigo: string;
-    data_entrada: string;
     data_solicitacao: string;
-    local_estocado: string | null;
     qnt_disponivel: number;
     qnt_entrada: number;
     status: string;
-    nome: string;
     solicitante: string;
-  };
+  } & SampleEstoque;
 };
 
 export type Solicitacao = {
@@ -70,3 +74,8 @@ export type LiberaProduto = {
 export type ItemEstocadoDetalhe = {
   id_estoque_origem: string;
 } & ItemEstocado;
+
+export interface ResumoRemessa {
+  remessa: SampleEstoque;
+  itens: ItemEstocado[];
+}

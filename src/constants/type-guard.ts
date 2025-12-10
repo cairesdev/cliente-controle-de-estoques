@@ -1,3 +1,5 @@
+import { API_URL } from "./enverioments";
+
 export const isBackendError = (
   error: unknown
 ): error is { error: boolean; message: string; status: number } => {
@@ -30,6 +32,8 @@ export const API_ROUTES = {
   solicitacao: "v1/solicitacao/",
   comprovante: "v1/armazem/estoque/comprovante/",
   armazem_estoque: "v1/armazem/estoque/",
+  xlsx: API_URL + "v1/armazem/xlsx/",
+  resumo_estoque: "v1/armazem/estoque/resumo/",
 };
 
 export const HttpStatus = {
