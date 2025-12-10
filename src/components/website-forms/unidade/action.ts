@@ -24,3 +24,24 @@ export async function liberaDemanda(data: any) {
     console.log(response.body);
   }
 }
+
+export async function criarArmazenamento(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<string>({
+    url: API_ROUTES.armazem_estoque + data.ENTIDADE,
+    next: { tags: ["solicitacoes"] },
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    redirect(
+      `/nova-remessa/${data.ENTIDADE}/${response.body.res}?type=new&method=${data.PLAN_TIPO}`
+    );
+  } else {
+    console.log(response.body);
+  }
+}

@@ -38,7 +38,12 @@ export default async function AlmConfigPage({
         </li>
 
         <li>
-          <Link href={"#"} prefetch={false} target="_top" passHref>
+          <Link
+            href={`/nova-remessa/${trackId}`}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
             <span>
               <MdAddCircleOutline className="icon" />
             </span>

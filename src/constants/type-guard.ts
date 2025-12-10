@@ -29,6 +29,7 @@ export const API_ROUTES = {
   solicitacoes: "v1/solicitacoes/",
   solicitacao: "v1/solicitacao/",
   comprovante: "v1/armazem/estoque/comprovante/",
+  armazem_estoque: "v1/armazem/estoque/",
 };
 
 export const HttpStatus = {
@@ -50,3 +51,17 @@ export const HttpStatus = {
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
 };
+
+export enum CATEGORIA_ITEM {
+  ALIMENTOS_BEBIDAS = 1,
+  MEDICAMENTOS = 2,
+  HIGIENE_LIMPEZA = 3,
+  OUTROS = 4,
+}
+
+export const CategoriaItens = [
+  { nome: "Alimentos e Bebidas", id: CATEGORIA_ITEM.ALIMENTOS_BEBIDAS },
+  { nome: "Medicamentos", id: CATEGORIA_ITEM.MEDICAMENTOS },
+  { nome: "Higiene e Limpeza", id: CATEGORIA_ITEM.HIGIENE_LIMPEZA },
+  { nome: "Outros", id: CATEGORIA_ITEM.OUTROS },
+];
