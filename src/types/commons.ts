@@ -25,6 +25,21 @@ export type ItemEstocado = {
   data_entrada: string;
 };
 
+export type ComprovanteCriacao = {
+  itens: ItemEstocado[];
+  estoque: {
+    codigo: string;
+    data_entrada: string;
+    data_solicitacao: string;
+    local_estocado: string | null;
+    qnt_disponivel: number;
+    qnt_entrada: number;
+    status: string;
+    nome: string;
+    solicitante: string;
+  };
+};
+
 export type Solicitacao = {
   id: string;
   nome: string;

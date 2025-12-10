@@ -28,6 +28,7 @@ export const API_ROUTES = {
   lista_itens_entidade: "v1/armazem/estoque/",
   solicitacoes: "v1/solicitacoes/",
   solicitacao: "v1/solicitacao/",
+  comprovante: "v1/armazem/estoque/comprovante/",
 };
 
 export const HttpStatus = {

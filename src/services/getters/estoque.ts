@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { backendFetch } from "../adapter";
 import { API_ROUTES } from "@/constants/type-guard";
 import {
+  ComprovanteCriacao,
   DetalheSolicitacao,
   ItemEstocado,
   LiberaProduto,
@@ -72,6 +73,24 @@ export class EstoqueRepository {
       cache: "force-cache",
       token: this.token,
       next: { tags: ["solicitacoes", id, entidade] },
+    });
+
+    return response.body.res;
+  }
+
+  async getComprovante({
+    id,
+    comprovante,
+  }: {
+    id: string;
+    comprovante: string;
+  }) {
+    const response = await backendFetch<ComprovanteCriacao>({
+      url: API_ROUTES.comprovante + id + "/" + comprovante,
+      method: "GET",
+      cache: "force-cache",
+      token: this.token,
+      next: { tags: ["solicitacoes", id, comprovante] },
     });
 
     return response.body.res;

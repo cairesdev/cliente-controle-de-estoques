@@ -1,0 +1,81 @@
+.homepage {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.header_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.header_section h1,
+.titulo_sessao h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.codigo_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 0;
+}
+
+.itens_section {
+  margin-top: 25px;
+}
+
+.itens_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item_card {
+  background: #fff;
+  padding: 14px 22px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.item_card:hover {
+  transform: translateY(-2px);
+}
+
+.item_nome {
+  font-weight: 600;
+  font-size: 17px;
+  color: #007bff;
+}
+
+.item_data {
+  font-size: 15px;
+  color: #555;
+}
+
+.item_qnt {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3a3a3a;
+}
+
+.assinatura_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

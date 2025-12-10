@@ -29,9 +29,13 @@ export default async function LiberarItensPage({
         </h1>
         <p>{unId}</p>
       </div>
-      <div>
-        <LiberaSolicitacao solicitacao={handler!} unId={unId} item={itens!} />
-      </div>
+
+      <LiberaSolicitacao
+        solicitacao={handler!}
+        unId={unId}
+        item={itens!}
+        trackId={trackId}
+      />
     </main>
   );
 }
