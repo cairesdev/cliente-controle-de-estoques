@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
 import { Button } from "./button";
 import { useRouter } from "next/navigation";
+import { PrintPageButton } from "../action-buttons";
 
 export default function Comprovante({ data }: { data: ComprovanteCriacao }) {
   const router = useRouter();
@@ -66,9 +67,7 @@ export default function Comprovante({ data }: { data: ComprovanteCriacao }) {
           {transformData(data?.estoque.data_entrada as string)}
         </p>
       </footer>
-      <Button rounded onClick={() => window.print()}>
-        Imprimir
-      </Button>
+      <PrintPageButton />
       <Button rounded type="alternative" onClick={() => router.push(`/`)}>
         Concluir
       </Button>

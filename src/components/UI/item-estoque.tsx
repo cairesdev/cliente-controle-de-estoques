@@ -1,9 +1,19 @@
+"use client";
 import { ItemEstocado } from "@/types/commons";
 import { LuCircleAlert } from "react-icons/lu";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_estoque.module.css";
+import { DeleteItem } from "../action-buttons";
 
-export default function ItemArmazenado({ item }: { item: ItemEstocado }) {
+export default function ItemArmazenado({
+  item,
+  tipo = "SIMPLES",
+  token,
+}: {
+  item: ItemEstocado;
+  tipo?: "GERENCIAVEL" | "SIMPLES";
+  token?: string;
+}) {
   const hoje = new Date();
   const dataVal = new Date(item.data_validade);
 
@@ -45,6 +55,7 @@ export default function ItemArmazenado({ item }: { item: ItemEstocado }) {
               ? `Dias até o vencimento: ${diasRestantes}`
               : "Indeterminado"}
           </b>
+          {tipo === "GERENCIAVEL" && <DeleteItem token={token!} id={item.id} />}
         </div>
 
         {item.data_validade && diasRestantes <= 30 && (

@@ -102,3 +102,28 @@ p {
   font-size: 14px;
   text-align: center;
 }
+
+@media print {
+  body {
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+
+  * {
+    overflow: visible !important;
+  }
+
+  main,
+  .content,
+  .page,
+  .container {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  button,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+}

@@ -33,6 +33,10 @@
   align-items: center;
 }
 
+.vencimento_container button {
+  margin-left: 10px;
+}
+
 .dias {
   font-weight: 700;
   color: var(--ink-base);
@@ -51,4 +55,9 @@
 
 .alerta_icon {
   font-size: 16px;
+}
+
+.container_action {
+  display: flex;
+  width: 100%;
 }

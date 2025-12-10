@@ -1,6 +1,9 @@
+import { auth } from "@/auth";
+import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
 import ItemArmazenado from "@/components/UI/item-estoque";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
+import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
 
 export default async function ResumoEstoquePage({
@@ -11,10 +14,7 @@ export default async function ResumoEstoquePage({
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
-  const { code } = (await searchParams) as {
-    [key: string]: string;
-  };
-
+  const session = await auth();
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getResumo({ id: handler! });
 
@@ -24,15 +24,31 @@ export default async function ResumoEstoquePage({
         <h1>
           <LuLayers /> Resumo das adições
         </h1>
-        <h2>Código: {data?.remessa.codigo}</h2>
-        <p>{data?.remessa.nome}</p>
+        <div className="ghost_traco" />
       </div>
-      <div className="ghost_traco" />
+      <div className={styles.barcode_container}>
+        <h2>Código: {data?.remessa.codigo}</h2>
+        <Image
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.remessa.codigo}`}
+          alt="barcode"
+          width={190}
+          height={190}
+          loading="eager"
+        />
+      </div>
+      <p>Quantidade cadastrada: {data?.remessa.qnt_registrada}</p>
       <div>
         {data?.itens.map((item) => (
-          <ItemArmazenado key={item.id} item={item} />
+          <ItemArmazenado
+            key={item.id}
+            item={item}
+            tipo="GERENCIAVEL"
+            token={session?.user.access_token}
+          />
         ))}
       </div>
+      <PrintPageButton />
+      <GoToHomeButton />
     </main>
   );
 }

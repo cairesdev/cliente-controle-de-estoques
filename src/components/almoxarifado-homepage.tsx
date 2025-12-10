@@ -83,6 +83,8 @@ export default async function AlmoxarifeHomepage({
         ))}
       </div>
 
+      {filtred?.length === 0 && <p>Nenhuma unidade registrada.</p>}
+
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayersOutline />
@@ -94,6 +96,8 @@ export default async function AlmoxarifeHomepage({
       {itens?.map((item) => (
         <ItemArmazenado key={item.id} item={item} />
       ))}
+
+      {itens?.length === 0 && <p>Nenhum item no estoque.</p>}
 
       <div className={styles.rodape}>
         <SessionExpiration />

@@ -68,3 +68,11 @@
   color: var(--sky-lightest);
   background: var(--primary-darkest);
 }
+
+.barcode_container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

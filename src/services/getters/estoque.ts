@@ -108,4 +108,16 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
+  static async deleteItemResumo({ id, token }: { id: string; token: string }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.delete_item + id,
+      method: "DELETE",
+      cache: "default",
+      token: token,
+      next: { tags: ["remessa", id] },
+    });
+
+    return response.body.res;
+  }
 }

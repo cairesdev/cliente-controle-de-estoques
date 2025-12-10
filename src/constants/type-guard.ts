@@ -34,6 +34,7 @@ export const API_ROUTES = {
   armazem_estoque: "v1/armazem/estoque/",
   xlsx: API_URL + "v1/armazem/xlsx/",
   resumo_estoque: "v1/armazem/estoque/resumo/",
+  delete_item: "v1/armazem/estoque/item/",
 };
 
 export const HttpStatus = {
