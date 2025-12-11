@@ -13,3 +13,9 @@ export type EntidadeDetalhe = {
   email: string;
   telefone: string;
 };
+
+export type Produto = {
+  id: string;
+  nome: string;
+  und_medida: string;
+};

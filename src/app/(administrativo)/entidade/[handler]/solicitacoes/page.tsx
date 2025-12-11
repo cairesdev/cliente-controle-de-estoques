@@ -34,6 +34,7 @@ export default async function SolicitacoesPage({
             key={item.id}
           />
         ))}
+        {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
       </div>
       <Link href={`/entidade/${handler}/almoxarifado`}>Voltar</Link>
     </main>

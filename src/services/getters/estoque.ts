@@ -120,4 +120,16 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
+  async getEstoqueItens({ id }: { id: string }) {
+    const response = await backendFetch<ItemEstocado[]>({
+      url: API_ROUTES.lista_estoque + id,
+      method: "GET",
+      cache: "default",
+      token: this.token,
+      next: { tags: ["remessa", id] },
+    });
+
+    return response.body.res;
+  }
 }

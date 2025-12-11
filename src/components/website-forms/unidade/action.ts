@@ -45,3 +45,22 @@ export async function criarArmazenamento(data: any) {
     console.log(response.body);
   }
 }
+
+export async function adicionarProduto(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<string>({
+    url: API_ROUTES.cadastro_produto_individual + data.REMESSA,
+    next: { tags: ["solicitacoes"] },
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    return true;
+  } else {
+    return false;
+  }
+}

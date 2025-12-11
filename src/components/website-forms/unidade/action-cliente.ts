@@ -9,6 +9,9 @@ export async function enviarArquivoEstoque(formData: FormData, token: string) {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      next: {
+        tags: ["itens-unidade"],
+      },
     });
 
     if (response.status === HttpStatus.CREATED) {

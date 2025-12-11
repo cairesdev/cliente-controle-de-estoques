@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { backendFetch } from "../adapter";
 import { API_ROUTES } from "@/constants/type-guard";
-import { EntidadeDetalhe, ItemBasic } from "@/types/entidade";
+import { EntidadeDetalhe, ItemBasic, Produto } from "@/types/entidade";
 
 export class EntidadeRepository {
   private constructor(
@@ -49,6 +49,17 @@ export class EntidadeRepository {
       next: { tags: ["unidades", id] },
     });
 
+    return response.body.res;
+  }
+
+  async getListaProdutos() {
+    const response = await backendFetch<Produto[]>({
+      url: API_ROUTES.lista_produtos,
+      method: "GET",
+      cache: "force-cache",
+      token: this.token,
+      next: { tags: ["produtos"] },
+    });
     return response.body.res;
   }
 }

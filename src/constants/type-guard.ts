@@ -35,6 +35,9 @@ export const API_ROUTES = {
   xlsx: API_URL + "v1/armazem/xlsx/",
   resumo_estoque: "v1/armazem/estoque/resumo/",
   delete_item: "v1/armazem/estoque/item/",
+  lista_produtos: "v1/armazem/estoque/produtos",
+  lista_estoque: "v1/armazem/estoque/remessa/",
+  cadastro_produto_individual: "v1/armazem/individual/",
 };
 
 export const HttpStatus = {

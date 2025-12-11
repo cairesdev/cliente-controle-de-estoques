@@ -3,6 +3,7 @@ import { Button } from "@/components/UI/button";
 import { CategoriaItens } from "@/constants/type-guard";
 import styles from "@/styles/components/forms.module.css";
 import { criarArmazenamento } from "./action";
+import { useRouter } from "next/navigation";
 
 export default function AdicionarRemessaForm({
   entidade,
@@ -25,8 +26,10 @@ export default function AdicionarRemessaForm({
     criarArmazenamento(payload);
   };
 
+  const router = useRouter();
+
   return (
-    <form className={styles.formulario} onSubmit={handleSubmit}>
+    <form className={styles.formulario_interno} onSubmit={handleSubmit}>
       <div className={styles.input_container}>
         <label>Titulo da remessa</label>
         <input
@@ -72,7 +75,7 @@ export default function AdicionarRemessaForm({
       <Button rounded htmlType="submit">
         Próximo
       </Button>
-      <Button rounded type="danger">
+      <Button rounded type="danger" onClick={() => router.back()}>
         Cancelar
       </Button>
     </form>
