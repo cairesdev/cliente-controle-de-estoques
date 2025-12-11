@@ -9,6 +9,7 @@ import {
   ResumoRemessa,
   Solicitacao,
 } from "@/types/commons";
+import { Estoque } from "@/types/entidade";
 
 export class EstoqueRepository {
   private constructor(private readonly token: string) {}
@@ -128,6 +129,18 @@ export class EstoqueRepository {
       cache: "default",
       token: this.token,
       next: { tags: ["remessa", id] },
+    });
+
+    return response.body.res;
+  }
+
+  async getEstoques({ id }: { id: string }) {
+    const response = await backendFetch<Estoque[]>({
+      url: API_ROUTES.entidade_estoque + id,
+      method: "GET",
+      cache: "default",
+      token: this.token,
+      next: { tags: [id] },
     });
 
     return response.body.res;

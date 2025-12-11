@@ -6,6 +6,7 @@ import UserSVG from "@/assets/user_cell.svg";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
+import { NOME_SISTEMA } from "@/constants/enverioments";
 
 export default function LogInPage() {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function LogInPage() {
       <div className={styles.login_card}>
         <Image src={UserSVG} width={300} height={220} alt="usuario comum" />
         <div>
-          <h1>Bem vindo ao Stockaap!</h1>
+          <h1>Bem vindo {NOME_SISTEMA}</h1>
           <p>Preencha as informações para acessar o aplicativo</p>
         </div>
         <form onSubmit={handleSubmit} className={styles.formulario}>

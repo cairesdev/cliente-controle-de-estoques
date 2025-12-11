@@ -39,6 +39,7 @@ export const API_ROUTES = {
   lista_estoque: "v1/armazem/estoque/remessa/",
   cadastro_produto_individual: "v1/armazem/individual/",
   cadastro_unidade: "v1/unidade/",
+  entidade_estoque: "v1/entidade/estoque/disponivel/",
 };
 
 export const HttpStatus = {
@@ -82,3 +83,9 @@ export const CategoriaUnidade = [
   { nome: "ONG", id: 4 },
   { nome: "Outros", id: 5 },
 ];
+
+export enum TipoVisualizacao {
+  DETALHAR,
+  EDITAR,
+  IMPRIMIR,
+}

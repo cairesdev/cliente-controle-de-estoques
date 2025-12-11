@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
 import ItemArmazenado from "@/components/UI/item-estoque";
+import { TipoVisualizacao } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
 import Image from "next/image";
@@ -15,6 +16,10 @@ export default async function ResumoEstoquePage({
 }) {
   const { handler } = await params;
   const session = await auth();
+  const { tipo } = (await searchParams) as {
+    [key: string]: string;
+  };
+
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getResumo({ id: handler! });
 
@@ -22,7 +27,10 @@ export default async function ResumoEstoquePage({
     <main className={styles.homepage}>
       <div className={styles.header_section}>
         <h1>
-          <LuLayers /> Resumo das adições
+          <LuLayers />
+          {parseInt(tipo) === TipoVisualizacao.EDITAR
+            ? " Resumo das adições"
+            : "Visualizar detalhes"}
         </h1>
         <div className="ghost_traco" />
       </div>
@@ -42,7 +50,11 @@ export default async function ResumoEstoquePage({
           <ItemArmazenado
             key={item.id}
             item={item}
-            tipo="GERENCIAVEL"
+            tipo={
+              parseInt(tipo) === TipoVisualizacao.EDITAR
+                ? "GERENCIAVEL"
+                : "SIMPLES"
+            }
             token={session?.user.access_token}
           />
         ))}

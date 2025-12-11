@@ -19,3 +19,12 @@ export type Produto = {
   nome: string;
   und_medida: string;
 };
+
+export type Estoque = {
+  id: string;
+  codigo: string;
+  nome_remessa: string;
+  data_entrada: string;
+  local_estocado: string;
+  tipo_estoque: string;
+};

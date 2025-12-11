@@ -33,11 +33,22 @@ export function PrintPageButton() {
     </Button>
   );
 }
+
 export function GoToHomeButton() {
   const router = useRouter();
 
   return (
     <Button rounded type="alternative" onClick={() => router.push("/")}>
+      Concluir
+    </Button>
+  );
+}
+
+export function GoBackButton() {
+  const router = useRouter();
+
+  return (
+    <Button rounded type="alternative" onClick={() => router.back()}>
       Concluir
     </Button>
   );

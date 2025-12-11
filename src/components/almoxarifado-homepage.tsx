@@ -13,7 +13,7 @@ import { User } from "next-auth";
 import Link from "next/link";
 import { IoLayersOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import ItemArmazenado from "./UI/item-estoque";
+import ItemArmazem from "./UI/item-armazem";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -30,7 +30,7 @@ export default async function AlmoxarifeHomepage({
   const data = await entidadeRepository.getUnidades({ id: handler as string });
 
   const estoqueRepository = await EstoqueRepository.create();
-  const itens = await estoqueRepository.getItensEntidade({
+  const itens = await estoqueRepository.getEstoques({
     id: handler as string,
   });
 
@@ -88,13 +88,13 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayersOutline />
-          Itens no estoque
+          Estoques disponíveis
         </h2>
         <div className="ghost_bar" />
       </div>
 
       {itens?.map((item) => (
-        <ItemArmazenado key={item.id} item={item} />
+        <ItemArmazem key={item.id} item={item} tipo="SIMPLES" />
       ))}
 
       {itens?.length === 0 && <p>Nenhum item no estoque.</p>}

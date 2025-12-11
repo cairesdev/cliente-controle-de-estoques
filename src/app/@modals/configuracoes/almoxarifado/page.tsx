@@ -8,6 +8,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { GrCircleAlert } from "react-icons/gr";
 import { auth } from "@/auth";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
+import { AiOutlineProduct } from "react-icons/ai";
 
 export default async function AlmConfigPage({
   searchParams,
@@ -74,7 +75,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
+        {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
             <Link href={"#"}>
               <span>
@@ -83,7 +84,7 @@ export default async function AlmConfigPage({
               Cadastrar Usuário <FaAngleRight color="6c7072" />
             </Link>
           </li>
-        )}
+        )} */}
         {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
             <Link href={"#"}>
@@ -94,6 +95,19 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )} */}
+        <li>
+          <Link
+            href={"/catalogo-de-produtos"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
+            <span>
+              <AiOutlineProduct className="icon" />
+            </span>
+            Catálogo de Produtos <FaAngleRight color="6c7072" />
+          </Link>
+        </li>
       </ul>
       <LogOutButton />
     </ModalComponent>

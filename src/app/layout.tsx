@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { auth } from "@/auth";
+import { NOME_SISTEMA } from "@/constants/enverioments";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -9,7 +10,7 @@ const interSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Controle de Estoques",
+  title: NOME_SISTEMA,
   description: "Gerenciamento online de seu almoxarifado.",
 };
 

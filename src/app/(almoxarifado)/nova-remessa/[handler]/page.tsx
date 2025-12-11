@@ -1,4 +1,4 @@
-import AdicionarRemessaForm from "@/components/website-forms/unidade/adicionar-remessa";
+import AdicionarRemessaForm from "@/components/website-forms/entidade/adicionar-remessa";
 import styles from "@/styles/entidade.module.css";
 import { LuLayers } from "react-icons/lu";
 
