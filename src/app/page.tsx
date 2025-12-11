@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import AdminHomepage from "@/components/admin-homepage";
 import { User } from "next-auth";
+import AlmoxarifeHomepage from "@/components/almoxarifado-homepage";
 
 export default async function Home({
   searchParams,
@@ -17,6 +18,14 @@ export default async function Home({
   switch (parseInt(session?.user.nivel as string)) {
     case NIVEIS_USUARIO.GERENCIA:
       return <AdminHomepage user={session?.user as User} search={q} />;
+    case NIVEIS_USUARIO.ALMOXARIFADO:
+      return (
+        <AlmoxarifeHomepage
+          user={session?.user as User}
+          search={q}
+          handler={session?.user.entidade_id}
+        />
+      );
 
     default:
       return (
