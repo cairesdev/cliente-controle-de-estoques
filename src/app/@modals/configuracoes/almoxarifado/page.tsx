@@ -51,17 +51,22 @@ export default async function AlmConfigPage({
           </Link>
         </li>
 
-        <li>
+        {/* <li>
           <Link href={"#"} prefetch={false} target="_top" passHref>
             <span>
               <FaHistory className="icon" />
             </span>
             Histórico de Transações <FaAngleRight color="6c7072" />
           </Link>
-        </li>
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+        </li> */}
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
-            <Link href={"#"} prefetch={false} target="_top" passHref>
+            <Link
+              href={`/unidade/${trackId}/nova-unidade`}
+              prefetch={false}
+              target="_top"
+              passHref
+            >
               <span>
                 <FaPenToSquare className="icon" />
               </span>
@@ -69,7 +74,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
             <Link href={"#"}>
               <span>
@@ -79,7 +84,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+        {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
             <Link href={"#"}>
               <span>
@@ -88,7 +93,7 @@ export default async function AlmConfigPage({
               Editar Entidade <FaAngleRight color="6c7072" />
             </Link>
           </li>
-        )}
+        )} */}
       </ul>
       <LogOutButton />
     </ModalComponent>

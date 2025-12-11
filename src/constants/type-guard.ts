@@ -38,6 +38,7 @@ export const API_ROUTES = {
   lista_produtos: "v1/armazem/estoque/produtos",
   lista_estoque: "v1/armazem/estoque/remessa/",
   cadastro_produto_individual: "v1/armazem/individual/",
+  cadastro_unidade: "v1/unidade/",
 };
 
 export const HttpStatus = {
@@ -72,4 +73,12 @@ export const CategoriaItens = [
   { nome: "Medicamentos", id: CATEGORIA_ITEM.MEDICAMENTOS },
   { nome: "Higiene e Limpeza", id: CATEGORIA_ITEM.HIGIENE_LIMPEZA },
   { nome: "Outros", id: CATEGORIA_ITEM.OUTROS },
+];
+
+export const CategoriaUnidade = [
+  { nome: "Escolar", id: 1 },
+  { nome: "Saúde", id: 2 },
+  { nome: "Secretaria", id: 3 },
+  { nome: "ONG", id: 4 },
+  { nome: "Outros", id: 5 },
 ];

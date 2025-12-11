@@ -23,16 +23,21 @@ export default async function AdmConfigPage() {
             Cadastrar Entidade <FaAngleRight color="6c7072" />
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href={"/"}>
             <span>
               <FaUserEdit className="icon" />
             </span>
             Cadastrar Usuário <FaAngleRight color="6c7072" />
           </Link>
-        </li>
+        </li> */}
         <li>
-          <Link href={"#"} prefetch={false} target="_top" passHref>
+          <Link
+            href={"/catalogo-de-produtos"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
             <span>
               <AiOutlineProduct className="icon" />
             </span>
