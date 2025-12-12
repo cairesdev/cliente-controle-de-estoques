@@ -27,4 +27,5 @@ export type Estoque = {
   data_entrada: string;
   local_estocado: string;
   tipo_estoque: string;
+  qnt_disponivel: number;
 };

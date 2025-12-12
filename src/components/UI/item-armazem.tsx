@@ -36,6 +36,11 @@ export default function ItemArmazem({
           <p className={styles.label}>Registrado em</p>
           <b className={styles.valor}>{transformData(item.data_entrada)}</b>
         </div>
+
+        <div>
+          <p className={styles.label}>Registrados</p>
+          <b className={styles.valor}>{item?.qnt_disponivel}</b>
+        </div>
       </div>
 
       <div>
