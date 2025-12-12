@@ -32,7 +32,7 @@ export default async function Home({
         <UnidadeHomepage
           user={session?.user as User}
           search={q}
-          handler={session?.user.entidade_id}
+          handler={session?.user.unidade_id}
         />
       );
 

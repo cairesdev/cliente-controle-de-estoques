@@ -1,7 +1,4 @@
-import { SITE_URL } from "@/constants/enverioments";
-import styles from "@/styles/homepage.module.css";
-import Link from "next/link";
-import { BsPersonFill } from "react-icons/bs";
+import RepresentanteItem from "@/components/UI/novo-representante";
 
 export default async function RepresentantePage({
   searchParams,
@@ -12,19 +9,5 @@ export default async function RepresentantePage({
     [key: string]: string;
   };
 
-  return (
-    <main className={styles.homepage}>
-      <div className={styles.header_section}>
-        <h1>
-          <BsPersonFill /> Usuario registrado com sucesso!
-        </h1>
-        <p>Cadastre um usuario para exercer funções.</p>
-      </div>
-      <div className="ghost_traco" />
-      <h2>Usuário: {username}</h2>
-      <Link href={`${SITE_URL}log-in?username=${username}`}>
-        <p>Link de acesso</p>
-      </Link>
-    </main>
-  );
+  return <RepresentanteItem username={username} />;
 }

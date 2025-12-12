@@ -1,0 +1,105 @@
+/* ======== CONTAINER PRINCIPAL ======== */
+.homepage {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #f9f9f9;
+}
+
+/* ======== HEADER ======== */
+.header_section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.header_section h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.header_section p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ======== TRAÇO ======== */
+.ghost_traco {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+}
+
+/* ======== TEXTO DO USUÁRIO ======== */
+.homepage h2 {
+  font-size: 1.2rem;
+  color: #222;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* ======== LINK ======== */
+.homepage a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.homepage a p {
+  background: #0066ff;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.homepage a p:active {
+  opacity: 0.8;
+}
+
+/* ======== BOTÃO DE COPIAR ======== */
+.homepage button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.homepage button:active {
+  opacity: 0.8;
+}
+
+/* ======== RESPONSIVIDADE EXTRA PARA CELULARES MUITO PEQUENOS ======== */
+@media (max-width: 360px) {
+  .header_section h1 {
+    font-size: 1.2rem;
+  }
+
+  .homepage h2 {
+    font-size: 1.1rem;
+  }
+
+  .homepage a p,
+  .homepage button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

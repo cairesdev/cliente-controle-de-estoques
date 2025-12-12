@@ -39,7 +39,7 @@ export default async function ResumoEstoquePage({
       <div className={styles.barcode_container}>
         <h2>Código: {data?.remessa.codigo}</h2>
         <Image
-          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.remessa.codigo}`}
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.remessa.codigo}:entidade:${handler}`}
           alt="barcode"
           width={190}
           height={190}
