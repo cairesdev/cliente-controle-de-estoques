@@ -60,16 +60,7 @@ export default async function UnidadeConfgPage({
             Histórico de Transações <FaAngleRight color="6c7072" />
           </Link>
         </li> */}
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
-          <li>
-            <Link href={"#"}>
-              <span>
-                <FaUserEdit className="icon" />
-              </span>
-              Cadastrar Usuário <FaAngleRight color="6c7072" />
-            </Link>
-          </li>
-        )}
+
         <li>
           <Link
             href={"/catalogo-de-produtos"}

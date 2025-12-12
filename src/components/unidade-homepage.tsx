@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FiUser } from "react-icons/fi";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { RiDashboardLine } from "react-icons/ri";
-import { SolicitacaoItem } from "./UI/item-solicitacao";
+import ItemArmazem from "./UI/item-armazem";
 
 export default async function UnidadeHomepage({
   search,
@@ -18,7 +18,7 @@ export default async function UnidadeHomepage({
   handler?: string;
 }) {
   const estoqueRepository = await EstoqueRepository.create();
-  const itens = await estoqueRepository.getSolicitacoes({
+  const estoque = await estoqueRepository.getEstoqueUnidade({
     id: handler as string,
   });
 
@@ -47,15 +47,15 @@ export default async function UnidadeHomepage({
         </div>
       </div>
       <div>
-        {itens?.map((item) => (
-          <SolicitacaoItem
-            trackId={handler as string}
-            track="unidade"
-            data={item}
+        {estoque?.map((item) => (
+          <ItemArmazem
+            tipoEstoque="unidade"
+            tipo="SIMPLES"
+            item={item}
             key={item.id}
           />
         ))}
-        {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
+        {estoque?.length === 0 && <p>Nenhuma remessa disponível.</p>}
       </div>
     </main>
   );

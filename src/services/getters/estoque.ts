@@ -24,7 +24,7 @@ export class EstoqueRepository {
     const response = await backendFetch<ItemEstocado[]>({
       url: API_ROUTES.lista_itens_entidade + id,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["itens-unidade", id] },
     });
@@ -36,7 +36,7 @@ export class EstoqueRepository {
     const response = await backendFetch<Solicitacao[]>({
       url: API_ROUTES.solicitacoes + id,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["solicitacoes", id] },
     });
@@ -72,7 +72,7 @@ export class EstoqueRepository {
     const response = await backendFetch<LiberaProduto[]>({
       url: API_ROUTES.solicitacao + id + "/" + entidade,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["solicitacoes", id, entidade] },
     });
@@ -90,7 +90,7 @@ export class EstoqueRepository {
     const response = await backendFetch<ComprovanteCriacao>({
       url: API_ROUTES.comprovante + id + "/" + comprovante,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["solicitacoes", id, comprovante] },
     });
@@ -98,11 +98,22 @@ export class EstoqueRepository {
     return response.body.res;
   }
 
-  async getResumo({ id }: { id: string }) {
+  async getResumoEstoqueUnidade({ id }: { id: string }) {
+    const response = await backendFetch<ResumoRemessa>({
+      url: API_ROUTES.resumo_estoque_unidade + id,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["remessa", id] },
+    });
+
+    return response.body.res;
+  }
+  async getResumoEstoqueEntidade({ id }: { id: string }) {
     const response = await backendFetch<ResumoRemessa>({
       url: API_ROUTES.resumo_estoque + id,
       method: "GET",
-      cache: "default",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["remessa", id] },
     });
@@ -114,7 +125,7 @@ export class EstoqueRepository {
     const response = await backendFetch<string>({
       url: API_ROUTES.delete_item + id,
       method: "DELETE",
-      cache: "default",
+      cache: "no-store",
       token: token,
       next: { tags: ["remessa", id] },
     });
@@ -126,7 +137,7 @@ export class EstoqueRepository {
     const response = await backendFetch<ItemEstocado[]>({
       url: API_ROUTES.lista_estoque + id,
       method: "GET",
-      cache: "default",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["remessa", id] },
     });
@@ -134,11 +145,22 @@ export class EstoqueRepository {
     return response.body.res;
   }
 
-  async getEstoques({ id }: { id: string }) {
+  async getEstoqueUnidade({ id }: { id: string }) {
+    const response = await backendFetch<Estoque[]>({
+      url: API_ROUTES.unidade_estoque + id,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: [id] },
+    });
+
+    return response.body.res;
+  }
+  async getEstoqueEntidade({ id }: { id: string }) {
     const response = await backendFetch<Estoque[]>({
       url: API_ROUTES.entidade_estoque + id,
       method: "GET",
-      cache: "default",
+      cache: "no-store",
       token: this.token,
       next: { tags: [id] },
     });

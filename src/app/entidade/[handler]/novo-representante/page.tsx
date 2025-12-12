@@ -35,10 +35,12 @@ export default async function NovoRepresentantePage({
         <p>Cadastre um usuario para exercer funções.</p>
       </div>
       <div className="ghost_traco" />
-      <span className="error_message">
-        {parseInt(code) === HttpStatus.NOT_ACEPTABLE && "Senhas não conferem"}
-        {parseInt(code) === HttpStatus.CONFLICT && "Usuário indisponível"}
-      </span>
+      {code && (
+        <span className="error_message">
+          {parseInt(code) === HttpStatus.NOT_ACEPTABLE && "Senhas não conferem"}
+          {parseInt(code) === HttpStatus.CONFLICT && "Usuário indisponível"}
+        </span>
+      )}
 
       <NovoRepresentante
         niveisAutorizados={nivelLiberado!}

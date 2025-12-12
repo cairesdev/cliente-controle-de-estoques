@@ -31,6 +31,13 @@ export type SampleEstoque = {
   local_estocado: string;
   nome: string;
   qnt_registrada: number | null;
+  nome_estoque: string;
+  qnt_entrada: number;
+  qnt_disponivel: number;
+  tipo_estoque: string;
+  data_solicitacao: string;
+  data_encerramento: string;
+  solicitante: string;
 };
 
 export type ComprovanteCriacao = {
@@ -51,6 +58,7 @@ export type Solicitacao = {
   solicitante: string;
   unidade: string;
   id_unidade: string;
+  tipo_solicitacao?: string;
 } & IStatusSolicitacao;
 
 export type ProdutoSolicitacao = {

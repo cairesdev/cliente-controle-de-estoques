@@ -39,7 +39,7 @@ export default function AddByFile({
   };
   const router = useRouter();
   return (
-    <form className={styles.formulario} onSubmit={handleSubmit}>
+    <form className={styles.formulario_interno} onSubmit={handleSubmit}>
       {!file ? (
         <div className={styles.uploadBox}>
           <input

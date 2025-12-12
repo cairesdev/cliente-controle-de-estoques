@@ -1,5 +1,5 @@
 import FormUnidade from "@/components/website-forms/unidade/add-unidade";
-import styles from "@/styles/entidade.module.css";
+import styles from "@/styles/homepage.module.css";
 import { TbHomePlus } from "react-icons/tb";
 
 export default async function NovaUnidadePage({
@@ -10,7 +10,7 @@ export default async function NovaUnidadePage({
   const { handler } = await params;
 
   return (
-    <main className={styles.entidade_page}>
+    <main className={styles.homepage}>
       <div className={styles.header_section}>
         <h1>
           <TbHomePlus /> Cadastro de unidade

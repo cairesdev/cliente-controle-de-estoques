@@ -85,7 +85,13 @@ export async function novoRepresentante(data: any) {
   }
 
   if (response.status === HttpStatus.CREATED) {
-    console.log(response.body);
+    redirect(
+      `/tracks/cadastrado?ref=${encodeURI(
+        "Representante"
+      )}&callback=${encodeURI(
+        `/entidade/representante?username=${data.LOGIN}`
+      )}`
+    );
   } else {
     redirect(
       `/entidade/${data.ORGAO}/novo-representante?code=${response.status}`

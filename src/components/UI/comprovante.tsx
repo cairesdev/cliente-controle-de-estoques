@@ -60,9 +60,7 @@ export default function Comprovante({ data }: { data: ComprovanteCriacao }) {
       </section>
 
       <footer className={styles.assinatura_box}>
-        <p className={styles.assinatura_nome}>
-          {data?.estoque.solicitante} - Analista Técnico
-        </p>
+        <p className={styles.assinatura_nome}>{data?.estoque.solicitante}</p>
         <p className={styles.assinatura_data}>
           {transformData(data?.estoque.data_entrada as string)}
         </p>

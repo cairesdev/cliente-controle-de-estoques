@@ -76,3 +76,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.assinatura_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -20,7 +20,7 @@ export class EntidadeRepository {
     const response = await backendFetch<ItemBasic[]>({
       url: API_ROUTES.lista_entidades,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["entidades"] },
     });
@@ -32,7 +32,7 @@ export class EntidadeRepository {
     const response = await backendFetch<EntidadeDetalhe>({
       url: API_ROUTES.entidade + id,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["entidade", id] },
     });
@@ -44,7 +44,7 @@ export class EntidadeRepository {
     const response = await backendFetch<ItemBasic[]>({
       url: API_ROUTES.lista_unidades + id,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["unidades", id] },
     });
@@ -56,7 +56,7 @@ export class EntidadeRepository {
     const response = await backendFetch<Produto[]>({
       url: API_ROUTES.lista_produtos,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["produtos"] },
     });

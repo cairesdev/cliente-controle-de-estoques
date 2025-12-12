@@ -13,8 +13,9 @@ export default function LogInPage() {
   const searchParams = useSearchParams();
 
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const userName = searchParams.get("username") || "";
 
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(userName);
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);

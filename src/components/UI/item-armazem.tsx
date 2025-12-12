@@ -1,24 +1,26 @@
 "use client";
-import { transformData } from "@/utils";
 import styles from "@/styles/components/item_estoque.module.css";
+import { TipoVisualizacao } from "@/constants/type-guard";
 import { DeleteItem } from "../action-buttons";
 import { Estoque } from "@/types/entidade";
+import { transformData } from "@/utils";
 import Link from "next/link";
-import { TipoVisualizacao } from "@/constants/type-guard";
 
 export default function ItemArmazem({
   item,
   tipo = "SIMPLES",
   token,
+  tipoEstoque,
 }: {
   item: Estoque;
   tipo?: "GERENCIAVEL" | "SIMPLES";
   token?: string;
+  tipoEstoque: "unidade" | "entidade";
 }) {
   return (
     <div className={styles.card}>
       <Link
-        href={`/resumo/${item.id}?code=${item.codigo}&tipo=${TipoVisualizacao.DETALHAR}`}
+        href={`/${tipoEstoque}/resumo/${item.id}?code=${item.codigo}&tipo=${TipoVisualizacao.DETALHAR}`}
       >
         <h2 className={styles.nome}>
           {item.nome_remessa}

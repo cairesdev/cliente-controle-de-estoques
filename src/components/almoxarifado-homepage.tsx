@@ -30,7 +30,7 @@ export default async function AlmoxarifeHomepage({
   const data = await entidadeRepository.getUnidades({ id: handler as string });
 
   const estoqueRepository = await EstoqueRepository.create();
-  const itens = await estoqueRepository.getEstoques({
+  const itens = await estoqueRepository.getEstoqueEntidade({
     id: handler as string,
   });
 
@@ -94,7 +94,12 @@ export default async function AlmoxarifeHomepage({
       </div>
 
       {itens?.map((item) => (
-        <ItemArmazem key={item.id} item={item} tipo="SIMPLES" />
+        <ItemArmazem
+          tipoEstoque="entidade"
+          key={item.id}
+          item={item}
+          tipo="SIMPLES"
+        />
       ))}
 
       {itens?.length === 0 && <p>Nenhum item no estoque.</p>}

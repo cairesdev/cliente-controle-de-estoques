@@ -51,6 +51,10 @@ export function SolicitacaoItem({
           </div>
 
           <div>
+            <p className={styles.label}>Tipo</p>
+            <b className={styles.valor}>{data.tipo_solicitacao}</b>
+          </div>
+          <div>
             <p className={styles.label}>Status</p>
             <b className={styles.valor}>{data.status}</b>
           </div>
