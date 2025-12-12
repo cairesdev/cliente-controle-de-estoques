@@ -21,6 +21,12 @@ export enum NIVEIS_USUARIO {
   DEVELOPER = 10,
 }
 
+export const TipoUsuario = [
+  { nome: "Gerente de aplicação", id: NIVEIS_USUARIO.GERENCIA },
+  { nome: "Almoxarifado da entidade", id: NIVEIS_USUARIO.ALMOXARIFADO },
+  { nome: "Representante de unidade", id: NIVEIS_USUARIO.RESPONSAVEL },
+];
+
 export const API_ROUTES = {
   lista_unidades: "v1/unidades/",
   lista_entidades: "v1/entidades",
@@ -41,6 +47,7 @@ export const API_ROUTES = {
   cadastro_unidade: "v1/unidade/",
   entidade_estoque: "v1/entidade/estoque/disponivel/",
   cadastro_solicitacao: "v1/solicitacao/",
+  cadastro_representante: "v1/usuario/perfil",
 };
 
 export const HttpStatus = {

@@ -66,3 +66,29 @@ export async function criarArmazenamento(data: any) {
     console.log(response.body);
   }
 }
+
+export async function novoRepresentante(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: API_ROUTES.cadastro_representante,
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (data.SENHA !== data.SENHA_CHECK) {
+    redirect(
+      `/entidade/${data.ORGAO}/novo-representante?code=${HttpStatus.NOT_ACEPTABLE}`
+    );
+  }
+
+  if (response.status === HttpStatus.CREATED) {
+    console.log(response.body);
+  } else {
+    redirect(
+      `/entidade/${data.ORGAO}/novo-representante?code=${response.status}`
+    );
+  }
+}

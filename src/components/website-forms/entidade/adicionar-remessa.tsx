@@ -54,7 +54,7 @@ export default function AdicionarRemessaForm({
       </div>
       <div className={styles.input_container}>
         <label>Categoria dos Itens</label>
-        <select id="TIPO_ESTOQUE" name="TIPO_ESTOQUE">
+        <select id="TIPO_ESTOQUE" name="TIPO_ESTOQUE" required>
           {CategoriaItens.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}

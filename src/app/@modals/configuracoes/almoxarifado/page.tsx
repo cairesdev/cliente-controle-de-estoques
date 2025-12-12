@@ -75,16 +75,21 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
-            <Link href={"#"}>
+            <Link
+              href={`/entidade/${trackId}/novo-representante`}
+              prefetch={false}
+              target="_top"
+              passHref
+            >
               <span>
                 <FaUserEdit className="icon" />
               </span>
-              Cadastrar Usuário <FaAngleRight color="6c7072" />
+              Cadastrar representante <FaAngleRight color="6c7072" />
             </Link>
           </li>
-        )} */}
+        )}
         {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
             <Link href={"#"}>

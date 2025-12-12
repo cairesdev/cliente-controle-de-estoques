@@ -1,0 +1,97 @@
+"use client";
+import { ItemBasic } from "@/types/entidade";
+import styles from "@/styles/components/forms.module.css";
+import { Button } from "@/components/UI/button";
+import { novoRepresentante } from "./action";
+
+export default function NovoRepresentante({
+  unidades,
+  entidade,
+  niveisAutorizados,
+}: {
+  unidades: ItemBasic[];
+  entidade: string;
+  niveisAutorizados: { id: number; nome: string }[];
+}) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+
+    const payload = {
+      NOME: form.get("NOME"),
+      DESCRICAO: form.get("DESCRICAO"),
+      LOGIN: form.get("LOGIN"),
+      SENHA_CHECK: form.get("SENHA_CHECK"),
+      SENHA: form.get("SENHA"),
+      UNIDADE: form.get("UNIDADE"),
+      NIVEL: form.get("NIVEL"),
+      ORGAO: entidade,
+    };
+
+    novoRepresentante(payload);
+  };
+  return (
+    <form className={styles.formulario_interno} onSubmit={handleSubmit}>
+      <div className={styles.input_container}>
+        <label>Nome do usuário</label>
+        <input type="text" name="NOME" placeholder="Nome completo" required />
+      </div>
+      <div className={styles.input_container}>
+        <label>Cargo</label>
+        <input
+          type="text"
+          name="DESCRICAO"
+          placeholder="Cargo ocupado"
+          required
+        />
+      </div>
+      <div className={styles.input_container}>
+        <label>Unidade Responsável</label>
+        <select id="UNIDADE" name="UNIDADE" required>
+          {unidades.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.nome}
+            </option>
+          ))}
+        </select>
+      </div>
+      <h2>Informações de login</h2>
+      <div className="ghost_bar" />
+      <div className={styles.input_container}>
+        <label>Nivel de usuário</label>
+        <select id="NIVEL" name="NIVEL" required>
+          {niveisAutorizados.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.nome}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className={styles.input_container}>
+        <label>Usuário</label>
+        <input
+          type="text"
+          name="LOGIN"
+          placeholder="ex: joaodasilva ou joao@mail.com"
+          required
+        />
+      </div>
+      <div className={styles.input_container}>
+        <label>Senha</label>
+        <input type="password" name="SENHA" placeholder="*******" required />
+      </div>
+      <div className={styles.input_container}>
+        <label>Repita a senha</label>
+        <input
+          type="password"
+          name="SENHA_CHECK"
+          placeholder="*******"
+          required
+        />
+      </div>
+      <Button htmlType="submit" rounded>
+        Cadastrar
+      </Button>
+    </form>
+  );
+}

@@ -3,16 +3,10 @@ import styles from "@/styles/entidade.module.css";
 import { LuBlocks } from "react-icons/lu";
 
 export default async function ModulosPage({
-  searchParams,
   params,
 }: {
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
   params: Promise<{ handler: string | undefined }>;
 }) {
-  const { ref } = (await searchParams) as {
-    [key: string]: string;
-  };
-
   const { handler } = await params;
 
   return (
