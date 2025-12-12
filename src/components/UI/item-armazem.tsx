@@ -22,7 +22,7 @@ export default function ItemArmazem({
       >
         <h2 className={styles.nome}>
           {item.nome_remessa}
-          <p>{item.codigo}</p>
+          <p>Codigo: {item.codigo}</p>
         </h2>
       </Link>
       <div className={styles.info_row}>

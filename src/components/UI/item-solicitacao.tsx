@@ -1,5 +1,9 @@
 "use client";
-import { DetalheSolicitacao, Solicitacao } from "@/types/commons";
+import {
+  DetalheSolicitacao,
+  ProdutoSolicitacao,
+  Solicitacao,
+} from "@/types/commons";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_solicitacao.module.css";
 import styles2 from "@/styles/entidade.module.css";
@@ -52,7 +56,7 @@ export function SolicitacaoItem({
   );
 }
 
-export function ItemSolicitacao({
+export function ItemSolicitacaoAdmin({
   data,
   trackId,
   unId,
@@ -106,6 +110,26 @@ export function ItemSolicitacao({
       <Button type="alternative" rounded onClick={() => router.back()}>
         Voltar
       </Button>
+    </main>
+  );
+}
+
+export function ItensSolicitacao({ data }: { data: ProdutoSolicitacao[] }) {
+  return (
+    <main className={styles2.entidade_page}>
+      {data?.map((item) => (
+        <div key={item.id} className={styles.card}>
+          <h4 className={styles.nome}>{item.nome}</h4>
+          <div className={styles.info_row}>
+            <div>
+              <p className={styles.label}>Quantidade Solicitada</p>
+              <b className={styles.valor}>
+                {item.qnt_solicitada} {item.und_medida}
+              </b>
+            </div>
+          </div>
+        </div>
+      ))}
     </main>
   );
 }

@@ -62,3 +62,48 @@ export async function adicionarUnidade(data: any) {
     return false;
   }
 }
+export async function novaSolicitacao(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<string>({
+    url: API_ROUTES.cadastro_solicitacao + data.UNIDADE,
+    next: { tags: ["solicitacoes", data.UNIDADE] },
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    redirect(
+      `/tracks/cadastrado?ref=${encodeURI(
+        "Remessa cadastrada"
+      )}&callback=${encodeURI(
+        `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}`
+      )}`,
+      RedirectType.push
+    );
+  } else {
+    return false;
+  }
+}
+
+export async function adicionarItensSolicitacao(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<string>({
+    url:
+      API_ROUTES.cadastro_solicitacao + "itens/adicionar/" + data.SOLICITACAO,
+    next: { tags: ["solicitacoes", data.SOLICITACAO, data.UNIDADE] },
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    return true;
+  } else {
+    return false;
+  }
+}

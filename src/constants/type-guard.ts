@@ -40,6 +40,7 @@ export const API_ROUTES = {
   cadastro_produto_individual: "v1/armazem/individual/",
   cadastro_unidade: "v1/unidade/",
   entidade_estoque: "v1/entidade/estoque/disponivel/",
+  cadastro_solicitacao: "v1/solicitacao/",
 };
 
 export const HttpStatus = {

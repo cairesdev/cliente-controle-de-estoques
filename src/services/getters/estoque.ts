@@ -54,7 +54,7 @@ export class EstoqueRepository {
     const response = await backendFetch<DetalheSolicitacao>({
       url: API_ROUTES.solicitacao + id + `?visualizacao=${tipo}`,
       method: "GET",
-      cache: "force-cache",
+      cache: "no-store",
       token: this.token,
       next: { tags: ["solicitacoes", id] },
     });
