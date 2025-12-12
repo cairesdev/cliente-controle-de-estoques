@@ -1,5 +1,7 @@
-import { ItemSolicitacaoAdmin } from "@/components/UI/item-solicitacao";
+import { SolicitacaoItem } from "@/components/UI/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
+import styles from "@/styles/homepage.module.css";
+import Link from "next/link";
 
 export default async function SolicitacaoPage({
   params,
@@ -15,16 +17,30 @@ export default async function SolicitacaoPage({
   };
 
   const estoqueRepository = await EstoqueRepository.create();
-  const data = await estoqueRepository.getSolicitacao({
+  const itens = await estoqueRepository.getSolicitacoes({
     id: handler as string,
-    tipo: "unidade",
   });
 
   return (
-    <ItemSolicitacaoAdmin
-      unId={unId as string}
-      trackId={trackId as string}
-      data={data!}
-    />
+    <main className={styles.homepage}>
+      <div className={styles.header_section}>
+        <h1>Solicitações</h1>
+        <div className="ghost_traco" />
+      </div>
+      <div>
+        {itens?.map((item) => (
+          <SolicitacaoItem
+            trackId={handler as string}
+            track="unidade"
+            data={item}
+            key={item.id}
+          />
+        ))}
+        {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
+      </div>
+      <Link href={"/"} passHref>
+        Voltar
+      </Link>
+    </main>
   );
 }

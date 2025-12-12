@@ -76,9 +76,7 @@ export async function novaSolicitacao(data: any) {
 
   if (response.status === HttpStatus.CREATED) {
     redirect(
-      `/tracks/cadastrado?ref=${encodeURI(
-        "Remessa cadastrada"
-      )}&callback=${encodeURI(
+      `/tracks/cadastrado?ref=${encodeURI("Solicitação")}&callback=${encodeURI(
         `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}`
       )}`,
       RedirectType.push
@@ -95,7 +93,9 @@ export async function adicionarItensSolicitacao(data: any) {
   const response = await backendFetch<string>({
     url:
       API_ROUTES.cadastro_solicitacao + "itens/adicionar/" + data.SOLICITACAO,
-    next: { tags: ["solicitacoes", data.SOLICITACAO, data.UNIDADE] },
+    next: {
+      tags: ["solicitacoes", data.SOLICITACAO, data.UNIDADE, "solicitacao"],
+    },
     method: "POST",
     body: data,
     token,

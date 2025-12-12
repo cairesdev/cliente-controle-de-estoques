@@ -1,3 +1,4 @@
+import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
 import { tituloPagina } from "@/utils";
 import { User } from "next-auth";
@@ -5,6 +6,7 @@ import Link from "next/link";
 import { FiUser } from "react-icons/fi";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { RiDashboardLine } from "react-icons/ri";
+import { SolicitacaoItem } from "./UI/item-solicitacao";
 
 export default async function UnidadeHomepage({
   search,
@@ -15,6 +17,11 @@ export default async function UnidadeHomepage({
   user: User;
   handler?: string;
 }) {
+  const estoqueRepository = await EstoqueRepository.create();
+  const itens = await estoqueRepository.getSolicitacoes({
+    id: handler as string,
+  });
+
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
@@ -38,6 +45,17 @@ export default async function UnidadeHomepage({
             <HiOutlineCog6Tooth className="icon" />
           </Link>
         </div>
+      </div>
+      <div>
+        {itens?.map((item) => (
+          <SolicitacaoItem
+            trackId={handler as string}
+            track="unidade"
+            data={item}
+            key={item.id}
+          />
+        ))}
+        {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
       </div>
     </main>
   );

@@ -17,7 +17,7 @@ export default async function SolicitacaoPage({
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getSolicitacao({
     id: handler as string,
-    tipo: "administrativa",
+    tipo: "unidade",
   });
 
   return (
@@ -25,6 +25,7 @@ export default async function SolicitacaoPage({
       unId={unId as string}
       trackId={trackId as string}
       data={data!}
+      tipo="comprovante"
     />
   );
 }

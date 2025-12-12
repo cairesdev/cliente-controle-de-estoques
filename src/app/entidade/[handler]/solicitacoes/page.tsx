@@ -1,6 +1,6 @@
 import { EstoqueRepository } from "@/services/getters/estoque";
 import { SolicitacaoItem } from "@/components/UI/item-solicitacao";
-import styles from "@/styles/entidade.module.css";
+import styles from "@/styles/homepage.module.css";
 import { LuBlocks } from "react-icons/lu";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ export default async function SolicitacoesPage({
   });
 
   return (
-    <main className={styles.entidade_page}>
+    <main className={styles.homepage}>
       <div className={styles.header_section}>
         <h1>
           <LuBlocks /> Solicitações

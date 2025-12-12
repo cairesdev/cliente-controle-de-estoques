@@ -48,11 +48,10 @@ export type Solicitacao = {
   id: string;
   nome: string;
   data_solicitacao: string;
-  status: string;
   solicitante: string;
   unidade: string;
   id_unidade: string;
-};
+} & IStatusSolicitacao;
 
 export type ProdutoSolicitacao = {
   id: string;
@@ -78,4 +77,8 @@ export type ItemEstocadoDetalhe = {
 export interface ResumoRemessa {
   remessa: SampleEstoque;
   itens: ItemEstocado[];
+}
+
+export interface IStatusSolicitacao {
+  status: "Liberado" | "Enviado" | "Pendente" | "Recebido" | "Cancelado";
 }

@@ -6,11 +6,12 @@ import {
 } from "@/types/commons";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_solicitacao.module.css";
-import styles2 from "@/styles/entidade.module.css";
+import styles2 from "@/styles/homepage.module.css";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
+import { PrintPageButton } from "../action-buttons";
 
 export function SolicitacaoItem({
   data,
@@ -24,14 +25,17 @@ export function SolicitacaoItem({
   return (
     <div className={styles.card}>
       <Link
-        href={`/${track}/solicitacao/${data.id}?trackId=${trackId}&unId=${data.id_unidade}`}
+        href={
+          track === "entidade"
+            ? `/${track}/solicitacao/${data.id}?trackId=${trackId}&unId=${data.id_unidade}&view=${track}`
+            : `/comprovante/solicitacao/${data.id}?trackId=${trackId}&unId=${data.id_unidade} `
+        }
       >
-        <h4 className={styles.nome}>{data.nome}</h4>
-
+        {track !== "unidade" && <h4 className={styles.nome}>{data.unidade}</h4>}
         <div className={styles.info_row}>
           <div>
-            <p className={styles.label}>Unidade</p>
-            <b className={styles.valor}>{data.unidade}</b>
+            <p className={styles.label}>Nome</p>
+            <b className={styles.valor}>{data.nome}</b>
           </div>
           <div>
             <p className={styles.label}>Responsável</p>
@@ -60,14 +64,16 @@ export function ItemSolicitacaoAdmin({
   data,
   trackId,
   unId,
+  tipo = "detalhe",
 }: {
   data: DetalheSolicitacao;
   trackId: string;
   unId: string;
+  tipo?: "comprovante" | "detalhe";
 }) {
   const router = useRouter();
   return (
-    <main className={styles2.entidade_page}>
+    <main className={styles2.homepage}>
       <div className={styles2.header_section}>
         <h1>
           {transformData(data?.solicitacao.data_solicitacao!)}
@@ -81,6 +87,7 @@ export function ItemSolicitacaoAdmin({
       <div className="ghost_traco" />
       <div>
         <h2>{data?.solicitacao.nome}</h2>
+        <p>Total de itens: {data.itens.length}</p>
       </div>
       {data?.itens.map((item) => (
         <div key={item.id} className={styles.card}>
@@ -96,17 +103,22 @@ export function ItemSolicitacaoAdmin({
           </div>
         </div>
       ))}
-      <Button
-        type="primary"
-        rounded
-        onClick={() =>
-          router.push(
-            `/entidade/solicitacao/${data.solicitacao.id}/liberar?trackId=${trackId}&unId=${unId}`
-          )
-        }
-      >
-        Liberar produtos
-      </Button>
+
+      {tipo === "comprovante" ? (
+        <PrintPageButton />
+      ) : (
+        <Button
+          type="primary"
+          rounded
+          onClick={() =>
+            router.push(
+              `/entidade/solicitacao/${data.solicitacao.id}/liberar?trackId=${trackId}&unId=${unId}`
+            )
+          }
+        >
+          Liberar produtos
+        </Button>
+      )}
       <Button type="alternative" rounded onClick={() => router.back()}>
         Voltar
       </Button>
