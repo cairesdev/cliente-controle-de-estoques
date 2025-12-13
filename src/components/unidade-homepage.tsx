@@ -9,6 +9,7 @@ import { RiDashboardLine } from "react-icons/ri";
 import ItemArmazem from "./UI/item-armazem";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
+import { HiInboxArrowDown } from "react-icons/hi2";
 
 export default async function UnidadeHomepage({
   search,
@@ -56,6 +57,15 @@ export default async function UnidadeHomepage({
         <Link href={`/unidade/${handler}/nova-solicitacao`} target="_top">
           <MdAddCircleOutline />
           Fazer Solicitação
+        </Link>
+        <Link
+          href={`/unidade/${handler}/almoxarifado/itens`}
+          prefetch={false}
+          target="_top"
+          passHref
+        >
+          <HiInboxArrowDown />
+          Registrar Consumo
         </Link>
         <Link
           href={"/procurar-remessa"}

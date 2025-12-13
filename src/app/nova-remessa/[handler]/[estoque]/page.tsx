@@ -68,10 +68,11 @@ export default async function AdicionarRemessaPage({
       )}
       {isMethodByItem && (
         <Link
-          href={`/resumo/${estoque}${
+          href={`/entidade/resumo/${estoque}${
             code ? `?code=${encodeURIComponent(code)}` : ""
           }`}
           target="_parent"
+          className="go_back_link"
         >
           Próximo
         </Link>

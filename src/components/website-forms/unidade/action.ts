@@ -107,3 +107,21 @@ export async function adicionarItensSolicitacao(data: any) {
     return false;
   }
 }
+
+export async function updateItemUtilizado(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<boolean>({
+    url: API_ROUTES.utilizar_item + data.PRODUTO,
+    method: "PATCH",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.OK) {
+    return true;
+  } else {
+    return false;
+  }
+}

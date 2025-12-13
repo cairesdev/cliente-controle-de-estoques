@@ -3,44 +3,45 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { HiOutlineSearch } from "react-icons/hi";
 import styles from "@/styles/components/search.module.css";
 import { BiSearch } from "react-icons/bi";
-import { createUrl } from "@/utils";
+import { useEffect, useState } from "react";
 
-export default function SearchInput({}: { path?: string; base?: string }) {
+export default function SearchInput() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const [value, setValue] = useState(searchParams.get("q") || "");
 
-    const val = e.target as HTMLFormElement;
-    const search = val.search as HTMLInputElement;
-    const newParams = new URLSearchParams(searchParams.toString());
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const newParams = new URLSearchParams(searchParams.toString());
 
-    if (search.value) {
-      newParams.set("q", search.value);
-    } else {
-      newParams.delete("q");
-    }
-    router.push(createUrl(pathname, newParams));
-  }
+      if (value) {
+        newParams.set("q", value);
+      } else {
+        newParams.delete("q");
+      }
+
+      router.push(`${pathname}?${newParams.toString()}`);
+    }, 400);
+
+    return () => clearTimeout(timeout);
+  }, [value, pathname, router, searchParams]);
 
   return (
-    <form className={styles.pesquisar_container} onSubmit={onSubmit}>
+    <div className={styles.pesquisar_container}>
       <div className={styles.input_wrapper}>
         <BiSearch className={styles.search_icon} />
         <input
-          key={searchParams?.get("q")}
           type="search"
-          name="search"
-          title="Presione Enter para aplicar"
-          placeholder="Digite e pressione Enter para filtrar"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Digite para filtrar"
           autoComplete="off"
-          defaultValue={searchParams?.get("q") || ""}
           className={styles.input_field}
         />
       </div>
-    </form>
+    </div>
   );
 }
 

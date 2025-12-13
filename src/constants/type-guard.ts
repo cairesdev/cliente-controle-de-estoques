@@ -50,6 +50,8 @@ export const API_ROUTES = {
   unidade_estoque: "v1/unidade/estoque/disponivel/",
   cadastro_solicitacao: "v1/solicitacao/",
   cadastro_representante: "v1/usuario/perfil",
+  itens_estoque_unidade: "v1/armazem/estoque/itens-unidade/",
+  utilizar_item: "v1/armazem/estoque/itens-utilizados/",
 };
 
 export const HttpStatus = {

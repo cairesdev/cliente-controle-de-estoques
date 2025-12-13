@@ -4,6 +4,7 @@ import { LuCircleAlert } from "react-icons/lu";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_estoque.module.css";
 import { DeleteItem } from "../action-buttons";
+import UtilizaItemForm from "../website-forms/unidade/utiliza-item";
 
 export default function ItemArmazenado({
   item,
@@ -11,7 +12,7 @@ export default function ItemArmazenado({
   token,
 }: {
   item: ItemEstocado;
-  tipo?: "GERENCIAVEL" | "SIMPLES";
+  tipo?: "GERENCIAVEL" | "SIMPLES" | "ESTOQUE";
   token?: string;
 }) {
   const hoje = new Date();
@@ -41,11 +42,19 @@ export default function ItemArmazenado({
           </b>
         </div>
         <div>
-          <p className={styles.label}>Disponível</p>
+          <p className={styles.label}>Registrado</p>
           <b className={styles.valor}>
-            {item.qnt_disponivel ?? item.qnt_entrada} {item.und_medida}
+            {item.qnt_entrada} {item.und_medida}
           </b>
         </div>
+        {item.qnt_disponivel && (
+          <div>
+            <p className={styles.label}>Disponível</p>
+            <b className={styles.valor}>
+              {item.qnt_disponivel} {item.und_medida}
+            </b>
+          </div>
+        )}
       </div>
 
       <div className={styles.vencimento_container}>
@@ -67,6 +76,13 @@ export default function ItemArmazenado({
           </div>
         )}
       </div>
+      <br />
+      {tipo === "ESTOQUE" && (
+        <UtilizaItemForm
+          idProduto={item.id}
+          qnt_disponivel={item.qnt_disponivel}
+        />
+      )}
     </div>
   );
 }
