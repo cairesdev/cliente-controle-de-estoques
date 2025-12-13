@@ -7,6 +7,7 @@ import { FiUser } from "react-icons/fi";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { RiDashboardLine } from "react-icons/ri";
 import ItemArmazem from "./UI/item-armazem";
+import { IoLayersOutline } from "react-icons/io5";
 
 export default async function UnidadeHomepage({
   search,
@@ -27,7 +28,11 @@ export default async function UnidadeHomepage({
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(1, user.entidade_nome!, user.unidade_nome!)}
+          {tituloPagina(
+            parseInt(user.nivel),
+            user.entidade_nome!,
+            user.unidade_nome!
+          )}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>
@@ -45,6 +50,18 @@ export default async function UnidadeHomepage({
             <HiOutlineCog6Tooth className="icon" />
           </Link>
         </div>
+      </div>
+      <div>
+        <Link href={`/unidade/${handler}/nova-solicitacao`} target="_top">
+          Fazer Solicitação
+        </Link>
+      </div>
+      <div className={styles.titulo_sessao}>
+        <h2>
+          <IoLayersOutline />
+          Estoques disponíveis
+        </h2>
+        <div className="ghost_bar" />
       </div>
       <div>
         {estoque?.map((item) => (

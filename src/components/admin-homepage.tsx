@@ -35,7 +35,11 @@ export default async function AdminHomepage({
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(3, user.entidade_nome!, user.unidade_nome!)}
+          {tituloPagina(
+            parseInt(user.nivel),
+            user.entidade_nome!,
+            user.unidade_nome!
+          )}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>

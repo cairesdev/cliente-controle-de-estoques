@@ -45,7 +45,11 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(2, user.entidade_nome!, user.unidade_nome!)}
+          {tituloPagina(
+            parseInt(user.nivel),
+            user.entidade_nome!,
+            user.unidade_nome!
+          )}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>

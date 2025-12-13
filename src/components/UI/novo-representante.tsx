@@ -5,6 +5,8 @@ import styles from "@/styles/components/representante_login.module.css";
 import Link from "next/link";
 import { BsPersonFill } from "react-icons/bs";
 import { useState } from "react";
+import { GoToHomeButton } from "../action-buttons";
+import { Button } from "./button";
 
 export default function RepresentanteItem({ username }: { username: string }) {
   const [copied, setCopied] = useState(false);
@@ -38,9 +40,10 @@ export default function RepresentanteItem({ username }: { username: string }) {
         <p>Acessar via este usuario</p>
       </Link>
 
-      <button onClick={handleCopy} style={{ marginTop: "10px" }}>
+      <Button onClick={handleCopy}>
         {copied ? "Copiado!" : "Copiar link"}
-      </button>
+      </Button>
+      <GoToHomeButton />
     </main>
   );
 }
