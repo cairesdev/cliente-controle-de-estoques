@@ -21,7 +21,7 @@ export default function FormModulo({ idEntidade }: { idEntidade: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.formulario}>
+    <form onSubmit={handleSubmit} className={styles.formulario_interno}>
       <div className={styles.checkbox_container}>
         <input id="alimentacao" type="checkbox" name="ESCOLAR" value="1" />
         <label htmlFor="alimentacao">Alimentação Escolar</label>
