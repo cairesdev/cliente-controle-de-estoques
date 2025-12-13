@@ -17,7 +17,9 @@ export async function enviarArquivoEstoque(formData: FormData, token: string) {
     if (response.status === HttpStatus.CREATED) {
       console.log("Upload realizado com sucesso");
       window.location.replace(
-        `/resumo/${formData.get("ESTOQUE")}?code=${formData.get("CODIGO")}`
+        `/entidade/resumo/${formData.get("ESTOQUE")}?code=${formData.get(
+          "CODIGO"
+        )}`
       );
     } else {
       console.error("Erro ao enviar arquivo");
