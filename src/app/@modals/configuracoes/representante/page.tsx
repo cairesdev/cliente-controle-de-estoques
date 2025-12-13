@@ -9,6 +9,7 @@ import { GrCircleAlert } from "react-icons/gr";
 import { auth } from "@/auth";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { AiOutlineProduct } from "react-icons/ai";
+import { IoQrCodeOutline } from "react-icons/io5";
 
 export default async function UnidadeConfgPage({
   searchParams,
@@ -72,6 +73,19 @@ export default async function UnidadeConfgPage({
               <AiOutlineProduct className="icon" />
             </span>
             Catálogo de Produtos <FaAngleRight color="6c7072" />
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={"/procurar-remessa"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
+            <span>
+              <IoQrCodeOutline className="icon" />
+            </span>
+            Buscar Remessa <FaAngleRight color="6c7072" />
           </Link>
         </li>
       </ul>

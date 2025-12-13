@@ -48,7 +48,7 @@ export default async function ResumoEstoquePage({
           <ItemArmazenado
             key={item.id}
             item={item}
-            tipo="GERENCIAVEL"
+            tipo="SIMPLES"
             token={session?.user.access_token}
           />
         ))}

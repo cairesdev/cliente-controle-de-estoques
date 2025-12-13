@@ -17,5 +17,5 @@ export default async function ComprovantePage({
     comprovante: code,
   });
 
-  return <Comprovante data={data!} />;
+  return <Comprovante idEstoque={handler!} data={data!} />;
 }

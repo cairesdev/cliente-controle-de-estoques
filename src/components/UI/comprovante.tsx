@@ -8,7 +8,13 @@ import { Button } from "./button";
 import { useRouter } from "next/navigation";
 import { PrintPageButton } from "../action-buttons";
 
-export default function Comprovante({ data }: { data: ComprovanteCriacao }) {
+export default function Comprovante({
+  data,
+  idEstoque,
+}: {
+  data: ComprovanteCriacao;
+  idEstoque: string;
+}) {
   const router = useRouter();
   return (
     <main className={styles.homepage}>
@@ -24,7 +30,7 @@ export default function Comprovante({ data }: { data: ComprovanteCriacao }) {
 
         <div className={styles.barcode_container}>
           <Image
-            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.estoque.codigo}`}
+            src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.estoque.codigo}:unidade:${idEstoque}`}
             alt="barcode"
             width={190}
             height={190}
