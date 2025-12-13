@@ -48,8 +48,8 @@ export function GoBackButton() {
   const router = useRouter();
 
   return (
-    <Button rounded type="alternative" onClick={() => router.back()}>
-      Concluir
+    <Button rounded type="danger" onClick={() => router.back()}>
+      Voltar
     </Button>
   );
 }

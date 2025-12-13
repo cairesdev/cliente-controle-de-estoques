@@ -67,8 +67,8 @@ export default function FormUnidade({ idEntidade }: { idEntidade: string }) {
       <Button
         htmlType="button"
         rounded
-        type="alternative"
-        onClick={() => router.push(`/entidade/${idEntidade}/almoxarifado`)}
+        type="danger"
+        onClick={() => router.replace(`/entidade/${idEntidade}/almoxarifado`)}
       >
         Cancelar
       </Button>

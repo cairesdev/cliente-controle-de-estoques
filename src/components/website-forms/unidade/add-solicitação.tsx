@@ -43,7 +43,11 @@ export default function FormSolicitacao({ idUnidade }: { idUnidade: string }) {
       <Button htmlType="submit" rounded>
         Próximo
       </Button>
-      <Button type="alternative" rounded onClick={() => router.push("/")}>
+      <Button
+        type="danger"
+        rounded
+        onClick={() => router.push(`/unidade/${idUnidade}/almoxarifado`)}
+      >
         Cancelar
       </Button>
     </form>

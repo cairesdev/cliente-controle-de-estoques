@@ -38,7 +38,11 @@ export default async function SolicitacaoPage({
         ))}
         {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
       </div>
-      <Link href={"/"} passHref>
+      <Link
+        href={`/unidade/${handler}/almoxarifado`}
+        target="_top"
+        className="go_back_link"
+      >
         Voltar
       </Link>
     </main>

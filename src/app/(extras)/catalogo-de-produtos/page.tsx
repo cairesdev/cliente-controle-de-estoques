@@ -1,4 +1,4 @@
-import { GoToHomeButton } from "@/components/action-buttons";
+import { GoBackButton } from "@/components/action-buttons";
 import ItemCatalogo from "@/components/UI/item-catalogo";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/homepage.module.css";
@@ -22,7 +22,7 @@ export default async function CatalogoPage() {
         <ItemCatalogo item={item} key={item.id} />
       ))}
 
-      <GoToHomeButton />
+      <GoBackButton />
     </main>
   );
 }

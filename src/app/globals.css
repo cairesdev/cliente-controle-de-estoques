@@ -134,3 +134,15 @@ select {
     display: none !important;
   }
 }
+
+.go_back_link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--sky-lightest);
+  background: var(--primary-darkest);
+  padding: 10px 19px;
+  border-radius: 12px;
+}

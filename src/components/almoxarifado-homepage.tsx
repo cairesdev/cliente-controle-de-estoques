@@ -11,9 +11,10 @@ import { FiUser } from "react-icons/fi";
 import { Suspense } from "react";
 import { User } from "next-auth";
 import Link from "next/link";
-import { IoLayersOutline } from "react-icons/io5";
+import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import ItemArmazem from "./UI/item-armazem";
+import { AiOutlineProduct } from "react-icons/ai";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -67,6 +68,22 @@ export default async function AlmoxarifeHomepage({
             <HiOutlineCog6Tooth className="icon" />
           </Link>
         </div>
+      </div>
+
+      <div className={styles.submenus}>
+        <Link href={"/catalogo-de-produtos"} target="_top">
+          <AiOutlineProduct />
+          Catálogo de Produtos
+        </Link>
+        <Link
+          href={"/procurar-remessa"}
+          prefetch={false}
+          target="_top"
+          passHref
+        >
+          <IoQrCodeOutline />
+          Buscar Remessa
+        </Link>
       </div>
 
       <div className={styles.titulo_sessao}>

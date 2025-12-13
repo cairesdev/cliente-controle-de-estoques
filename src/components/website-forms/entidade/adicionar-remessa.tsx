@@ -75,7 +75,11 @@ export default function AdicionarRemessaForm({
       <Button rounded htmlType="submit">
         Próximo
       </Button>
-      <Button rounded type="danger" onClick={() => router.back()}>
+      <Button
+        rounded
+        type="danger"
+        onClick={() => router.replace(`/entidade/${entidade}/almoxarifado`)}
+      >
         Cancelar
       </Button>
     </form>

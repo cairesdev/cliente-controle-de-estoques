@@ -3,6 +3,7 @@ import { ItemBasic } from "@/types/entidade";
 import styles from "@/styles/components/forms.module.css";
 import { Button } from "@/components/UI/button";
 import { novoRepresentante } from "./action";
+import { useRouter } from "next/navigation";
 
 export default function NovoRepresentante({
   unidades,
@@ -13,6 +14,7 @@ export default function NovoRepresentante({
   entidade: string;
   niveisAutorizados: { id: number; nome: string }[];
 }) {
+  const router = useRouter();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -91,6 +93,13 @@ export default function NovoRepresentante({
       </div>
       <Button htmlType="submit" rounded>
         Cadastrar
+      </Button>
+      <Button
+        rounded
+        type="danger"
+        onClick={() => router.replace(`/entidade/${entidade}/almoxarifado`)}
+      >
+        Cancelar
       </Button>
     </form>
   );

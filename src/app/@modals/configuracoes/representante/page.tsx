@@ -61,33 +61,6 @@ export default async function UnidadeConfgPage({
             Histórico de Transações <FaAngleRight color="6c7072" />
           </Link>
         </li> */}
-
-        <li>
-          <Link
-            href={"/catalogo-de-produtos"}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <span>
-              <AiOutlineProduct className="icon" />
-            </span>
-            Catálogo de Produtos <FaAngleRight color="6c7072" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/procurar-remessa"}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <span>
-              <IoQrCodeOutline className="icon" />
-            </span>
-            Buscar Remessa <FaAngleRight color="6c7072" />
-          </Link>
-        </li>
       </ul>
       <LogOutButton />
     </ModalComponent>

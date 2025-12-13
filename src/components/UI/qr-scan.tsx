@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/components/scan.module.css";
-import { GoToHomeButton } from "../action-buttons";
+import { GoBackButton } from "../action-buttons";
 
 export default function QRScaner() {
   const [pause, setPause] = useState(false);
@@ -47,7 +47,7 @@ export default function QRScaner() {
       </div>
 
       <h2 className={styles.resultText}>{textQe}</h2>
-      <GoToHomeButton />
+      <GoBackButton />
     </div>
   );
 }
