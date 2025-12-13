@@ -12,6 +12,7 @@ function toFormData(obj: Record<string, any>) {
 }
 
 export default {
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "credentials",
