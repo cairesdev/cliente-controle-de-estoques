@@ -84,6 +84,9 @@ export default function LiberaSolicitacao({
               {produto.und_medida}
             </strong>
           </p>
+          {produto.disponiveis.length === 0 && (
+            <p>Não há disponivel no estoque.</p>
+          )}
 
           {produto.disponiveis.map((dis) => {
             const retirada = retiradas.find((r) => r.id === dis.id);
