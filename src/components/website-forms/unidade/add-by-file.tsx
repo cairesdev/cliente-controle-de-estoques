@@ -46,6 +46,7 @@ export default function AddByFile({
             type="file"
             name="ARQUIVO"
             id="fileUpload"
+            accept=".xlsx"
             onChange={handleFile}
             required
           />

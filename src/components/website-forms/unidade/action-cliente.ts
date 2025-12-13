@@ -1,32 +1,33 @@
 "use client";
-import { API_ROUTES, HttpStatus } from "@/constants/type-guard";
+import { toast } from "react-toastify";
+import { HttpStatus } from "@/constants/type-guard";
 
 export async function enviarArquivoEstoque(formData: FormData, token: string) {
   try {
-    const response = await fetch(API_ROUTES.xlsx + formData.get("ESTOQUE"), {
-      method: "POST",
-      body: formData,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      next: {
-        tags: ["itens-unidade"],
-      },
-    });
+    const response = await fetch(
+      "https://aeapi.workcenter.slz.br/v1/armazem/xlsx",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response.status === HttpStatus.CREATED) {
-      console.log("Upload realizado com sucesso");
-      window.location.replace(
-        `/entidade/resumo/${formData.get("ESTOQUE")}?code=${formData.get(
-          "CODIGO"
-        )}`
-      );
-    } else {
-      console.error("Erro ao enviar arquivo");
-      return false;
+      toast.success("Upload realizado com sucesso");
+
+      const codigo = formData.get("CODIGO");
+      window.location.replace(`/entidade/resumo/${codigo}`);
+      return true;
     }
-  } catch (error) {
-    console.error("Erro de requisição:", error);
+
+    const error = await response.text();
+    console.error("Erro da API:", error);
+    return false;
+  } catch (err) {
+    console.error("Erro de rede:", err);
     return false;
   }
 }
