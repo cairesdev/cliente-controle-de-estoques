@@ -35,7 +35,7 @@ export default function AddByFile({
     formData.append("ESTOQUE", idEstoque);
     formData.append("CODIGO", code);
 
-    await enviarArquivoEstoque(formData, sessionToken);
+    enviarArquivoEstoque(formData, sessionToken);
   };
   const router = useRouter();
   return (
@@ -46,7 +46,6 @@ export default function AddByFile({
             type="file"
             name="ARQUIVO"
             id="fileUpload"
-            accept=".xlsx"
             onChange={handleFile}
             required
           />
