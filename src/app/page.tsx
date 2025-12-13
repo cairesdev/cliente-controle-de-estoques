@@ -4,6 +4,7 @@ import AdminHomepage from "@/components/admin-homepage";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import UnidadeHomepage from "@/components/unidade-homepage";
 import AlmoxarifeHomepage from "@/components/almoxarifado-homepage";
+import { redirect } from "next/navigation";
 
 export default async function Home({
   searchParams,
@@ -37,10 +38,6 @@ export default async function Home({
       );
 
     default:
-      return (
-        <div>
-          <p>Não autorizado.</p>
-        </div>
-      );
+      redirect("/log-in");
   }
 }
