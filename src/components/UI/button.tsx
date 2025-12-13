@@ -75,7 +75,7 @@ const Button: FC<ButtonProps> = ({
 
 const LogOutButton = () => {
   const handleKeycloakLogin = () => {
-    signOut();
+    signOut({ redirect: true, redirectTo: "/log-in" });
   };
 
   return (
