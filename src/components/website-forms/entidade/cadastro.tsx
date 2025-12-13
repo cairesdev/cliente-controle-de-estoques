@@ -23,7 +23,7 @@ export default function FormEntidade() {
     addEntidade(data);
   };
   return (
-    <form onSubmit={handleSubmit} className={styles.formulario}>
+    <form onSubmit={handleSubmit} className={styles.formulario_interno}>
       <div className={styles.input_container}>
         <label>Nome</label>
         <input

@@ -71,6 +71,7 @@ export default async function AdminHomepage({
         {filtred?.map((item) => (
           <ItemSimples tipo="entidade" item={item} key={item.id} />
         ))}
+        {filtred?.length === 0 && <p>Nenhuma entidade registrada.</p>}
       </div>
 
       <div className={styles.rodape}>

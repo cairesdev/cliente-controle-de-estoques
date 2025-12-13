@@ -1,5 +1,5 @@
 import FormEntidade from "@/components/website-forms/entidade/cadastro";
-import styles from "@/styles/entidade.module.css";
+import styles from "@/styles/homepage.module.css";
 import { TbHomePlus } from "react-icons/tb";
 
 export default async function NovaEntidadePage({
@@ -12,14 +12,14 @@ export default async function NovaEntidadePage({
   };
 
   return (
-    <main className={styles.entidade_page}>
+    <main className={styles.homepage}>
       <div className={styles.header_section}>
         <h1>
           <TbHomePlus /> Cadastro de Entidade
         </h1>
         <p>Adicione uma nova entidade gerenciavel.</p>
       </div>
-      <span className="error_message">{message ? message : null}</span>
+      {message && <span className="error_message">{message}</span>}
       <div className="ghost_traco" />
       <FormEntidade />
     </main>
