@@ -66,15 +66,16 @@ export default async function AdicionarRemessaPage({
           ))}
         </div>
       )}
-
-      <Link
-        href={`/resumo/${estoque}${
-          code ? `?code=${encodeURIComponent(code)}` : ""
-        }`}
-        target="_parent"
-      >
-        Próximo
-      </Link>
+      {isMethodByItem && (
+        <Link
+          href={`/resumo/${estoque}${
+            code ? `?code=${encodeURIComponent(code)}` : ""
+          }`}
+          target="_parent"
+        >
+          Próximo
+        </Link>
+      )}
     </main>
   );
 }
