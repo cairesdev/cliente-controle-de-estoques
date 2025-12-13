@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { LiberaProduto } from "@/types/commons";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/forms.module.css";
@@ -18,12 +18,8 @@ export default function LiberaSolicitacao({
   unId: string;
   trackId: string;
 }) {
-  const [retiradas, setRetiradas] = useState<
-    { id: string; qnt_liberada: number; id_estoque_origem: string }[]
-  >([]);
-
-  useEffect(() => {
-    const inicial = item.flatMap((prod) => {
+  const retiradasIniciais = useMemo(() => {
+    return item.flatMap((prod) => {
       let restante = prod.qnt_solicitada;
 
       return prod.disponiveis.map((dis) => {
@@ -37,9 +33,13 @@ export default function LiberaSolicitacao({
         };
       });
     });
-
-    setRetiradas(inicial);
   }, [item]);
+
+  const [retiradas, setRetiradas] = useState(retiradasIniciais);
+
+  useEffect(() => {
+    setRetiradas(retiradasIniciais);
+  }, [retiradasIniciais]);
 
   const handleChange = (id: string, value: number, produto: LiberaProduto) => {
     setRetiradas((prev) => {
