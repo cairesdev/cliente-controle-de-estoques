@@ -1,4 +1,5 @@
 import AdicionarRemessaForm from "@/components/website-forms/entidade/adicionar-remessa";
+import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/entidade.module.css";
 import { LuLayers } from "react-icons/lu";
 
@@ -8,6 +9,9 @@ export default async function AdicionarRemessaPage({
   params: Promise<{ handler: string | undefined }>;
 }) {
   const { handler } = await params;
+
+  const entidadeRepository = await EntidadeRepository.create();
+  const estoque = await entidadeRepository.getListaTipoEstoque();
 
   return (
     <main className={styles.entidade_page}>
@@ -19,7 +23,7 @@ export default async function AdicionarRemessaPage({
       </div>
 
       <div className="ghost_traco" />
-      <AdicionarRemessaForm entidade={handler!} />
+      <AdicionarRemessaForm tipoEstoque={estoque!} entidade={handler!} />
     </main>
   );
 }

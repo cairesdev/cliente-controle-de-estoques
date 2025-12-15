@@ -3,7 +3,7 @@ import { EntidadeRepository } from "@/services/getters/entidade";
 import SessionExpiration from "@/components/session-expiration";
 import { normalizeSearch, tituloPagina } from "@/utils";
 import ItemSimples from "@/components/UI/item-simples";
-import { HiOutlineCog6Tooth } from "react-icons/hi2";
+import { HiInboxArrowDown, HiOutlineCog6Tooth } from "react-icons/hi2";
 import styles from "@/styles/homepage.module.css";
 import { RiDashboardLine } from "react-icons/ri";
 import { FaFingerprint } from "react-icons/fa";
@@ -15,6 +15,7 @@ import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import ItemArmazem from "./UI/item-armazem";
 import { AiOutlineProduct } from "react-icons/ai";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -29,6 +30,9 @@ export default async function AlmoxarifeHomepage({
 
   const entidadeRepository = await EntidadeRepository.create();
   const data = await entidadeRepository.getUnidades({ id: handler as string });
+  const entidade = await entidadeRepository.getEntidade({
+    id: handler as string,
+  });
 
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getEstoqueEntidade({
@@ -46,11 +50,13 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(
-            parseInt(user.nivel),
-            user.entidade_nome!,
-            user.unidade_nome!
-          )}
+          {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA
+            ? entidade?.nome
+            : tituloPagina(
+                parseInt(user.nivel),
+                user.entidade_nome!,
+                user.unidade_nome!
+              )}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>
@@ -58,7 +64,7 @@ export default async function AlmoxarifeHomepage({
             <FiUser className="icon" />
           </span>
           <p>
-            {user.nome} - {user.descricao}
+            Usuario: {user.nome} - {user.descricao}
           </p>
           <Link
             href={`/configuracoes/almoxarifado?trackId=${handler}`}
@@ -71,9 +77,23 @@ export default async function AlmoxarifeHomepage({
       </div>
 
       <div className={styles.submenus}>
+        {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
+          <Link className="go_back_link" href={"/"} passHref target="_top">
+            Voltar
+          </Link>
+        )}
         <Link href={"/catalogo-de-produtos"} target="_top">
           <AiOutlineProduct />
           Catálogo de Produtos
+        </Link>
+        <Link
+          href={`/entidade/${handler}/almoxarifado/itens`}
+          prefetch={false}
+          target="_top"
+          passHref
+        >
+          <HiInboxArrowDown />
+          Visualizar armazem de itens
         </Link>
         <Link
           href={"/procurar-remessa"}

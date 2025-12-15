@@ -54,6 +54,7 @@ export default {
 
   pages: {
     signIn: "/log-in",
+    signOut: "/log-in",
   },
 
   session: {
@@ -82,7 +83,6 @@ export default {
 
       if (token.expires_on && Date.now() / 1000 > token.expires_on) {
         console.log("🔒 Token expirado — limpando JWT.");
-
         return {};
       }
 

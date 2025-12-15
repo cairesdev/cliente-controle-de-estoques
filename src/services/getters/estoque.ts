@@ -178,4 +178,23 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
+  static async deleteItemTipo({
+    id,
+    token,
+    tipo,
+  }: {
+    id: string;
+    token: string;
+    tipo: "unidade" | "estoque";
+  }) {
+    const response = await backendFetch<string>({
+      url: `v1/extras/tipos/${tipo}/${id}`,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
 }

@@ -4,11 +4,14 @@ import { CategoriaItens } from "@/constants/type-guard";
 import styles from "@/styles/components/forms.module.css";
 import { criarArmazenamento } from "./action";
 import { useRouter } from "next/navigation";
+import { ItemBasic } from "@/types/entidade";
 
 export default function AdicionarRemessaForm({
   entidade,
+  tipoEstoque,
 }: {
   entidade: string;
+  tipoEstoque: ItemBasic[];
 }) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +58,7 @@ export default function AdicionarRemessaForm({
       <div className={styles.input_container}>
         <label>Categoria dos Itens</label>
         <select id="TIPO_ESTOQUE" name="TIPO_ESTOQUE" required>
-          {CategoriaItens.map((item) => (
+          {tipoEstoque.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}
             </option>

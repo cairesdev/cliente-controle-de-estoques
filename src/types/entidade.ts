@@ -14,6 +14,16 @@ export type EntidadeDetalhe = {
   telefone: string;
 };
 
+export type UnidadeDetalhe = {
+  nome: string;
+  status: number;
+  endereco: string;
+  bairro: string;
+  email: string;
+  telefone: string;
+  id_tipo_unidade: number;
+};
+
 export type Produto = {
   id: string;
   nome: string;

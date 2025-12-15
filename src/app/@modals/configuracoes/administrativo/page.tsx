@@ -2,10 +2,9 @@ import { LogOutButton } from "@/components/UI/button";
 import { ModalComponent } from "@/components/UI/modal";
 import styles from "@/styles/components/lista_config.module.css";
 import Link from "next/link";
-import { AiOutlineProduct } from "react-icons/ai";
-import { FaAngleRight, FaUserEdit } from "react-icons/fa";
+import { FaListUl } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
-import { IoQrCodeOutline } from "react-icons/io5";
 
 export default async function AdmConfigPage() {
   return (
@@ -22,6 +21,19 @@ export default async function AdmConfigPage() {
               <FaPenToSquare className="icon" />
             </span>
             Cadastrar Entidade <FaAngleRight color="6c7072" />
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={"/configuracoes/gerenciamento-de-listas"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
+            <span>
+              <FaListUl className="icon" />
+            </span>
+            Gerenciamento de listas <FaAngleRight color="6c7072" />
           </Link>
         </li>
       </ul>

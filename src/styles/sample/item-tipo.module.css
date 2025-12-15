@@ -1,0 +1,10 @@
+.item_container {
+  padding: 5px 19px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--sky-lightest);
+  border-radius: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px 0;
+}

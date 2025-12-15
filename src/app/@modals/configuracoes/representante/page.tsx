@@ -61,6 +61,22 @@ export default async function UnidadeConfgPage({
             Histórico de Transações <FaAngleRight color="6c7072" />
           </Link>
         </li> */}
+
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+          <li>
+            <Link
+              prefetch={false}
+              target="_top"
+              passHref
+              href={`/unidade/${trackId}/editar`}
+            >
+              <span>
+                <FaPenToSquare className="icon" />
+              </span>
+              Editar unidade <FaAngleRight color="6c7072" />
+            </Link>
+          </li>
+        )}
       </ul>
       <LogOutButton />
     </ModalComponent>

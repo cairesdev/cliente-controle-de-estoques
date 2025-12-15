@@ -22,6 +22,7 @@ export default async function RootLayout({
   modals: React.ReactNode;
 }>) {
   const session = await auth();
+
   return (
     <html lang="pt-br">
       <body className={interSans.variable}>

@@ -91,16 +91,21 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {/* {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
-            <Link href={"#"}>
+            <Link
+              prefetch={false}
+              target="_top"
+              passHref
+              href={`/entidade/${trackId}/editar`}
+            >
               <span>
                 <FaPenToSquare className="icon" />
               </span>
               Editar Entidade <FaAngleRight color="6c7072" />
             </Link>
           </li>
-        )} */}
+        )}
       </ul>
       <LogOutButton />
     </ModalComponent>

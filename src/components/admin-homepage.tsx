@@ -1,6 +1,5 @@
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 import { EntidadeRepository } from "@/services/getters/entidade";
-import SessionExpiration from "@/components/session-expiration";
 import { normalizeSearch, tituloPagina } from "@/utils";
 import ItemSimples from "@/components/UI/item-simples";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
@@ -50,7 +49,7 @@ export default async function AdminHomepage({
             <FiUser className="icon" />
           </span>
           <p>
-            {user.nome} - {user.descricao}
+            Usuario: {user.nome} - {user.descricao}
           </p>
           <Link
             href="/configuracoes/administrativo"
@@ -93,10 +92,6 @@ export default async function AdminHomepage({
           <ItemSimples tipo="entidade" item={item} key={item.id} />
         ))}
         {filtred?.length === 0 && <p>Nenhuma entidade registrada.</p>}
-      </div>
-
-      <div className={styles.rodape}>
-        <SessionExpiration />
       </div>
     </main>
   );

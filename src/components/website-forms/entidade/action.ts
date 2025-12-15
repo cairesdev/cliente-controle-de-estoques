@@ -27,6 +27,25 @@ export async function addEntidade(data: any) {
   }
 }
 
+export async function updateEntidae(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: `${API_ROUTES.cadastro_entidade}/${data.ID}`,
+    next: { tags: ["entidaes"] },
+    method: "PATCH",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.OK) {
+    redirect(`/entidade/${data.ID}/almoxarifado`);
+  } else {
+    redirect(`/entidade/${data.ID}/almoxarifado`);
+  }
+}
+
 export async function addModulos(data: any) {
   const session = await auth();
   const token = session?.user.access_token;

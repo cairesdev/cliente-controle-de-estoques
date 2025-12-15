@@ -1,7 +1,12 @@
 import { auth } from "@/auth";
 import { backendFetch } from "../adapter";
 import { API_ROUTES } from "@/constants/type-guard";
-import { EntidadeDetalhe, ItemBasic, Produto } from "@/types/entidade";
+import {
+  EntidadeDetalhe,
+  ItemBasic,
+  Produto,
+  UnidadeDetalhe,
+} from "@/types/entidade";
 
 export class EntidadeRepository {
   private constructor(
@@ -39,6 +44,17 @@ export class EntidadeRepository {
 
     return response.body.res;
   }
+  async getUnidade({ id }: { id: string }) {
+    const response = await backendFetch<UnidadeDetalhe>({
+      url: API_ROUTES.detalhe_unidade + id,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["unidade", id] },
+    });
+
+    return response.body.res;
+  }
 
   async getUnidades({ id }: { id: string }) {
     const response = await backendFetch<ItemBasic[]>({
@@ -59,6 +75,28 @@ export class EntidadeRepository {
       cache: "no-store",
       token: this.token,
       next: { tags: ["produtos"] },
+    });
+    return response.body.res;
+  }
+
+  async getListaTipoUnidade() {
+    const response = await backendFetch<ItemBasic[]>({
+      url: API_ROUTES.tipo_unidade,
+      method: "GET",
+      cache: "no-cache",
+      token: this.token,
+      next: { tags: ["tipo_unidade"] },
+    });
+    return response.body.res;
+  }
+
+  async getListaTipoEstoque() {
+    const response = await backendFetch<ItemBasic[]>({
+      url: API_ROUTES.tipo_estoque,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["tipo_estoque"] },
     });
     return response.body.res;
   }

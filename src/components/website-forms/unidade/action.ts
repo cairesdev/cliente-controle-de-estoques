@@ -125,3 +125,22 @@ export async function updateItemUtilizado(data: any) {
     return false;
   }
 }
+
+export async function editarUnidade(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch<string>({
+    url: API_ROUTES.detalhe_unidade + data.ID,
+    next: { tags: ["unidades", data.ID] },
+    method: "PATCH",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.OK) {
+    redirect(`/entidade/${data.ID}/almoxarifado`, RedirectType.push);
+  } else {
+    return false;
+  }
+}

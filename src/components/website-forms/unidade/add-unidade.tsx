@@ -5,8 +5,15 @@ import { Button } from "@/components/UI/button";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { adicionarUnidade } from "./action";
+import { ItemBasic } from "@/types/entidade";
 
-export default function FormUnidade({ idEntidade }: { idEntidade: string }) {
+export default function FormUnidade({
+  idEntidade,
+  tiposUnidade,
+}: {
+  idEntidade: string;
+  tiposUnidade: ItemBasic[];
+}) {
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,7 +45,7 @@ export default function FormUnidade({ idEntidade }: { idEntidade: string }) {
       <div className={styles.input_container}>
         <label>Tipo de unidade</label>
         <select id="TIPO_UNIDADE" name="TIPO_UNIDADE">
-          {CategoriaUnidade.map((item) => (
+          {tiposUnidade.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}
             </option>

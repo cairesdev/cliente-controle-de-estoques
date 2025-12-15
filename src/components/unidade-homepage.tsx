@@ -10,6 +10,8 @@ import ItemArmazem from "./UI/item-armazem";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
 import { HiInboxArrowDown } from "react-icons/hi2";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
+import { EntidadeRepository } from "@/services/getters/entidade";
 
 export default async function UnidadeHomepage({
   search,
@@ -25,16 +27,23 @@ export default async function UnidadeHomepage({
     id: handler as string,
   });
 
+  const entidadeRepository = await EntidadeRepository.create();
+  const unidade = await entidadeRepository.getUnidade({
+    id: handler as string,
+  });
+
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
         <h1>
           <RiDashboardLine />
-          {tituloPagina(
-            parseInt(user.nivel),
-            user.entidade_nome!,
-            user.unidade_nome!
-          )}
+          {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA
+            ? unidade?.nome
+            : tituloPagina(
+                parseInt(user.nivel),
+                user.entidade_nome!,
+                user.unidade_nome!
+              )}
         </h1>
         <div className="ghost_traco" />
         <div className={styles.user_section}>
@@ -42,7 +51,7 @@ export default async function UnidadeHomepage({
             <FiUser className="icon" />
           </span>
           <p>
-            {user.nome} - {user.descricao}
+            Usuario: {user.nome} - {user.descricao}
           </p>
           <Link
             href={`/configuracoes/representante?trackId=${handler}`}
@@ -54,6 +63,11 @@ export default async function UnidadeHomepage({
         </div>
       </div>
       <div className={styles.submenus}>
+        {parseInt(user.nivel) >= NIVEIS_USUARIO.ALMOXARIFADO && (
+          <Link className="go_back_link" href={"/"} passHref target="_top">
+            Voltar
+          </Link>
+        )}
         <Link href={`/unidade/${handler}/nova-solicitacao`} target="_top">
           <MdAddCircleOutline />
           Fazer Solicitação

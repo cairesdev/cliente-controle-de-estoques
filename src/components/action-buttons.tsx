@@ -53,3 +53,32 @@ export function GoBackButton() {
     </Button>
   );
 }
+
+export function DeleteItemTipo({
+  id,
+  token,
+  tipo,
+}: {
+  id: string;
+  token: string;
+  tipo: "unidade" | "estoque";
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita."
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteItemTipo({ id, token, tipo });
+    router.refresh();
+  }
+
+  return (
+    <Button onClick={handleDelete} rounded type="danger" title="Excluir item">
+      <BiTrash size={18} />
+    </Button>
+  );
+}

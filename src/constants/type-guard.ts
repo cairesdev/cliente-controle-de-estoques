@@ -31,6 +31,7 @@ export const API_ROUTES = {
   lista_unidades: "v1/unidades/",
   lista_entidades: "v1/entidades",
   cadastro_entidade: "v1/entidade",
+  detalhe_unidade: "v1/unidade/",
   cadastro_modulo: "v1/modulos",
   entidade: "v1/entidade/",
   lista_itens_entidade: "v1/armazem/estoque/",
@@ -52,6 +53,8 @@ export const API_ROUTES = {
   cadastro_representante: "v1/usuario/perfil",
   itens_estoque_unidade: "v1/armazem/estoque/itens-unidade/",
   utilizar_item: "v1/armazem/estoque/itens-utilizados/",
+  tipo_unidade: "v1/extras/tipos/unidade",
+  tipo_estoque: "v1/extras/tipos/estoque",
 };
 
 export const HttpStatus = {
