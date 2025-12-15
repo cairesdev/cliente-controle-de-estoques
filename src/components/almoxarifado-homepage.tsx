@@ -13,9 +13,10 @@ import { User } from "next-auth";
 import Link from "next/link";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import ItemArmazem from "./UI/item-armazem";
+import ItemArmazem from "@/components/UI/item-armazem";
 import { AiOutlineProduct } from "react-icons/ai";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
+import ItemEstoque from "@/components/UI/samples/item-estoque";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -135,12 +136,7 @@ export default async function AlmoxarifeHomepage({
       </div>
 
       {itens?.map((item) => (
-        <ItemArmazem
-          tipoEstoque="entidade"
-          key={item.id}
-          item={item}
-          tipo="SIMPLES"
-        />
+        <ItemEstoque tipo="entidade" key={item.id} item={item} />
       ))}
 
       {itens?.length === 0 && <p>Nenhum item no estoque.</p>}

@@ -44,6 +44,7 @@ export function normalizeSearch(str: string) {
 }
 
 export function transformData(dataString: string): string {
+  if (dataString === null) return "Indeterminado";
   const data = new Date(dataString);
   data.setMinutes(data.getTimezoneOffset());
   return data.toLocaleDateString("pt-BR");

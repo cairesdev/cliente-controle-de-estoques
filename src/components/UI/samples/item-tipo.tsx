@@ -1,6 +1,5 @@
 import { ItemBasic } from "@/types/entidade";
-import styles from "@/styles/sample/item-tipo.module.css";
-
+import styles from "@/styles/sample/item.module.css";
 import { DeleteItemTipo } from "@/components/action-buttons";
 
 export default function ItemTipo({
@@ -14,7 +13,7 @@ export default function ItemTipo({
   tipo: "unidade" | "estoque";
 }) {
   return (
-    <div className={styles.item_container}>
+    <div className={styles.item_tipo_categoria}>
       <p>{item.id}</p>
       <h2>{item.nome}</h2>
       <DeleteItemTipo id={item.id} tipo={tipo} token={token} />

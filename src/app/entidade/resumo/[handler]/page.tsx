@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
-import ItemArmazenado from "@/components/UI/item-estoque";
+import ItemProduto from "@/components/UI/samples/item-produto";
 import { TipoVisualizacao } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
@@ -46,23 +46,18 @@ export default async function ResumoEstoquePage({
           loading="eager"
         />
       </div>
+
       <p>Quantidade cadastrada: {data?.remessa.qnt_registrada}</p>
-      <div>
+
+      <div className={styles.lista_entidades}>
         {data?.itens.map((item) => (
-          <ItemArmazenado
-            key={item.id}
-            item={item}
-            tipo={
-              parseInt(tipo) === TipoVisualizacao.EDITAR
-                ? "GERENCIAVEL"
-                : "SIMPLES"
-            }
-            token={session?.user.access_token}
-          />
+          <ItemProduto key={item.id} item={item} />
         ))}
       </div>
       <PrintPageButton />
       <GoToHomeButton />
+      <br />
+      <br />
     </main>
   );
 }

@@ -1,0 +1,32 @@
+.item_tipo_categoria {
+  padding: 5px 19px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--sky-lightest);
+  border-radius: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px 0;
+}
+
+.item_estoque {
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 9px 19px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--sky-lightest);
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.item_estoque p {
+  flex: 1;
+  min-width: fit-content;
+}
+
+.item_estoque h4 {
+  flex: 2;
+  min-width: fit-content;
+}
