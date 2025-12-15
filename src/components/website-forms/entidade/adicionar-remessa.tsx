@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/UI/button";
-import { CategoriaItens } from "@/constants/type-guard";
 import styles from "@/styles/components/forms.module.css";
 import { criarArmazenamento } from "./action";
 import { useRouter } from "next/navigation";

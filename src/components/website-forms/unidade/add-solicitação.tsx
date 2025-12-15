@@ -3,9 +3,15 @@ import { Button } from "@/components/UI/button";
 import styles from "@/styles/components/forms.module.css";
 import { novaSolicitacao } from "./action";
 import { useRouter } from "next/navigation";
-import { CategoriaItens } from "@/constants/type-guard";
+import { ItemBasic } from "@/types/entidade";
 
-export default function FormSolicitacao({ idUnidade }: { idUnidade: string }) {
+export default function FormSolicitacao({
+  idUnidade,
+  tipoEstoque,
+}: {
+  idUnidade: string;
+  tipoEstoque: ItemBasic[];
+}) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -33,7 +39,7 @@ export default function FormSolicitacao({ idUnidade }: { idUnidade: string }) {
       <div className={styles.input_container}>
         <label>Categoria dos Itens</label>
         <select id="TIPO_ESTOQUE" name="TIPO_ESTOQUE" required>
-          {CategoriaItens.map((item) => (
+          {tipoEstoque.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}
             </option>

@@ -1,4 +1,5 @@
 import FormSolicitacao from "@/components/website-forms/unidade/add-solicitação";
+import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/entidade.module.css";
 import { LuInbox } from "react-icons/lu";
 
@@ -8,6 +9,8 @@ export default async function NovaSolicitacaoPage({
   params: Promise<{ handler: string | undefined }>;
 }) {
   const { handler } = await params;
+  const entidadeRepository = await EntidadeRepository.create();
+  const estoque = await entidadeRepository.getListaTipoEstoque();
 
   return (
     <main className={styles.entidade_page}>
@@ -18,7 +21,7 @@ export default async function NovaSolicitacaoPage({
         <p>Faça uma solicitação de itens para sua unidade.</p>
       </div>
       <div className="ghost_traco" />
-      <FormSolicitacao idUnidade={handler!} />
+      <FormSolicitacao idUnidade={handler!} tipoEstoque={estoque!} />
     </main>
   );
 }
