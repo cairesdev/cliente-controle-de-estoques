@@ -1,6 +1,4 @@
 import { auth } from "@/auth";
-import { GoToHomeButton } from "@/components/action-buttons";
-import ItemArmazenado from "@/components/UI/item-estoque";
 import ItemProduto from "@/components/UI/samples/item-produto";
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 import { EstoqueRepository } from "@/services/getters/estoque";
@@ -56,7 +54,7 @@ export default async function ListaItensPage({
         <SearchInput />
       </Suspense>
 
-      <div>
+      <div className={styles.lista_entidades}>
         {filtred?.map((item) => (
           <ItemProduto key={item.id} item={item} />
         ))}

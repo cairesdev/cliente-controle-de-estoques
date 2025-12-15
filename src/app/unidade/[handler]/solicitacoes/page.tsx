@@ -1,4 +1,4 @@
-import { SolicitacaoItem } from "@/components/UI/item-solicitacao";
+import RegistroSolicitacao from "@/components/UI/samples/registro-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
 import Link from "next/link";
@@ -23,12 +23,12 @@ export default async function SolicitacaoPage({
         <h1>Solicitações</h1>
         <div className="ghost_traco" />
       </div>
-      <div>
+      <div className={styles.lista_entidades}>
         {itens?.map((item) => (
-          <SolicitacaoItem
-            trackId={handler as string}
-            track="unidade"
-            data={item}
+          <RegistroSolicitacao
+            idOrigem={handler as string}
+            tipo="enviadas"
+            item={item}
             key={item.id}
           />
         ))}

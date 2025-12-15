@@ -12,6 +12,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { HiInboxArrowDown } from "react-icons/hi2";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EntidadeRepository } from "@/services/getters/entidade";
+import ItemEstoque from "./UI/samples/item-estoque";
 
 export default async function UnidadeHomepage({
   search,
@@ -98,14 +99,10 @@ export default async function UnidadeHomepage({
         </h2>
         <div className="ghost_bar" />
       </div>
-      <div>
+
+      <div className={styles.lista_entidades}>
         {estoque?.map((item) => (
-          <ItemArmazem
-            tipoEstoque="unidade"
-            tipo="SIMPLES"
-            item={item}
-            key={item.id}
-          />
+          <ItemEstoque tipo="unidade" item={item} key={item.id} />
         ))}
         {estoque?.length === 0 && <p>Nenhuma remessa disponível.</p>}
       </div>

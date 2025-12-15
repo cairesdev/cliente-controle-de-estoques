@@ -1,8 +1,8 @@
 import { EstoqueRepository } from "@/services/getters/estoque";
-import { SolicitacaoItem } from "@/components/UI/item-solicitacao";
 import styles from "@/styles/homepage.module.css";
 import { LuBlocks } from "react-icons/lu";
 import Link from "next/link";
+import RegistroSolicitacao from "@/components/UI/samples/registro-solicitacao";
 
 export default async function SolicitacoesPage({
   params,
@@ -25,17 +25,19 @@ export default async function SolicitacoesPage({
         <p>Lista das demandas solicitadas pelas unidades.</p>
       </div>
       <div className="ghost_traco" />
-      <div>
+
+      <div className={styles.lista_entidades}>
         {itens?.map((item) => (
-          <SolicitacaoItem
-            trackId={handler as string}
-            track="entidade"
-            data={item}
+          <RegistroSolicitacao
             key={item.id}
+            item={item}
+            tipo="recebidas"
+            idOrigem={handler!}
           />
         ))}
         {itens?.length === 0 && <p>Nenhuma solicitação.</p>}
       </div>
+
       <Link
         href={`/entidade/${handler}/almoxarifado`}
         target="_top"

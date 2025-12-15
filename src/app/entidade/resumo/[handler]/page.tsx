@@ -1,4 +1,4 @@
-import { GoBackButton, PrintPageButton } from "@/components/action-buttons";
+import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
 import ItemProduto from "@/components/UI/samples/item-produto";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detahe_armazem.module.css";
@@ -49,7 +49,7 @@ export default async function ResumoEstoquePage({
           <h4>Produtos registrados: {data?.remessa.qnt_registrada}</h4>
           <div>
             <PrintPageButton />
-            <GoBackButton />
+            <GoToHomeButton />
           </div>
         </div>
       </div>

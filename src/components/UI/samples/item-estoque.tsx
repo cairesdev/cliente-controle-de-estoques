@@ -19,7 +19,7 @@ export default function ItemEstoque({
     >
       <p>Código: {item.codigo}</p>
       <h4>{item.nome_remessa}</h4>
-      <h4>Local: {item.local_estocado}</h4>
+      {item.local_estocado && <h4>Local: {item.local_estocado}</h4>}
       <p>Categoria: {item.tipo_estoque}</p>
       <p>Registrado em: {transformData(item.data_entrada)}</p>
     </Link>

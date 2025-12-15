@@ -59,6 +59,7 @@ export type Solicitacao = {
   unidade: string;
   id_unidade: string;
   tipo_solicitacao?: string;
+  data_encerramento?: string;
 } & IStatusSolicitacao;
 
 export type ProdutoSolicitacao = {

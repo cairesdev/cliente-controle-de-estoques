@@ -1,0 +1,17 @@
+.item_solicitacao {
+  padding: 7px 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 16px;
+  background: var(--sky-lightest);
+  border: 1px solid var(--sky-ligth);
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.item_solicitacao div,
+.item_solicitacao p {
+  min-width: fit-content;
+}

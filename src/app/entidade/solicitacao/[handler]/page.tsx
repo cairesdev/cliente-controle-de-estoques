@@ -35,9 +35,14 @@ export default async function SolicitacaoPage({
       </div>
       <div>
         <h2>
-          Data da solicitação:{" "}
-          {transformData(data?.solicitacao.data_solicitacao!)}
+          Solicitado em: {transformData(data?.solicitacao.data_solicitacao!)}
         </h2>
+        {data?.solicitacao.data_encerramento && (
+          <h4>
+            Encerrada em {transformData(data.solicitacao.data_encerramento)}
+          </h4>
+        )}
+
         <p>Unidade solicitante: {data?.solicitacao.unidade}</p>
         <p>Representante: {data?.solicitacao.solicitante}</p>
       </div>

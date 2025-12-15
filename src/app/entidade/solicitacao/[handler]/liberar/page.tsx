@@ -1,6 +1,7 @@
 import LiberaSolicitacao from "@/components/website-forms/unidade/libera-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/item_pedido.module.css";
+import Link from "next/link";
 import { LuBlocks } from "react-icons/lu";
 
 export default async function LiberarItensPage({
@@ -27,7 +28,7 @@ export default async function LiberarItensPage({
         <h1>
           <LuBlocks /> Liberação de demanda
         </h1>
-        <p>{unId}</p>
+        <p>Informe as quantidades desejadas a enviar</p>
       </div>
 
       <LiberaSolicitacao
@@ -36,6 +37,14 @@ export default async function LiberarItensPage({
         item={itens!}
         trackId={trackId}
       />
+
+      <Link
+        className="go_back_link"
+        target="_top"
+        href={`/entidade/solicitacao/${handler}?trackId=${trackId}`}
+      >
+        Voltar
+      </Link>
     </main>
   );
 }
