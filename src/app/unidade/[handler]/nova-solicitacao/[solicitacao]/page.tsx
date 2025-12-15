@@ -23,6 +23,7 @@ export default async function NovaSolicitacaoPage({
   const item = await estoqueRepository.getSolicitacao({
     id: solicitacao!,
     tipo: "unidade",
+    idUnidade: handler!,
   });
 
   return (
