@@ -94,6 +94,9 @@ export default function LiberaSolicitacao({
             return (
               <div className={styles2.box} key={dis.id}>
                 <div>
+                  <h4>
+                    Origem / codigo: {dis.nome}/{dis.codigo}
+                  </h4>
                   <p>
                     Disponível:{" "}
                     <strong>

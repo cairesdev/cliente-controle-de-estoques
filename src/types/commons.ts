@@ -82,6 +82,7 @@ export type LiberaProduto = {
 
 export type ItemEstocadoDetalhe = {
   id_estoque_origem: string;
+  codigo: string;
 } & ItemEstocado;
 
 export interface ResumoRemessa {
