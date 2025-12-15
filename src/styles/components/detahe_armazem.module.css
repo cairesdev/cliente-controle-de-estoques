@@ -1,0 +1,43 @@
+.homepage {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.header_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.header_section h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barcode_container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  color: var(--ink-darker);
+}
+
+.barcode_container .informacoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista_itens {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}

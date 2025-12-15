@@ -12,7 +12,7 @@ export default function ItemProduto({ item }: { item: ItemEstocado }) {
       <p>
         Disponível: {item.qnt_disponivel} {item.und_medida}
       </p>
-      <p>Data de validade: {transformData(item.data_validade)}</p>
+      <p>Validade: {transformData(item.data_validade)}</p>
     </div>
   );
 }

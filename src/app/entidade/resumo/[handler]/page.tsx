@@ -1,9 +1,8 @@
-import { auth } from "@/auth";
-import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
+import { GoBackButton, PrintPageButton } from "@/components/action-buttons";
 import ItemProduto from "@/components/UI/samples/item-produto";
-import { TipoVisualizacao } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import styles from "@/styles/homepage.module.css";
+import styles from "@/styles/components/detahe_armazem.module.css";
+import { transformData } from "@/utils";
 import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
 
@@ -15,7 +14,6 @@ export default async function ResumoEstoquePage({
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
-  const session = await auth();
   const { tipo } = (await searchParams) as {
     [key: string]: string;
   };
@@ -30,32 +28,37 @@ export default async function ResumoEstoquePage({
       <div className={styles.header_section}>
         <h1>
           <LuLayers />
-          {parseInt(tipo) === TipoVisualizacao.EDITAR
-            ? " Resumo das adições"
-            : "Visualizar detalhes"}
+          {data?.remessa.nome_estoque}
         </h1>
         <div className="ghost_traco" />
       </div>
+
       <div className={styles.barcode_container}>
-        <h2>Código: {data?.remessa.codigo}</h2>
         <Image
-          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.remessa.codigo}:entidade:${handler}`}
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data?.remessa.codigo}:entidade:${handler}`}
           alt="barcode"
-          width={190}
-          height={190}
+          width={150}
+          height={150}
           loading="eager"
         />
+        <div className={styles.informacoes}>
+          <h2>Código: {data?.remessa.codigo}</h2>
+          <h4>Data entrada: {transformData(data?.remessa.data_entrada!)}</h4>
+          <h4>Conferente: {data?.remessa.nome}</h4>
+          <h4>Setor: {data?.remessa.tipo_estoque}</h4>
+          <h4>Produtos registrados: {data?.remessa.qnt_registrada}</h4>
+          <div>
+            <PrintPageButton />
+            <GoBackButton />
+          </div>
+        </div>
       </div>
 
-      <p>Quantidade cadastrada: {data?.remessa.qnt_registrada}</p>
-
-      <div className={styles.lista_entidades}>
+      <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
           <ItemProduto key={item.id} item={item} />
         ))}
       </div>
-      <PrintPageButton />
-      <GoToHomeButton />
       <br />
       <br />
     </main>
