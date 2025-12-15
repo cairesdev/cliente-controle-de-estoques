@@ -58,12 +58,17 @@ export class EstoqueRepository {
   async getSolicitacao({
     id,
     tipo,
+    idUnidade,
   }: {
     id: string;
     tipo: "administrativa" | "unidade" | "almoxarifado";
+    idUnidade: string;
   }) {
     const response = await backendFetch<DetalheSolicitacao>({
-      url: API_ROUTES.solicitacao + id + `?visualizacao=${tipo}`,
+      url:
+        API_ROUTES.solicitacao +
+        id +
+        `/unidade/${idUnidade}?visualizacao=${tipo}`,
       method: "GET",
       cache: "no-store",
       token: this.token,

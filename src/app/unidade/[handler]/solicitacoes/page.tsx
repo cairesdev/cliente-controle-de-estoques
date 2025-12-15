@@ -12,10 +12,6 @@ export default async function SolicitacaoPage({
 }) {
   const { handler } = await params;
 
-  const { trackId, unId } = (await searchParams) as {
-    [key: string]: string;
-  };
-
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getSolicitacoes({
     id: handler as string,

@@ -1,17 +1,10 @@
 "use client";
-import {
-  DetalheSolicitacao,
-  ProdutoSolicitacao,
-  Solicitacao,
-} from "@/types/commons";
+import { ProdutoSolicitacao, Solicitacao } from "@/types/commons";
 import { transformData } from "@/utils";
 import styles from "@/styles/components/item_solicitacao.module.css";
 import styles2 from "@/styles/homepage.module.css";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Button } from "./button";
-import { PrintPageButton } from "../action-buttons";
 
 export function SolicitacaoItem({
   data,
@@ -61,72 +54,6 @@ export function SolicitacaoItem({
         </div>
       </Link>
     </div>
-  );
-}
-
-export function ItemSolicitacaoAdmin({
-  data,
-  trackId,
-  unId,
-  tipo = "detalhe",
-}: {
-  data: DetalheSolicitacao;
-  trackId: string;
-  unId: string;
-  tipo?: "comprovante" | "detalhe";
-}) {
-  const router = useRouter();
-  return (
-    <main className={styles2.homepage}>
-      <div className={styles2.header_section}>
-        <h1>
-          {transformData(data?.solicitacao.data_solicitacao!)}
-          {" - "}
-          {data?.solicitacao.status}
-        </h1>
-        <p>
-          {data?.solicitacao.unidade} - {data?.solicitacao.solicitante}
-        </p>
-      </div>
-      <div className="ghost_traco" />
-      <div>
-        <h2>{data?.solicitacao.nome}</h2>
-        <p>Total de itens: {data.itens.length}</p>
-      </div>
-      {data?.itens.map((item) => (
-        <div key={item.id} className={styles.card}>
-          <h4 className={styles.nome}>{item.nome}</h4>
-
-          <div className={styles.info_row}>
-            <div>
-              <p className={styles.label}>Quantidade Solicitada</p>
-              <b className={styles.valor}>
-                {item.qnt_solicitada} {item.und_medida}
-              </b>
-            </div>
-          </div>
-        </div>
-      ))}
-
-      {tipo === "comprovante" ? (
-        <PrintPageButton />
-      ) : (
-        <Button
-          type="primary"
-          rounded
-          onClick={() =>
-            router.push(
-              `/entidade/solicitacao/${data.solicitacao.id}/liberar?trackId=${trackId}&unId=${unId}`
-            )
-          }
-        >
-          Liberar produtos
-        </Button>
-      )}
-      <Button type="alternative" rounded onClick={() => router.back()}>
-        Voltar
-      </Button>
-    </main>
   );
 }
 

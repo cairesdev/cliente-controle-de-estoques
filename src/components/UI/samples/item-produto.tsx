@@ -12,6 +12,9 @@ export default function ItemProduto({ item }: { item: ItemEstocado }) {
       <p>
         Disponível: {item.qnt_disponivel} {item.und_medida}
       </p>
+      {item.data_entrada && (
+        <p>Registrado em: {transformData(item.data_entrada)}</p>
+      )}
       <p>Validade: {transformData(item.data_validade)}</p>
     </div>
   );

@@ -66,6 +66,7 @@ export type ProdutoSolicitacao = {
   qnt_solicitada: number;
   nome: string;
   und_medida: string;
+  disponiveis: ItemEstocado[];
 };
 
 export type DetalheSolicitacao = {

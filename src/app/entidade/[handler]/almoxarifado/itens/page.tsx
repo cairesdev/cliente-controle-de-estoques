@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { GoToHomeButton } from "@/components/action-buttons";
 import ItemArmazenado from "@/components/UI/item-estoque";
+import ItemProduto from "@/components/UI/samples/item-produto";
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
@@ -57,12 +58,7 @@ export default async function ListaItensPage({
 
       <div>
         {filtred?.map((item) => (
-          <ItemArmazenado
-            key={item.id}
-            item={item}
-            tipo="SIMPLES"
-            token={session?.user.access_token}
-          />
+          <ItemProduto key={item.id} item={item} />
         ))}
       </div>
     </main>
