@@ -55,6 +55,7 @@ export const API_ROUTES = {
   utilizar_item: "v1/armazem/estoque/itens-utilizados/",
   tipo_unidade: "v1/extras/tipos/unidade",
   tipo_estoque: "v1/extras/tipos/estoque",
+  lista_usuarios: "v1/usuarios/acesso-livre",
 };
 
 export const HttpStatus = {

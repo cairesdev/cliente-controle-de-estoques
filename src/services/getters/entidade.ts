@@ -6,6 +6,7 @@ import {
   ItemBasic,
   Produto,
   UnidadeDetalhe,
+  Usuario,
 } from "@/types/entidade";
 
 export class EntidadeRepository {
@@ -86,6 +87,16 @@ export class EntidadeRepository {
       cache: "no-cache",
       token: this.token,
       next: { tags: ["tipo_unidade"] },
+    });
+    return response.body.res;
+  }
+
+  async getListadeUsuarios() {
+    const response = await backendFetch<Usuario[]>({
+      url: API_ROUTES.lista_usuarios,
+      method: "PATCH",
+      cache: "no-cache",
+      token: this.token,
     });
     return response.body.res;
   }

@@ -39,3 +39,11 @@ export type Estoque = {
   tipo_estoque: string;
   qnt_disponivel: number;
 };
+
+export type Usuario = {
+  nome: string;
+  descricao: string;
+  nivel: number;
+  login: string;
+  id: string;
+};
