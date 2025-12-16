@@ -12,7 +12,6 @@ export async function enviarArquivoEstoque(formData: FormData, token: string) {
     });
 
     if (response.status === HttpStatus.CREATED) {
-      console.log("Upload realizado com sucesso");
       window.location.replace(
         `/entidade/resumo/${formData.get("ESTOQUE")}?code=${formData.get(
           "CODIGO"

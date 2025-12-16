@@ -47,6 +47,7 @@ export type ComprovanteCriacao = {
     qnt_disponivel: number;
     qnt_entrada: number;
     status: string;
+    despachante: string;
     solicitante: string;
   } & SampleEstoque;
 };
