@@ -49,3 +49,11 @@ export function transformData(dataString: string): string {
   data.setMinutes(data.getTimezoneOffset());
   return data.toLocaleDateString("pt-BR");
 }
+
+export function DiasAteVencer(data: string): number | string {
+  if (data == null) return "Indeterminado";
+  const hoje = new Date();
+  const dataVal = new Date(data);
+  const diffMs = dataVal.getTime() - hoje.getTime();
+  return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+}

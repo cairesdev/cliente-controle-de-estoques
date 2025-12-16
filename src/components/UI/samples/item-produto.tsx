@@ -1,4 +1,4 @@
-import { transformData } from "@/utils";
+import { DiasAteVencer, transformData } from "@/utils";
 import styles from "@/styles/sample/item.module.css";
 import { ItemEstocado } from "@/types/commons";
 
@@ -16,6 +16,7 @@ export default function ItemProduto({ item }: { item: ItemEstocado }) {
         <p>Registrado em: {transformData(item.data_entrada)}</p>
       )}
       <p>Validade: {transformData(item.data_validade)}</p>
+      <p>Dias até o vencimento: {DiasAteVencer(item.data_validade)}</p>
     </div>
   );
 }
