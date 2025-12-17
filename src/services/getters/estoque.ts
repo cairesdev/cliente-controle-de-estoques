@@ -202,4 +202,15 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
+  static async deleteUsuario({ id, token }: { id: string; token: string }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.delete_usuario + id,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
 }

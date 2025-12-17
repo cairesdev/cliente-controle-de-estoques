@@ -56,6 +56,8 @@ export const API_ROUTES = {
   tipo_unidade: "v1/extras/tipos/unidade",
   tipo_estoque: "v1/extras/tipos/estoque",
   lista_usuarios: "v1/usuarios/acesso-livre",
+  delete_usuario: "v1/usuarios/danger/",
+  update_pass: "v1/usuario/login/danger/",
 };
 
 export const HttpStatus = {

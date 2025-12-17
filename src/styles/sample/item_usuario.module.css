@@ -1,0 +1,17 @@
+.item_usuario {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 19px;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  background: var(--sky-lightest);
+}
+
+.item_usuario div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+}

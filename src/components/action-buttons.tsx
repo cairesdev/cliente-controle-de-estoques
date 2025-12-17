@@ -82,3 +82,29 @@ export function DeleteItemTipo({
     </Button>
   );
 }
+
+export function DeleteUsuario({ id, token }: { id: string; token: string }) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir este usuario?\nEssa ação não poderá ser desfeita."
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteUsuario({ id, token });
+    router.refresh();
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="danger"
+      title="Excluir Usuario"
+    >
+      <BiTrash size={18} />
+    </Button>
+  );
+}

@@ -13,8 +13,8 @@ export default async function ComprovantePage({
   params: Promise<{ handler: string | undefined }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { handler } = await params;
   const { code } = (await searchParams) as { [key: string]: string };
+  const { handler } = await params;
 
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getComprovante({

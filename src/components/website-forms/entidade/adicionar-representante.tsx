@@ -49,7 +49,7 @@ export default function NovoRepresentante({
       </div>
       <div className={styles.input_container}>
         <label>Unidade Responsável</label>
-        <select id="UNIDADE" name="UNIDADE" required>
+        <select id="UNIDADE" name="UNIDADE">
           {unidades.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}
