@@ -23,8 +23,6 @@ export default async function ResumoEstoquePage({
     id: handler!,
   });
 
-  console.log(data?.remessa);
-
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
