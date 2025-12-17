@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 export default function AppTemplate({ children }: { children: ReactNode }) {
   return (
     <>
-      <ToastContainer theme="light" autoClose={4000} />
+      <ToastContainer theme="light" autoClose={4000} closeOnClick />
       {children}
       <SessionExpiration />
     </>
