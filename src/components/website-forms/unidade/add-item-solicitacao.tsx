@@ -4,6 +4,7 @@ import styles from "@/styles/components/forms.module.css";
 import { Produto } from "@/types/entidade";
 import { adicionarItensSolicitacao } from "./action";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function FormItemSolicitacao({
   idSolicitacao,
@@ -29,6 +30,7 @@ export default function FormItemSolicitacao({
     const isAdd = await adicionarItensSolicitacao(payload);
     if (isAdd) {
       router.refresh();
+      toast.success("Item adicionado com sucesso!");
     } else {
       alert("Algo deu errado!");
     }

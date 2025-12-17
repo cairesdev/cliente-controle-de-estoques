@@ -4,6 +4,7 @@ import { BiTrash } from "react-icons/bi";
 import { Button } from "./UI/button";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export function DeleteItem({ id, token }: { id: string; token: string }) {
   const router = useRouter();
@@ -16,6 +17,7 @@ export function DeleteItem({ id, token }: { id: string; token: string }) {
     if (!confirmar) return;
 
     await EstoqueRepository.deleteItemResumo({ id, token });
+    toast.success("Deletado com sucesso");
     router.refresh();
   }
 
@@ -73,6 +75,7 @@ export function DeleteItemTipo({
     if (!confirmar) return;
 
     await EstoqueRepository.deleteItemTipo({ id, token, tipo });
+    toast.success("Deletado com sucesso");
     router.refresh();
   }
 
@@ -94,6 +97,7 @@ export function DeleteUsuario({ id, token }: { id: string; token: string }) {
     if (!confirmar) return;
 
     await EstoqueRepository.deleteUsuario({ id, token });
+    toast.success("Deletado com sucesso");
     router.refresh();
   }
 

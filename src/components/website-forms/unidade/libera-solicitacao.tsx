@@ -125,9 +125,11 @@ export default function LiberaSolicitacao({
         </section>
       ))}
 
-      <Button type="primary" htmlType="submit" rounded>
-        Concluir
-      </Button>
+      {retiradas.length !== 0 && (
+        <Button type="primary" htmlType="submit" rounded>
+          Concluir
+        </Button>
+      )}
     </form>
   );
 }

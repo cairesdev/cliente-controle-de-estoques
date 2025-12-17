@@ -1,5 +1,6 @@
 import { GoToHomeButton } from "@/components/action-buttons";
 import { ItensSolicitacao } from "@/components/UI/item-solicitacao";
+import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import FormItemSolicitacao from "@/components/website-forms/unidade/add-item-solicitacao";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import { EstoqueRepository } from "@/services/getters/estoque";
@@ -20,7 +21,7 @@ export default async function NovaSolicitacaoPage({
   const produtos = await entidadeRepository.getListaProdutos();
 
   const estoqueRepository = await EstoqueRepository.create();
-  const item = await estoqueRepository.getSolicitacao({
+  const data = await estoqueRepository.getSolicitacao({
     id: solicitacao!,
     tipo: "unidade",
     idUnidade: handler!,
@@ -42,8 +43,13 @@ export default async function NovaSolicitacaoPage({
       />
       <div className="ghost_bar" />
       <h2>Itens adicionados</h2>
-      <ItensSolicitacao data={item?.itens!} />
-      <GoToHomeButton />
+      <div className={styles.lista_entidades}>
+        {data?.itens.map((item) => (
+          <ItemSolicitacao tipo="lista" item={item!} key={item.id} />
+        ))}
+      </div>
+      {data?.itens.length !== 0 && <GoToHomeButton />}
+      <br />
     </main>
   );
 }
