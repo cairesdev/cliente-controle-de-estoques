@@ -1,8 +1,9 @@
 import { auth } from "@/auth";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
 import ItemArmazenado from "@/components/UI/item-estoque";
+import ItemProduto from "@/components/UI/samples/item-produto";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import styles from "@/styles/homepage.module.css";
+import styles from "@/styles/components/detahe_armazem.module.css";
 import { transformData } from "@/utils";
 import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
@@ -29,39 +30,39 @@ export default async function ResumoEstoquePage({
         </h1>
         <div className="ghost_traco" />
       </div>
+
       <div className={styles.barcode_container}>
-        <h2>Código: {data?.remessa.codigo}</h2>
         <Image
-          src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data?.remessa.codigo}:unidade:${handler}`}
+          src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data?.remessa.codigo}:unidade:${handler}`}
           alt="barcode"
-          width={190}
-          height={190}
+          width={150}
+          height={150}
           loading="eager"
         />
+        <div className={styles.informacoes}>
+          <h2>Código: {data?.remessa.codigo}</h2>
+          <h4>
+            Data solicitação: {transformData(data?.remessa.data_solicitacao!)}
+          </h4>
+          <h4>
+            Data liberação: {transformData(data?.remessa.data_encerramento!)}
+          </h4>
+          <h4>Solicitante: {data?.remessa.solicitante}</h4>
+          <h4>Setor: {data?.remessa.tipo_estoque}</h4>
+          <h4>Produtos registrados: {data?.remessa.qnt_entrada}</h4>
+          <div>
+            <PrintPageButton />
+            <GoToHomeButton />
+          </div>
+        </div>
       </div>
-      <p>Quantidade cadastrada: {data?.remessa.qnt_entrada}</p>
-      <p>Quantidade disponivel: {data?.remessa.qnt_disponivel}</p>
-      <p>Categoria: {data?.remessa.tipo_estoque}</p>
-      <div className="ghost_bar"></div>
-      <div>
+      <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
-          <ItemArmazenado
-            key={item.id}
-            item={item}
-            tipo="SIMPLES"
-            token={session?.user.access_token}
-          />
+          <ItemProduto key={item.id} item={item} />
         ))}
       </div>
-      <footer className={styles.assinatura_box}>
-        <p className={styles.assinatura_nome}>{data?.remessa.solicitante}</p>
-        <p className={styles.assinatura_data}>
-          {transformData(data?.remessa.data_solicitacao as string)} à{" "}
-          {transformData(data?.remessa.data_encerramento as string)}
-        </p>
-      </footer>
-      <PrintPageButton />
-      <GoToHomeButton />
+      <br />
+      <br />
     </main>
   );
 }

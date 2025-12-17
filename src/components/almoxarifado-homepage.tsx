@@ -144,6 +144,8 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.rodape}>
         <SessionExpiration />
       </div>
+      <br />
+      <br />
     </main>
   );
 }
