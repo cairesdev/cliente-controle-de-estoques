@@ -50,8 +50,8 @@ export function transformData(dataString: string): string {
   return data.toLocaleDateString("pt-BR");
 }
 
-export function DiasAteVencer(data: string): number | string {
-  if (data == null) return "Indeterminado";
+export function DiasAteVencer(data: string): number {
+  if (data == null) return 0;
   const hoje = new Date();
   const dataVal = new Date(data);
   const diffMs = dataVal.getTime() - hoje.getTime();

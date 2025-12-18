@@ -10,23 +10,81 @@
 }
 
 .item_estoque {
-  text-decoration: none;
-  border-radius: 12px;
-  padding: 9px 19px;
-  display: flex;
-  flex-direction: row;
   background-color: var(--sky-lightest);
+  border-radius: 16px;
+  border: 1px solid var(--sky-ligther);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.item_estoque:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  grid-column: 1 / -1;
+  display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+}
+
+.nome {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink-dark);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.ok {
+  background: #e6f7ec;
+  color: #1a7f37;
+}
+
+.alerta {
+  background: #fff4e5;
+  color: #b45309;
+}
+
+.vencido {
+  background: #fde8e8;
+  color: var(--red-base);
+}
+
+.info {
+  font-size: 0.85rem;
+  color: var(--ink-base);
+}
+
+.quantidades {
+  display: flex;
+  gap: 16px;
+}
+
+.qtd {
+  background: var(--blue-lightest);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  box-shadow: inset 0 0 0 1px var(--sky-lightest);
+}
+
+.footer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-}
-
-.item_estoque p {
-  flex: 1;
-  min-width: fit-content;
-}
-
-.item_estoque h4 {
-  flex: 2;
-  min-width: fit-content;
+  font-size: 0.75rem;
+  color: var(--ink-dark);
 }

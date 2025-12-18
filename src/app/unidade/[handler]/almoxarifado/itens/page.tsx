@@ -45,6 +45,7 @@ export default async function ListaItensPage({
       <Suspense fallback={<SearchSkeleton />}>
         <SearchInput />
       </Suspense>
+      <GoToHomeButton />
 
       <div>
         {filtred?.map((item) => (
@@ -56,7 +57,6 @@ export default async function ListaItensPage({
           />
         ))}
       </div>
-      <GoToHomeButton />
     </main>
   );
 }

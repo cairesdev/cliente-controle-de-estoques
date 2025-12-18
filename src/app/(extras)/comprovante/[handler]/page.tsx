@@ -57,6 +57,8 @@ export default async function ComprovantePage({
           <ItemProduto key={item.id} item={item} />
         ))}
       </div>
+      <br />
+      <br />
     </main>
   );
 }

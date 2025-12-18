@@ -22,7 +22,6 @@ export default async function ResumoEstoquePage({
   const data = await estoqueRepository.getResumoEstoqueEntidade({
     id: handler!,
   });
-
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
