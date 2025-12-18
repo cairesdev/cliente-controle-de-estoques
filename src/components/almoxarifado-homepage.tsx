@@ -13,7 +13,6 @@ import { User } from "next-auth";
 import Link from "next/link";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import ItemArmazem from "@/components/UI/item-armazem";
 import { AiOutlineProduct } from "react-icons/ai";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";

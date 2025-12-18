@@ -139,7 +139,7 @@ export async function editarUnidade(data: any) {
   });
 
   if (response.status === HttpStatus.OK) {
-    redirect(`/entidade/${data.ID}/almoxarifado`, RedirectType.push);
+    redirect(`/unidade/${data.ID}/almoxarifado`, RedirectType.push);
   } else {
     return false;
   }

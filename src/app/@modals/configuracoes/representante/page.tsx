@@ -2,14 +2,11 @@ import { LogOutButton } from "@/components/UI/button";
 import { ModalComponent } from "@/components/UI/modal";
 import styles from "@/styles/components/lista_config.module.css";
 import Link from "next/link";
-import { FaAngleRight, FaHistory, FaUserEdit } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
-import { MdAddCircleOutline } from "react-icons/md";
 import { GrCircleAlert } from "react-icons/gr";
 import { auth } from "@/auth";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
-import { AiOutlineProduct } from "react-icons/ai";
-import { IoQrCodeOutline } from "react-icons/io5";
 
 export default async function UnidadeConfgPage({
   searchParams,
@@ -36,20 +33,6 @@ export default async function UnidadeConfgPage({
               <GrCircleAlert className="icon" />
             </span>
             Solicitações <FaAngleRight color="6c7072" />
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            href={`/unidade/${trackId}/nova-solicitacao`}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <span>
-              <MdAddCircleOutline className="icon" />
-            </span>
-            Nova Solicitação <FaAngleRight color="6c7072" />
           </Link>
         </li>
 
