@@ -57,16 +57,6 @@ export default async function SolicitacaoPage({
       </div>
 
       <div>
-        {data?.solicitacao.status !== "Liberado" && (
-          <Link
-            className="go_back_link"
-            target="_top"
-            href={`/entidade/solicitacao/${data?.solicitacao.id}/liberar?trackId=${trackId}&unId=${unId}`}
-          >
-            Liberar Solicitação
-          </Link>
-        )}
-        <br />
         <Link
           className="go_back_link"
           target="_top"
