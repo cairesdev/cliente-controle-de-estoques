@@ -1,27 +1,28 @@
+import { auth } from "@/auth";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
 import ItemProduto from "@/components/UI/samples/item-produto";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detahe_armazem.module.css";
 import { transformData } from "@/utils";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { LuLayers } from "react-icons/lu";
 
 export default async function ResumoEstoquePage({
   params,
-  searchParams,
 }: {
   params: Promise<{ handler: string | undefined }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
-  const { tipo } = (await searchParams) as {
-    [key: string]: string;
-  };
+  const session = await auth();
 
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getResumoEstoqueEntidade({
     id: handler!,
   });
+
+  if (!data?.remessa) return notFound();
+
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
@@ -55,8 +56,18 @@ export default async function ResumoEstoquePage({
 
       <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
-          <ItemProduto key={item.id} item={item} />
+          <ItemProduto
+            token={session?.user.access_token}
+            nivel={parseInt(session?.user.nivel!)}
+            key={item.id}
+            item={item}
+          />
         ))}
+        {data?.itens.length === 0 && (
+          <p className="error_message">
+            Não há itens registrados ou disponíveis nesta remessa.
+          </p>
+        )}
       </div>
       <br />
       <br />

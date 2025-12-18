@@ -56,7 +56,12 @@ export default async function ListaItensPage({
 
       <div className={styles.lista_entidades}>
         {filtred?.map((item) => (
-          <ItemProduto key={item.id} item={item} />
+          <ItemProduto
+            key={item.id}
+            item={item}
+            nivel={parseInt(session?.user.nivel!)}
+            token={session?.user.access_token}
+          />
         ))}
       </div>
     </main>

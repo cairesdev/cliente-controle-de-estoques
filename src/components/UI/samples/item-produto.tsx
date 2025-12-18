@@ -1,8 +1,18 @@
 import { DiasAteVencer, transformData } from "@/utils";
 import styles from "@/styles/sample/item.module.css";
 import { ItemEstocado } from "@/types/commons";
+import { DeleteItem } from "@/components/action-buttons";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
 
-export default function ItemProduto({ item }: { item: ItemEstocado }) {
+export default function ItemProduto({
+  item,
+  token,
+  nivel,
+}: {
+  item: ItemEstocado;
+  token?: string;
+  nivel?: number;
+}) {
   const dias = DiasAteVencer(item.data_validade);
 
   const status =
@@ -36,6 +46,9 @@ export default function ItemProduto({ item }: { item: ItemEstocado }) {
             {item.qnt_disponivel} {item.und_medida}
           </div>
         </div>
+        {nivel! >= NIVEIS_USUARIO.GERENCIA && (
+          <DeleteItem token={token!} id={item.id} />
+        )}
       </div>
 
       <div className={styles.info}>
