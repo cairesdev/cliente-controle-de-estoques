@@ -44,7 +44,7 @@ export default async function ResumoEstoquePage({
         <div className={styles.informacoes}>
           <h2>Código: {data?.remessa.codigo}</h2>
           <h4>Data entrada: {transformData(data?.remessa.data_entrada!)}</h4>
-          <h4>Conferente: {data?.remessa.nome}</h4>
+          <h4>Conferente: {data?.remessa.nome ?? "Não identificado"}</h4>
           <h4>Setor: {data?.remessa.tipo_estoque}</h4>
           <h4>Produtos registrados: {data?.remessa.qnt_registrada}</h4>
           <div>
