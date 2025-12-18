@@ -43,6 +43,7 @@ export const API_ROUTES = {
   resumo_estoque: "v1/armazem/estoque/resumo/",
   resumo_estoque_unidade: "v1/armazem/estoque/resumo-unidade/",
   delete_item: "v1/armazem/estoque/item/",
+  delete_remessa: "v1/armazem/estoque/remessa/",
   lista_produtos: "v1/armazem/estoque/produtos",
   lista_estoque: "v1/armazem/estoque/remessa/",
   cadastro_produto_individual: "v1/armazem/individual/",

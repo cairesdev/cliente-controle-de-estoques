@@ -6,6 +6,27 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
+export function DeleteArmazem({ id, token }: { id: string; token: string }) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita."
+    );
+
+    if (!confirmar) return;
+    toast.warn("Apagando...");
+    await EstoqueRepository.deleteEstoque({ id, token });
+    toast.success("Deletado com sucesso");
+    router.back();
+  }
+
+  return (
+    <Button onClick={handleDelete} rounded type="danger" title="Excluir item">
+      <BiTrash size={18} />
+    </Button>
+  );
+}
 export function DeleteItem({ id, token }: { id: string; token: string }) {
   const router = useRouter();
 

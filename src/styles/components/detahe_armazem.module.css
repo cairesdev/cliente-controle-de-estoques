@@ -41,3 +41,9 @@
   gap: 10px;
   flex-direction: column;
 }
+
+.btn_area {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

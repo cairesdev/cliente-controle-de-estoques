@@ -1,6 +1,11 @@
 import { auth } from "@/auth";
-import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
+import {
+  DeleteArmazem,
+  GoToHomeButton,
+  PrintPageButton,
+} from "@/components/action-buttons";
 import ItemProduto from "@/components/UI/samples/item-produto";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detahe_armazem.module.css";
 import { transformData } from "@/utils";
@@ -47,9 +52,15 @@ export default async function ResumoEstoquePage({
           <h4>Conferente: {data?.remessa.nome ?? "Não identificado"}</h4>
           <h4>Setor: {data?.remessa.tipo_estoque}</h4>
           <h4>Produtos registrados: {data?.remessa.qnt_registrada}</h4>
-          <div>
+          <div className={styles.btn_area}>
             <PrintPageButton />
             <GoToHomeButton />
+            {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+              <DeleteArmazem
+                id={handler!}
+                token={session?.user.access_token!}
+              />
+            )}
           </div>
         </div>
       </div>
