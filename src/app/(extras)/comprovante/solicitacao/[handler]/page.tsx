@@ -3,6 +3,7 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detalhe_solicitacao.module.css";
 import { transformData } from "@/utils";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { IoLayers } from "react-icons/io5";
 
 export default async function SolicitacaoPage({
@@ -24,6 +25,10 @@ export default async function SolicitacaoPage({
     tipo: "unidade",
     idUnidade: unId,
   });
+
+  // if (data?.solicitacao.status === "Liberado") {
+  //   redirect(`/comprovante/${handler}?code=${data.solicitacao.codigo}`);
+  // }
 
   return (
     <main className={styles.homepage}>

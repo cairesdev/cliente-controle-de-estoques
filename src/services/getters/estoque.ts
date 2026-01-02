@@ -55,6 +55,17 @@ export class EstoqueRepository {
     return response.body.res;
   }
 
+  async getSolicitacoesDisponiveis({ id }: { id: string }) {
+    const response = await backendFetch<Solicitacao[]>({
+      url: API_ROUTES.solicitacoes + id + "/liberadas",
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+    });
+
+    return response.body.res;
+  }
+
   async getSolicitacao({
     id,
     tipo,

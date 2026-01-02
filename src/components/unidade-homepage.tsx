@@ -12,6 +12,7 @@ import { HiInboxArrowDown } from "react-icons/hi2";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import ItemEstoque from "./UI/samples/item-estoque";
+import { IoAlertCircleSharp } from "react-icons/io5";
 
 export default async function UnidadeHomepage({
   search,
@@ -70,6 +71,13 @@ export default async function UnidadeHomepage({
               Voltar
             </Link>
           )}
+          <Link
+            href={`/unidade/${handler}/solicitacoes/disponiveis`}
+            target="_top"
+          >
+            <IoAlertCircleSharp color="yellow" />
+            Disponíveis
+          </Link>
           <Link href={`/unidade/${handler}/nova-solicitacao`} target="_top">
             <MdAddCircleOutline />
             Fazer Solicitação
