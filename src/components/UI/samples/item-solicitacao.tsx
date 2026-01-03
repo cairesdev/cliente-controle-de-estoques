@@ -18,7 +18,8 @@ export default function ItemSolicitacao({
         </p>
       </div>
       {tipo !== "comprovante" &&
-        item.disponiveis.flatMap((disp) => (
+        item.disponiveis &&
+        item.disponiveis.map((disp) => (
           <div key={disp.id}>
             <p>
               Disponível na unidade: {disp.qnt_disponivel}

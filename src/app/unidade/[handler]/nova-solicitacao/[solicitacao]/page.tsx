@@ -9,22 +9,30 @@ import { LuInbox } from "react-icons/lu";
 
 export default async function NovaSolicitacaoPage({
   params,
+  searchParams,
 }: {
   params: Promise<{
     solicitacao: string | undefined;
     handler: string | undefined;
   }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { solicitacao, handler } = await params;
+  const { categoria } = (await searchParams) as {
+    [key: string]: string;
+  };
 
   const entidadeRepository = await EntidadeRepository.create();
-  const produtos = await entidadeRepository.getListaProdutos();
 
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getSolicitacao({
     id: solicitacao!,
     tipo: "unidade",
     idUnidade: handler!,
+  });
+
+  const itens = await estoqueRepository.getItensListaDisponiveisEntidade({
+    id: handler!,
   });
 
   return (
@@ -38,7 +46,9 @@ export default async function NovaSolicitacaoPage({
       <div className="ghost_traco" />
       <FormItemSolicitacao
         idUnidade={handler!}
-        produtos={produtos!}
+        produtos={
+          itens?.filter((p) => p.id_tipo_estoque === parseInt(categoria))!
+        }
         idSolicitacao={solicitacao!}
       />
       <div className="ghost_bar" />

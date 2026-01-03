@@ -28,6 +28,7 @@ export type Produto = {
   id: string;
   nome: string;
   und_medida: string;
+  qnt_disponivel?: number;
 };
 
 export type Estoque = {

@@ -77,7 +77,7 @@ export async function novaSolicitacao(data: any) {
   if (response.status === HttpStatus.CREATED) {
     redirect(
       `/tracks/cadastrado?ref=${encodeURI("Solicitação")}&callback=${encodeURI(
-        `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}`
+        `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}?categoria=${data.TIPO_ESTOQUE}`
       )}`,
       RedirectType.push
     );

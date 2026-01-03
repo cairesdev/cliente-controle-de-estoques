@@ -41,9 +41,10 @@ export default function FormItemSolicitacao({
       <div className={styles.input_container}>
         <label>Selecione o produto</label>
         <select id="PRODUTO" name="PRODUTO">
-          {produtos.map((item) => (
+          {produtos.map((item, i) => (
             <option key={item.id} value={item.id}>
-              {item.nome} - {item.und_medida}
+              {item.nome} - Disponíveis {item.qnt_disponivel}
+              {item.und_medida}
             </option>
           ))}
         </select>

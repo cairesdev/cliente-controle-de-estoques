@@ -23,6 +23,7 @@ export type ItemEstocado = {
   qnt_disponivel: number;
   und_medida: string;
   data_entrada: string;
+  id_tipo_estoque?: number;
   origem?: { codigo: string; nome: string };
 };
 

@@ -31,6 +31,17 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+  async getItensListaDisponiveisEntidade({ id }: { id: string }) {
+    const response = await backendFetch<ItemEstocado[]>({
+      url: API_ROUTES.itens_entidade_disponiveis + id,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["itens-unidade", id] },
+    });
+
+    return response.body.res;
+  }
 
   async getAllItensUnidade({ id }: { id: string }) {
     const response = await backendFetch<ItemEstocado[]>({

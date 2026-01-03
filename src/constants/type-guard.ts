@@ -35,6 +35,7 @@ export const API_ROUTES = {
   cadastro_modulo: "v1/modulos",
   entidade: "v1/entidade/",
   lista_itens_entidade: "v1/armazem/estoque/",
+  itens_entidade_disponiveis: "v1/armazem/estoque/lista/",
   solicitacoes: "v1/solicitacoes/",
   solicitacao: "v1/solicitacao/",
   comprovante: "v1/armazem/estoque/comprovante/",
