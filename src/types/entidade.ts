@@ -14,6 +14,8 @@ export type EntidadeDetalhe = {
   telefone: string;
 };
 
+export type Modulos = { escolar: number; saude: number; combustivel: number };
+
 export type UnidadeDetalhe = {
   nome: string;
   status: number;

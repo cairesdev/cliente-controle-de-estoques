@@ -73,6 +73,7 @@ export default {
         token.unidade_nome = user.unidade_nome;
         token.entidade_id = user.entidade_id;
         token.entidade_nome = user.entidade_nome;
+        token.tipo_almoxarife = user.tipo_almoxarife;
 
         if (user.expires_on) {
           token.expires_on = Math.floor(
@@ -104,6 +105,7 @@ export default {
         entidade_nome: token.entidade_nome!,
         unidade_id: token.unidade_id!,
         unidade_nome: token.unidade_nome!,
+        tipo_almoxarife: token.tipo_almoxarife!,
       };
 
       return session;

@@ -19,6 +19,7 @@ declare module "next-auth" {
     entidade_id: string;
     unidade_id: string;
     unidade_nome: string;
+    tipo_almoxarife: string;
   }
 
   interface Session extends DefaultSession {
@@ -40,5 +41,6 @@ declare module "next-auth/jwt" {
     entidade_id?: string;
     unidade_id?: string;
     unidade_nome?: string;
+    tipo_almoxarife?: string;
   }
 }

@@ -29,10 +29,16 @@ export default async function AlmoxarifeHomepage({
   const pesquisaText = search?.toLowerCase();
 
   const entidadeRepository = await EntidadeRepository.create();
-  const data = await entidadeRepository.getUnidades({ id: handler as string });
+
+  const unidades = await entidadeRepository.getUnidades({
+    id: handler as string,
+  });
   const entidade = await entidadeRepository.getEntidade({
     id: handler as string,
   });
+  // const modulos = await entidadeRepository.getModulosDisponiveis({
+  //   id: handler as string,
+  // });
 
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getEstoqueEntidade({
@@ -40,10 +46,10 @@ export default async function AlmoxarifeHomepage({
   });
 
   const filtred = search
-    ? data?.filter((item) =>
+    ? unidades?.filter((item) =>
         normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
       )
-    : data;
+    : unidades;
 
   return (
     <main className={styles.homepage}>
@@ -109,7 +115,6 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.titulo_sessao}>
         <h2>
           <FaFingerprint />
-          Unidades Registradas
         </h2>
         <div className="ghost_bar" />
       </div>

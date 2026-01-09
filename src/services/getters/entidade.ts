@@ -4,6 +4,7 @@ import { API_ROUTES } from "@/constants/type-guard";
 import {
   EntidadeDetalhe,
   ItemBasic,
+  Modulos,
   Produto,
   UnidadeDetalhe,
   Usuario,
@@ -45,6 +46,19 @@ export class EntidadeRepository {
 
     return response.body.res;
   }
+
+  async getModulosDisponiveis({ id }: { id: string }) {
+    const response = await backendFetch<Modulos>({
+      url: API_ROUTES.entidade + id + "/modulos",
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["entidade", id] },
+    });
+
+    return response.body.res;
+  }
+
   async getUnidade({ id }: { id: string }) {
     const response = await backendFetch<UnidadeDetalhe>({
       url: API_ROUTES.detalhe_unidade + id,
