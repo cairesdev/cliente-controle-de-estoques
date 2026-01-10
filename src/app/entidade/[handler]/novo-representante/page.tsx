@@ -21,6 +21,29 @@ export default async function NovoRepresentantePage({
     id: handler as string,
   });
 
+  const unidade = await entidadeRepository.getListaTipoUnidade();
+
+  const modulos = await entidadeRepository.getModulosDisponiveis({
+    id: handler as string,
+  });
+
+  type Modulos = {
+    escolar: number;
+    saude: number;
+    combustivel: number;
+  };
+
+  const mapaModulos: Record<number, keyof Modulos> = {
+    1: "escolar",
+    99: "saude",
+    255: "combustivel",
+  };
+
+  const modulosLiberados = unidade!.filter((item) => {
+    const chave = mapaModulos[parseInt(item.id)];
+    return chave && modulos![chave] === 1;
+  });
+
   const session = await auth();
   const nivelLiberado = TipoUsuario.filter(
     (item) => item.id < parseInt(session?.user.nivel!)
@@ -46,6 +69,7 @@ export default async function NovoRepresentantePage({
         niveisAutorizados={nivelLiberado!}
         entidade={handler!}
         unidades={unidades!}
+        modulos={modulosLiberados!}
       />
     </main>
   );

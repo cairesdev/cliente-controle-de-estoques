@@ -10,10 +10,12 @@ export default function NovoRepresentante({
   unidades,
   entidade,
   niveisAutorizados,
+  modulos,
 }: {
   unidades: ItemBasic[];
   entidade: string;
   niveisAutorizados: { id: number; nome: string }[];
+  modulos: ItemBasic[];
 }) {
   const [nivelUsuario, setNivelUsiario] = useState<number>(2);
 
@@ -85,9 +87,11 @@ export default function NovoRepresentante({
         <div className={styles.input_container}>
           <label>Tipo de Almoxarifado</label>
           <select id="TIPO_ALMOXARIFE" name="TIPO_ALMOXARIFE" required>
-            <option value={1}>Unidades Escolares</option>
-            <option value={99}>Unidades de Saúde</option>
-            <option value={255}>Controle Veicular</option>
+            {modulos.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.nome}
+              </option>
+            ))}
           </select>
         </div>
       )}

@@ -1,5 +1,4 @@
 "use client";
-import { CategoriaUnidade } from "@/constants/type-guard";
 import styles from "@/styles/components/forms.module.css";
 import { Button } from "@/components/UI/button";
 import { useRouter } from "next/navigation";

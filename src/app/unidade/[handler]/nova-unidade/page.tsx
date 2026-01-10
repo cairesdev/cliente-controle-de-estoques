@@ -1,6 +1,7 @@
 import FormUnidade from "@/components/website-forms/unidade/add-unidade";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/homepage.module.css";
+import { parse } from "path";
 import { TbHomePlus } from "react-icons/tb";
 
 export default async function NovaUnidadePage({
@@ -13,6 +14,27 @@ export default async function NovaUnidadePage({
   const entidadeRepository = await EntidadeRepository.create();
   const unidade = await entidadeRepository.getListaTipoUnidade();
 
+  const modulos = await entidadeRepository.getModulosDisponiveis({
+    id: handler as string,
+  });
+
+  type Modulos = {
+    escolar: number;
+    saude: number;
+    combustivel: number;
+  };
+
+  const mapaModulos: Record<number, keyof Modulos> = {
+    1: "escolar",
+    99: "saude",
+    255: "combustivel",
+  };
+
+  const modulosLiberados = unidade!.filter((item) => {
+    const chave = mapaModulos[parseInt(item.id)];
+    return chave && modulos![chave] === 1;
+  });
+
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
@@ -22,7 +44,7 @@ export default async function NovaUnidadePage({
         <p>Adicione uma nova unidade gerenciavel.</p>
       </div>
       <div className="ghost_traco" />
-      <FormUnidade tiposUnidade={unidade!} idEntidade={handler!} />
+      <FormUnidade tiposUnidade={modulosLiberados!} idEntidade={handler!} />
     </main>
   );
 }
