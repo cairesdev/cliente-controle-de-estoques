@@ -4,6 +4,10 @@ export type ItemBasic = {
   status: number;
 };
 
+export type ItemUnidade = {
+  id_tipo_unidade: number;
+} & ItemBasic;
+
 export type EntidadeDetalhe = {
   nome: string;
   status: number;

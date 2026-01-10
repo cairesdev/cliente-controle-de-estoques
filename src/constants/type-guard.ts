@@ -89,21 +89,12 @@ export enum CATEGORIA_ITEM {
   OUTROS = 4,
 }
 
-export const CategoriaItens = [
-  { nome: "Alimentos e Bebidas", id: CATEGORIA_ITEM.ALIMENTOS_BEBIDAS },
-  // { nome: "Medicamentos", id: CATEGORIA_ITEM.MEDICAMENTOS },
-  { nome: "Higiene e Limpeza", id: CATEGORIA_ITEM.HIGIENE_LIMPEZA },
-  { nome: "Outros", id: CATEGORIA_ITEM.OUTROS },
+export const TipoModulo = [
+  { nome: "Outros", id: 5 },
+  { nome: "Unidades Escolares", id: 1 },
+  { nome: "Unidade de Saúde", id: 99 },
+  { nome: "Controle Veicular", id: 255 },
 ];
-
-export const CategoriaUnidade = [
-  { nome: "Escolar", id: 1 },
-  // { nome: "Saúde", id: 2 },
-  // { nome: "Secretaria", id: 3 },
-  // { nome: "ONG", id: 4 },
-  // { nome: "Outros", id: 5 },
-];
-
 export enum TipoVisualizacao {
   DETALHAR,
   EDITAR,

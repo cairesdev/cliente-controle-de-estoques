@@ -4,6 +4,7 @@ import { API_ROUTES } from "@/constants/type-guard";
 import {
   EntidadeDetalhe,
   ItemBasic,
+  ItemUnidade,
   Modulos,
   Produto,
   UnidadeDetalhe,
@@ -72,7 +73,7 @@ export class EntidadeRepository {
   }
 
   async getUnidades({ id }: { id: string }) {
-    const response = await backendFetch<ItemBasic[]>({
+    const response = await backendFetch<ItemUnidade[]>({
       url: API_ROUTES.lista_unidades + id,
       method: "GET",
       cache: "no-store",

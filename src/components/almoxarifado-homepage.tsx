@@ -14,7 +14,7 @@ import Link from "next/link";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import { AiOutlineProduct } from "react-icons/ai";
-import { NIVEIS_USUARIO } from "@/constants/type-guard";
+import { NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
 
 export default async function AlmoxarifeHomepage({
@@ -36,9 +36,10 @@ export default async function AlmoxarifeHomepage({
   const entidade = await entidadeRepository.getEntidade({
     id: handler as string,
   });
-  // const modulos = await entidadeRepository.getModulosDisponiveis({
-  //   id: handler as string,
-  // });
+
+  const modulos = await entidadeRepository.getModulosDisponiveis({
+    id: handler as string,
+  });
 
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getEstoqueEntidade({
@@ -50,6 +51,10 @@ export default async function AlmoxarifeHomepage({
         normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
       )
     : unidades;
+
+  const modulo = TipoModulo.find(
+    (i) => i.id === parseInt(user.tipo_almoxarife)
+  );
 
   return (
     <main className={styles.homepage}>
@@ -64,6 +69,7 @@ export default async function AlmoxarifeHomepage({
                 user.unidade_nome!
               )}
         </h1>
+        <h2>{modulo?.nome}</h2>
         <div className="ghost_traco" />
         <div className={styles.user_section}>
           <span>
@@ -82,39 +88,49 @@ export default async function AlmoxarifeHomepage({
         </div>
       </div>
 
-      <div className={styles.submenus}>
-        {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
-          <Link className="go_back_link" href={"/"} passHref target="_top">
-            Voltar
-          </Link>
-        )}
-        <Link href={"/catalogo-de-produtos"} target="_top">
-          <AiOutlineProduct />
-          Catálogo de Produtos
-        </Link>
-        <Link
-          href={`/entidade/${handler}/almoxarifado/itens`}
-          prefetch={false}
-          target="_top"
-          passHref
-        >
-          <HiInboxArrowDown />
-          Visualizar armazem de itens
-        </Link>
-        <Link
-          href={"/procurar-remessa"}
-          prefetch={false}
-          target="_top"
-          passHref
-        >
-          <IoQrCodeOutline />
-          Buscar Remessa
-        </Link>
-      </div>
+      {parseInt(user.nivel) === NIVEIS_USUARIO.GERENCIA && (
+        <div>
+          <h4>{modulos?.escolar === 1 && "Alimentação Escolar"}</h4>
+          <h4>{modulos?.combustivel === 1 && "Controle Veicular"}</h4>
+          <h4>{modulos?.saude === 1 && "Unidades de Saúde"}</h4>
+        </div>
+      )}
 
+      {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO && (
+        <div className={styles.submenus}>
+          {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
+            <Link className="go_back_link" href={"/"} passHref target="_top">
+              Voltar
+            </Link>
+          )}
+          <Link href={"/catalogo-de-produtos"} target="_top">
+            <AiOutlineProduct />
+            Catálogo de Produtos
+          </Link>
+          <Link
+            href={`/entidade/${handler}/almoxarifado/itens`}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
+            <HiInboxArrowDown />
+            Visualizar armazem de itens
+          </Link>
+          <Link
+            href={"/procurar-remessa"}
+            prefetch={false}
+            target="_top"
+            passHref
+          >
+            <IoQrCodeOutline />
+            Buscar Remessa
+          </Link>
+        </div>
+      )}
       <div className={styles.titulo_sessao}>
         <h2>
           <FaFingerprint />
+          Unidades registradas
         </h2>
         <div className="ghost_bar" />
       </div>
@@ -124,27 +140,37 @@ export default async function AlmoxarifeHomepage({
       </Suspense>
 
       <div className={styles.lista_entidades}>
-        {filtred?.map((item) => (
-          <ItemSimples tipo="unidade" item={item} key={item.id} />
-        ))}
+        {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO
+          ? filtred
+              ?.filter((i) => i.id_tipo_unidade == modulo?.id)
+              ?.map((item) => (
+                <ItemSimples tipo="unidade" item={item} key={item.id} />
+              ))
+          : filtred?.map((item) => (
+              <ItemSimples tipo="unidade" item={item} key={item.id} />
+            ))}
       </div>
 
       {filtred?.length === 0 && <p>Nenhuma unidade registrada.</p>}
 
-      <div className={styles.titulo_sessao}>
-        <h2>
-          <IoLayersOutline />
-          Estoques disponíveis
-        </h2>
-        <div className="ghost_bar" />
-      </div>
+      {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO &&
+        modulo?.id == 1 && (
+          <>
+            <div className={styles.titulo_se2ssao}>
+              <h2>
+                <IoLayersOutline />
+                Estoques disponíveis
+              </h2>
+              <div className="ghost_bar" />
+            </div>
 
-      {itens?.map((item) => (
-        <ItemEstoque tipo="entidade" key={item.id} item={item} />
-      ))}
+            {itens?.map((item) => (
+              <ItemEstoque tipo="entidade" key={item.id} item={item} />
+            ))}
 
-      {itens?.length === 0 && <p>Nenhum item no estoque.</p>}
-
+            {itens?.length === 0 && <p>Nenhum item no estoque.</p>}
+          </>
+        )}
       <div className={styles.rodape}>
         <SessionExpiration />
       </div>
