@@ -13,7 +13,7 @@ export default async function Home({
 }) {
   const session = await auth();
 
-  const { q } = (await searchParams) as {
+  const { q, mod } = (await searchParams) as {
     [key: string]: string;
   };
 
@@ -26,6 +26,7 @@ export default async function Home({
           user={session?.user as User}
           search={q}
           handler={session?.user.entidade_id}
+          mod={mod}
         />
       );
     case NIVEIS_USUARIO.RESPONSAVEL:

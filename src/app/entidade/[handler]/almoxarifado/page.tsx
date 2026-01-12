@@ -10,7 +10,7 @@ export default async function EntidadePage({
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
-  const { q } = (await searchParams) as {
+  const { q, mod } = (await searchParams) as {
     [key: string]: string;
   };
 
@@ -21,6 +21,7 @@ export default async function EntidadePage({
       handler={handler}
       search={q}
       user={session?.user as User}
+      mod={mod}
     />
   );
 }

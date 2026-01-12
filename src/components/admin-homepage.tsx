@@ -5,14 +5,13 @@ import ItemSimples from "@/components/UI/item-simples";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import styles from "@/styles/homepage.module.css";
 import { RiDashboardLine } from "react-icons/ri";
+import { IoQrCodeOutline } from "react-icons/io5";
+import { AiOutlineProduct } from "react-icons/ai";
 import { FaFingerprint } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import { Suspense } from "react";
 import { User } from "next-auth";
 import Link from "next/link";
-
-import { IoQrCodeOutline } from "react-icons/io5";
-import { AiOutlineProduct } from "react-icons/ai";
 
 export default async function AdminHomepage({
   search,

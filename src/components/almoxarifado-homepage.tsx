@@ -21,10 +21,12 @@ export default async function AlmoxarifeHomepage({
   search,
   user,
   handler,
+  mod,
 }: {
   search: string;
   user: User;
   handler?: string;
+  mod?: string;
 }) {
   const pesquisaText = search?.toLowerCase();
 
@@ -89,10 +91,34 @@ export default async function AlmoxarifeHomepage({
       </div>
 
       {parseInt(user.nivel) === NIVEIS_USUARIO.GERENCIA && (
-        <div>
-          <h4>{modulos?.escolar === 1 && "Alimentação Escolar"}</h4>
-          <h4>{modulos?.combustivel === 1 && "Controle Veicular"}</h4>
-          <h4>{modulos?.saude === 1 && "Unidades de Saúde"}</h4>
+        <div className={styles.submenus}>
+          {modulos?.escolar === 1 && (
+            <Link
+              target="_self"
+              href={`/entidade/${handler}/almoxarifado?mod=1`}
+            >
+              Alimentação Escolar
+            </Link>
+          )}
+          {modulos?.combustivel === 1 && (
+            <Link
+              target="_self"
+              href={`/entidade/${handler}/almoxarifado?mod=255`}
+            >
+              Controle Veicular
+            </Link>
+          )}
+          {modulos?.saude === 1 && (
+            <Link
+              target="_self"
+              href={`/entidade/${handler}/almoxarifado?mod=99`}
+            >
+              Unidades de Saúde
+            </Link>
+          )}
+          <Link target="_self" href={`/entidade/${handler}/almoxarifado`}>
+            Geral
+          </Link>
         </div>
       )}
 
@@ -146,9 +172,11 @@ export default async function AlmoxarifeHomepage({
               ?.map((item) => (
                 <ItemSimples tipo="unidade" item={item} key={item.id} />
               ))
-          : filtred?.map((item) => (
-              <ItemSimples tipo="unidade" item={item} key={item.id} />
-            ))}
+          : filtred
+              ?.filter((i) => (mod ? i.id_tipo_unidade === parseInt(mod!) : i))
+              ?.map((item) => (
+                <ItemSimples tipo="unidade" item={item} key={item.id} />
+              ))}
       </div>
 
       {filtred?.length === 0 && <p>Nenhuma unidade registrada.</p>}
