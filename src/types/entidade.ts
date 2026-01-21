@@ -40,6 +40,16 @@ export type Veiculo = {
   cor: string;
 };
 
+export type SolicitacaoViagem = {
+  id: string;
+  placa: string;
+  veiculo: string;
+  data_viagem: string;
+  responsavel: string;
+  motivo: string;
+  status: string;
+};
+
 export type Viagem = {
   id: string;
   unidade: string;
@@ -51,6 +61,7 @@ export type Viagem = {
   responsavel: string;
   km_inicial: number;
   km_final: string | null;
+  veiculo: string;
 };
 
 export type Produto = {

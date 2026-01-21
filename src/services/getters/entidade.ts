@@ -7,6 +7,7 @@ import {
   ItemUnidade,
   Modulos,
   Produto,
+  SolicitacaoViagem,
   UnidadeDetalhe,
   Usuario,
   Veiculo,
@@ -100,6 +101,16 @@ export class EntidadeRepository {
   async getListaVeiculos() {
     const response = await backendFetch<Veiculo[]>({
       url: API_ROUTES.lista_veiculos + "/" + this.entidade,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["veiculos"] },
+    });
+    return response.body.res;
+  }
+  async getAllSolicitacoes() {
+    const response = await backendFetch<SolicitacaoViagem[]>({
+      url: API_ROUTES.lista_viajens + "solicitacoes/" + this.entidade,
       method: "GET",
       cache: "no-store",
       token: this.token,

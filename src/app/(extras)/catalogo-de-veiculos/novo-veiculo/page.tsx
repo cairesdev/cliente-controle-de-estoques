@@ -2,15 +2,7 @@ import NovoVeiculoForm from "@/components/website-forms/garagem/add-veiculo";
 import styles from "@/styles/homepage.module.css";
 import { MdDirectionsCarFilled } from "react-icons/md";
 
-export default async function NovoVeiculoPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const { tipo } = (await searchParams) as {
-    [key: string]: string;
-  };
-
+export default async function NovoVeiculoPage() {
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>

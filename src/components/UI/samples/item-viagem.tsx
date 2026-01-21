@@ -9,6 +9,7 @@ export default function ItemViagem({ item }: { item: Viagem }) {
       <div className={styles.placa}>
         <FaCarSide size={14} />
         <span>{item.placa}</span>
+        <span>- {item.veiculo}</span>
       </div>
       <div className={styles.km}>
         <FaRoute />

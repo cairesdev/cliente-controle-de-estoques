@@ -15,7 +15,7 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import { AiOutlineProduct } from "react-icons/ai";
 import { MODULO, NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
-import { MdDirectionsCarFilled } from "react-icons/md";
+import { MdDirectionsCarFilled, MdTravelExplore } from "react-icons/md";
 import ItemViagem from "./UI/samples/item-viagem";
 
 export default async function AlmoxarifeHomepage({
@@ -134,6 +134,10 @@ export default async function AlmoxarifeHomepage({
           <Link href={"/catalogo-de-veiculos"} target="_top">
             <MdDirectionsCarFilled />
             Frota Municipal
+          </Link>
+          <Link href={`/entidade/${handler}/solicitacoes/viagem`} target="_top">
+            <MdTravelExplore />
+            Solicitações de Viagem
           </Link>
         </div>
       )}
