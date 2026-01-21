@@ -4,5 +4,5 @@ import { formatSeconds } from "@/utils";
 
 export default function SessionExpiration() {
   const { secondsLeft } = useSessionTimer();
-  return <span style={{ fontSize: "1px" }}>{secondsLeft}</span>;
+  return null;
 }

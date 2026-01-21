@@ -1,0 +1,95 @@
+.item_estoque {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 14px;
+  background-color: var(--sky-lightest);
+  border: 1px solid var(--sky-ligther);
+  border-radius: 10px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nome {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink-darker);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.ok {
+  background-color: var(--blue-lightest);
+  color: var(--primary-darkest);
+}
+
+.alerta {
+  background-color: var(--yellow-lightest);
+  color: var(--yellow-base);
+}
+
+.vencido {
+  background-color: var(--red-base);
+  color: white;
+}
+.quantidades {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.qtd {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  font-size: 0.75rem;
+  color: var(--sky-dark);
+}
+
+.qtd strong {
+  font-weight: 600;
+  color: var(--ink-base);
+}
+
+.qtd div {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-darker);
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  font-size: 0.75rem;
+  color: var(--sky-dark);
+}
+
+.info p {
+  margin: 0;
+}
+.footer {
+  padding-top: 6px;
+  border-top: 1px dashed var(--sky-ligther);
+
+  font-size: 0.7rem;
+  color: var(--ink-base);
+}

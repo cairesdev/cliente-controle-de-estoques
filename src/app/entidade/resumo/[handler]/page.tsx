@@ -4,10 +4,10 @@ import {
   GoToHomeButton,
   PrintPageButton,
 } from "@/components/action-buttons";
-import ItemProduto from "@/components/UI/samples/item-produto";
+import ItemProdutoResumo from "@/components/UI/samples/item-produto-resumo";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import styles from "@/styles/components/detahe_armazem.module.css";
+import styles from "@/styles/components/cabecalho_resumo.module.css";
 import { transformData } from "@/utils";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -67,7 +67,7 @@ export default async function ResumoEstoquePage({
 
       <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
-          <ItemProduto
+          <ItemProdutoResumo
             token={session?.user.access_token}
             nivel={parseInt(session?.user.nivel!)}
             key={item.id}
