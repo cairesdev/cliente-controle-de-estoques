@@ -11,20 +11,24 @@ export default function ItemSimples({
   item: ItemBasic;
   tipo: "entidade" | "unidade";
 }) {
+  const ativo = item.status === 1;
+
   return (
     <Link
       className={styles.item_simples}
       href={`/${tipo}/${item.id}/almoxarifado`}
     >
-      <span>
-        {item.status === 1 ? (
-          <LuShieldCheck className="icon" color="green" />
-        ) : (
-          <LuShieldX className="icon" color="red" />
-        )}
+      <span
+        className={`${styles.statusIcon} ${
+          ativo ? styles.ativo : styles.inativo
+        }`}
+      >
+        {ativo ? <LuShieldCheck /> : <LuShieldX />}
       </span>
-      <p>{item.nome}</p>
-      <FaAngleRight color="6c7072" />
+
+      <p className={styles.nome}>{item.nome}</p>
+
+      <FaAngleRight className={styles.arrow} />
     </Link>
   );
 }

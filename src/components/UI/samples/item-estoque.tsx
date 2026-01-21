@@ -1,6 +1,6 @@
 import { Estoque } from "@/types/entidade";
 import { transformData } from "@/utils";
-import styles from "@/styles/sample/item.module.css";
+import styles from "@/styles/sample/item_estoque.module.css";
 import Link from "next/link";
 import { TipoVisualizacao } from "@/constants/type-guard";
 
@@ -17,11 +17,21 @@ export default function ItemEstoque({
       target="_top"
       className={styles.item_estoque}
     >
-      <p>Código: {item.codigo}</p>
-      <h4>{item.nome_remessa}</h4>
-      {item.local_estocado && <h4>Local: {item.local_estocado}</h4>}
-      <p>Categoria: {item.tipo_estoque}</p>
-      <p>Registrado em: {transformData(item.data_entrada)}</p>
+      {/* Código */}
+      <div className={styles.codigo}>
+        <span>{item.codigo}</span>
+      </div>
+
+      {/* Conteúdo principal */}
+      <div className={styles.info}>
+        <p className={styles.nome}>{item.nome_remessa}</p>
+
+        <div className={styles.meta}>
+          {item.local_estocado && <span>Local: {item.local_estocado}</span>}
+          <span>Categoria: {item.tipo_estoque}</span>
+          <span>{transformData(item.data_entrada)}</span>
+        </div>
+      </div>
     </Link>
   );
 }
