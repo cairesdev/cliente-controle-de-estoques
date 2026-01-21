@@ -1,6 +1,5 @@
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 import { EntidadeRepository } from "@/services/getters/entidade";
-import SessionExpiration from "@/components/session-expiration";
 import { normalizeSearch, tituloPagina } from "@/utils";
 import ItemSimples from "@/components/UI/item-simples";
 import { HiInboxArrowDown, HiOutlineCog6Tooth } from "react-icons/hi2";
@@ -17,6 +16,7 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { MODULO, NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
 import { MdDirectionsCarFilled } from "react-icons/md";
+import ItemViagem from "./UI/samples/item-viagem";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -43,6 +43,8 @@ export default async function AlmoxarifeHomepage({
   const modulos = await entidadeRepository.getModulosDisponiveis({
     id: handler as string,
   });
+
+  const viajens = await entidadeRepository.getViagens();
 
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getEstoqueEntidade({
@@ -224,9 +226,20 @@ export default async function AlmoxarifeHomepage({
             {itens?.length === 0 && <p>Nenhum item no estoque.</p>}
           </>
         )}
-      <div className={styles.rodape}>
-        <SessionExpiration />
-      </div>
+
+      {modulo?.id === MODULO.VEICULAR && (
+        <div className={styles.titulo_sessao}>
+          <h2>
+            <MdDirectionsCarFilled />
+            Viagens realizadas
+          </h2>
+          <div className="ghost_bar" />
+        </div>
+      )}
+
+      {modulo?.id === MODULO.VEICULAR &&
+        viajens?.map((item) => <ItemViagem key={item.id} item={item} />)}
+
       <br />
       <br />
     </main>

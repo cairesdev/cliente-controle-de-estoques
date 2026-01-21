@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 14px;
+  background-color: var(--sky-lightest);
+  border-radius: 12px;
+
+  border-left: 4px solid var(--primary-base);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.placa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  background-color: var(--primary-darkest);
+  color: white;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+  width: fit-content;
+}
+.km {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-dark);
+}
+.motivo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-darker);
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  font-size: 0.8rem;
+  color: var(--ink-dark);
+}
+
+.info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.datas {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 0.75rem;
+  color: var(--sky-dark);
+}

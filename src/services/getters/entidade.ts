@@ -10,6 +10,7 @@ import {
   UnidadeDetalhe,
   Usuario,
   Veiculo,
+  Viagem,
 } from "@/types/entidade";
 
 export class EntidadeRepository {
@@ -103,6 +104,17 @@ export class EntidadeRepository {
       cache: "no-store",
       token: this.token,
       next: { tags: ["veiculos"] },
+    });
+    return response.body.res;
+  }
+
+  async getViagens() {
+    const response = await backendFetch<Viagem[]>({
+      url: API_ROUTES.lista_viajens + this.entidade,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["viajens"] },
     });
     return response.body.res;
   }

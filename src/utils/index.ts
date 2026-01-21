@@ -9,7 +9,7 @@ export function formatSeconds(totalSeconds: number) {
 export function tituloPagina(
   nivel: number,
   entidade_nome: string,
-  unidade_nome: string
+  unidade_nome: string,
 ) {
   switch (nivel) {
     case 0:
@@ -27,7 +27,7 @@ export function tituloPagina(
 
 export const createUrl = (
   pathname: string,
-  params: URLSearchParams | ReadonlyURLSearchParams
+  params: URLSearchParams | ReadonlyURLSearchParams,
 ) => {
   const paramsString = params.toString();
   const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
@@ -43,11 +43,20 @@ export function normalizeSearch(str: string) {
     .replace(/[^a-z0-9]/g, "");
 }
 
-export function transformData(dataString: string): string {
-  if (dataString === null) return "Indeterminado";
+export function transformData(dataString: string | null): string {
+  if (!dataString) return "Indeterminado";
   const data = new Date(dataString);
-  data.setMinutes(data.getTimezoneOffset());
-  return data.toLocaleDateString("pt-BR");
+  const possuiHorario = /\d{2}:\d{2}/.test(dataString);
+  const dataFormatada = data.toLocaleDateString("pt-BR");
+  if (!possuiHorario) {
+    return dataFormatada;
+  }
+  const horaFormatada = data.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return `${dataFormatada} ${horaFormatada}`;
 }
 
 export function DiasAteVencer(data: string): number {

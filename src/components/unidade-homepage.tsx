@@ -43,7 +43,7 @@ export default async function UnidadeHomepage({
             : tituloPagina(
                 parseInt(user.nivel),
                 user.entidade_nome!,
-                user.unidade_nome!
+                user.unidade_nome!,
               )}
           {unidade?.status === 0 && " - Desativada"}
         </h1>

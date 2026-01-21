@@ -17,12 +17,10 @@ export default function ItemEstoque({
       target="_top"
       className={styles.item_estoque}
     >
-      {/* Código */}
       <div className={styles.codigo}>
         <span>{item.codigo}</span>
       </div>
 
-      {/* Conteúdo principal */}
       <div className={styles.info}>
         <p className={styles.nome}>{item.nome_remessa}</p>
 

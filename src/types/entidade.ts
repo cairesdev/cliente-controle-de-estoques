@@ -40,6 +40,19 @@ export type Veiculo = {
   cor: string;
 };
 
+export type Viagem = {
+  id: string;
+  unidade: string;
+  placa: string;
+  saida: string;
+  chegada: string | null;
+  motivo: string;
+  motorista: string;
+  responsavel: string;
+  km_inicial: number;
+  km_final: string | null;
+};
+
 export type Produto = {
   id: string;
   nome: string;

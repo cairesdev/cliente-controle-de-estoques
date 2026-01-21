@@ -1,0 +1,95 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.header_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header_section h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink-darker);
+}
+.submenus {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 44px;
+  padding: 0 16px;
+
+  background-color: var(--primary-darkest);
+  color: var(--sky-lightest);
+  text-decoration: none;
+
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.menuButton:hover {
+  background-color: var(--primary-base);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+.voltar {
+  height: 44px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--sky-ligther);
+  color: var(--ink-dark);
+  text-decoration: none;
+
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.voltar:hover {
+  background-color: var(--sky-lightest);
+}
+.lista_veiculos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.empty {
+  font-size: 0.85rem;
+  color: var(--sky-dark);
+  text-align: center;
+  padding: 20px;
+}
+.footer {
+  margin-top: 16px;
+}
+@media (max-width: 640px) {
+  .menuButton span {
+    display: none;
+  }
+}

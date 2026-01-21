@@ -1,7 +1,7 @@
 import { GoToHomeButton } from "@/components/action-buttons";
 import ItemVeiculo from "@/components/UI/item-veiculo";
 import { EntidadeRepository } from "@/services/getters/entidade";
-import styles from "@/styles/homepage.module.css";
+import styles from "@/styles/components/frota.module.css";
 import Link from "next/link";
 import { MdDirectionsCarFilled } from "react-icons/md";
 
@@ -17,22 +17,36 @@ export default async function CatalogoPage() {
           Catálogo Veicular
         </h1>
         <div className="ghost_traco" />
+
         <div className={styles.submenus}>
-          <Link className="go_back_link" href={"/"} passHref target="_top">
+          <Link className={styles.voltar} href={"/"} target="_top">
             Voltar
           </Link>
-          <Link href={"/catalogo-de-veiculos/novo-veiculo"} target="_top">
+
+          <Link
+            href={"/catalogo-de-veiculos/novo-veiculo"}
+            target="_top"
+            className={styles.menuButton}
+          >
             <MdDirectionsCarFilled />
-            Novo Veículo
+            <span>Novo Veículo</span>
           </Link>
         </div>
       </div>
 
-      {veiculos?.map((item) => (
-        <ItemVeiculo item={item} key={item.id} />
-      ))}
+      <div className={styles.lista_veiculos}>
+        {veiculos?.map((item) => (
+          <ItemVeiculo item={item} key={item.id} />
+        ))}
 
-      <GoToHomeButton />
+        {veiculos?.length === 0 && (
+          <p className={styles.empty}>Nenhum veículo cadastrado.</p>
+        )}
+      </div>
+
+      <div className={styles.footer}>
+        <GoToHomeButton />
+      </div>
     </main>
   );
 }

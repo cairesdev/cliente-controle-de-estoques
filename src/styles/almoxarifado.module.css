@@ -4,7 +4,8 @@
   gap: 18px;
 
   padding: 16px;
-  /* background-color: var(--background); */
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .header_section {
   display: flex;

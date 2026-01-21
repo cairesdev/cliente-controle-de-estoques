@@ -61,6 +61,7 @@ export const API_ROUTES = {
   delete_usuario: "v1/usuarios/danger/",
   update_pass: "v1/usuario/login/danger/",
   lista_veiculos: "v1/garagem/veiculos",
+  lista_viajens: "v1/garagem/viajens/",
   cadastro_veiculo: "v1/garagem/veiculos/",
 };
 
