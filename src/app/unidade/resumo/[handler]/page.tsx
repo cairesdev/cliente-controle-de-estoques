@@ -1,9 +1,8 @@
 import { auth } from "@/auth";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
-import ItemArmazenado from "@/components/UI/item-estoque";
-import ItemProduto from "@/components/UI/samples/item-produto";
+import ItemProdutoResumo from "@/components/UI/samples/item-produto-resumo";
 import { EstoqueRepository } from "@/services/getters/estoque";
-import styles from "@/styles/components/detahe_armazem.module.css";
+import styles from "@/styles/components/cabecalho_resumo.module.css";
 import { transformData } from "@/utils";
 import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
@@ -50,7 +49,7 @@ export default async function ResumoEstoquePage({
           <h4>Solicitante: {data?.remessa.solicitante}</h4>
           <h4>Setor: {data?.remessa.tipo_estoque}</h4>
           <h4>Produtos registrados: {data?.remessa.qnt_entrada}</h4>
-          <div>
+          <div className={styles.btn_area}>
             <PrintPageButton />
             <GoToHomeButton />
           </div>
@@ -58,7 +57,7 @@ export default async function ResumoEstoquePage({
       </div>
       <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
-          <ItemProduto key={item.id} item={item} />
+          <ItemProdutoResumo key={item.id} item={item} />
         ))}
       </div>
       <br />

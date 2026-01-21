@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import ItemProduto from "@/components/UI/samples/item-produto";
+import ItemProdutoResumo from "@/components/UI/samples/item-produto-resumo";
 import SearchInput, { SearchSkeleton } from "@/components/UI/search";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
@@ -31,7 +32,7 @@ export default async function ListaItensPage({
 
   const filtred = q
     ? data?.filter((item) =>
-        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
+        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText)),
       )
     : data;
 
@@ -56,7 +57,7 @@ export default async function ListaItensPage({
 
       <div className={styles.lista_entidades}>
         {filtred?.map((item) => (
-          <ItemProduto
+          <ItemProdutoResumo
             key={item.id}
             item={item}
             nivel={parseInt(session?.user.nivel!)}

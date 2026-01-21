@@ -31,7 +31,7 @@ export default async function ListaItensPage({
 
   const filtred = q
     ? data?.filter((item) =>
-        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
+        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText)),
       )
     : data;
 
