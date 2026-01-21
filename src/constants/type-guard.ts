@@ -90,6 +90,11 @@ export enum CATEGORIA_ITEM {
   OUTROS = 4,
 }
 
+export enum MODULO {
+  ESCOLAR = 1,
+  VEICULAR = 255,
+  SAUDE = 99,
+}
 export const TipoModulo = [
   { nome: "Outros", id: 5 },
   { nome: "Unidades Escolares", id: 1 },

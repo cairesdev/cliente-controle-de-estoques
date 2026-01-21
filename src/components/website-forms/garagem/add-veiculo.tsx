@@ -66,7 +66,7 @@ export default function NovoVeiculoForm() {
       <Button
         rounded
         type="danger"
-        onClick={() => router.push(`/configuracoes/gerenciamento-de-listas`)}
+        onClick={() => router.push(`/catalogo-de-veiculos`)}
       >
         Cancelar
       </Button>

@@ -14,7 +14,7 @@ import Link from "next/link";
 import { IoLayersOutline, IoQrCodeOutline } from "react-icons/io5";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import { AiOutlineProduct } from "react-icons/ai";
-import { NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
+import { MODULO, NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
 import { MdDirectionsCarFilled } from "react-icons/md";
 
@@ -122,47 +122,59 @@ export default async function AlmoxarifeHomepage({
           </Link>
         </div>
       )}
-
-      <div className={styles.submenus}>
-        {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
-          <Link className="go_back_link" href={"/"} passHref target="_top">
-            Voltar
+      {modulo?.id === MODULO.VEICULAR && (
+        <div className={styles.submenus}>
+          {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
+            <Link className="go_back_link" href={"/"} passHref target="_top">
+              Voltar
+            </Link>
+          )}
+          <Link href={"/catalogo-de-veiculos"} target="_top">
+            <MdDirectionsCarFilled />
+            Catálogo Veicular
           </Link>
-        )}
-        <Link href={"/catalogo-de-veiculos"} target="_top">
-          <MdDirectionsCarFilled />
-          Catálogo Veicular
-        </Link>
-      </div>
-      {modulo?.id === 1 &&
+        </div>
+      )}
+      {modulo?.id === MODULO.ESCOLAR &&
         parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO && (
           <div className={styles.submenus}>
             {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
-              <Link className="go_back_link" href={"/"} passHref target="_top">
+              <Link
+                className={`${styles.menuButton} ${styles.voltar}`}
+                href={"/"}
+                target="_top"
+              >
                 Voltar
               </Link>
             )}
-            <Link href={"/catalogo-de-produtos"} target="_top">
+
+            <Link
+              href={"/catalogo-de-produtos"}
+              target="_top"
+              className={styles.menuButton}
+            >
               <AiOutlineProduct />
-              Catálogo de Produtos
+              <span>Catálogo</span>
             </Link>
+
             <Link
               href={`/entidade/${handler}/almoxarifado/itens`}
               prefetch={false}
               target="_top"
-              passHref
+              className={styles.menuButton}
             >
               <HiInboxArrowDown />
-              Visualizar armazem de itens
+              <span>Armazém</span>
             </Link>
+
             <Link
               href={"/procurar-remessa"}
               prefetch={false}
               target="_top"
-              passHref
+              className={styles.menuButton}
             >
               <IoQrCodeOutline />
-              Buscar Remessa
+              <span>Buscar Remessa</span>
             </Link>
           </div>
         )}

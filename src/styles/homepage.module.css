@@ -85,10 +85,36 @@
 
 .submenus {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 44px;
+  padding: 0 16px;
+
+  background-color: var(--primary-darkest);
+  color: var(--sky-lightest);
+  text-decoration: none;
+
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.menuButton svg {
+  font-size: 1.1rem;
 }
 
 .submenus a {
@@ -102,4 +128,34 @@
   padding: 10px 19px;
   border-radius: 12px;
   height: 70px;
+}
+
+.menuButton:hover {
+  background-color: var(--primary-base);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.menuButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.voltar {
+  background-color: var(--sky-ligther);
+  color: var(--ink-dark);
+}
+
+.voltar:hover {
+  background-color: var(--sky-lightest);
+}
+
+@media (max-width: 600px) {
+  .menuButton span {
+    display: none;
+  }
+
+  .menuButton {
+    padding: 0 14px;
+  }
 }

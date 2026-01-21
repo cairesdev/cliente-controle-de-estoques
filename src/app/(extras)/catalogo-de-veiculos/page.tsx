@@ -1,5 +1,4 @@
-import { GoBackButton } from "@/components/action-buttons";
-import ItemCatalogo from "@/components/UI/item-catalogo";
+import { GoToHomeButton } from "@/components/action-buttons";
 import ItemVeiculo from "@/components/UI/item-veiculo";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/homepage.module.css";
@@ -33,7 +32,7 @@ export default async function CatalogoPage() {
         <ItemVeiculo item={item} key={item.id} />
       ))}
 
-      <GoBackButton />
+      <GoToHomeButton />
     </main>
   );
 }
