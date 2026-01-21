@@ -1,7 +1,7 @@
 import { API_URL } from "./enverioments";
 
 export const isBackendError = (
-  error: unknown
+  error: unknown,
 ): error is { error: boolean; message: string; status: number } => {
   return (
     typeof error === "object" &&
@@ -60,6 +60,7 @@ export const API_ROUTES = {
   lista_usuarios: "v1/usuarios/acesso-livre",
   delete_usuario: "v1/usuarios/danger/",
   update_pass: "v1/usuario/login/danger/",
+  lista_veiculos: "v1/garagem/veiculos",
 };
 
 export const HttpStatus = {

@@ -22,8 +22,8 @@ export default function ItemProduto({
     dias < 0
       ? "Vencido"
       : dias <= 7
-      ? "Perto do vencimento"
-      : "Dentro da validade";
+        ? "Perto do vencimento"
+        : "Dentro da validade";
 
   return (
     <div className={styles.item_estoque}>

@@ -30,6 +30,15 @@ export type UnidadeDetalhe = {
   id_tipo_unidade: number;
 };
 
+export type Veiculo = {
+  id: string;
+  nome: string;
+  marca: string;
+  modelo: string;
+  placa: string;
+  status: string;
+};
+
 export type Produto = {
   id: string;
   nome: string;

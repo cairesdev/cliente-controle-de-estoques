@@ -16,6 +16,7 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import { AiOutlineProduct } from "react-icons/ai";
 import { NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
+import { MdDirectionsCarFilled } from "react-icons/md";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -50,12 +51,12 @@ export default async function AlmoxarifeHomepage({
 
   const filtred = search
     ? unidades?.filter((item) =>
-        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText))
+        normalizeSearch(item.nome).includes(normalizeSearch(pesquisaText)),
       )
     : unidades;
 
   const modulo = TipoModulo.find(
-    (i) => i.id === parseInt(user.tipo_almoxarife)
+    (i) => i.id === parseInt(user.tipo_almoxarife),
   );
 
   return (
@@ -68,7 +69,7 @@ export default async function AlmoxarifeHomepage({
             : tituloPagina(
                 parseInt(user.nivel),
                 user.entidade_nome!,
-                user.unidade_nome!
+                user.unidade_nome!,
               )}
         </h1>
         <h2>{modulo?.nome}</h2>
@@ -122,37 +123,49 @@ export default async function AlmoxarifeHomepage({
         </div>
       )}
 
-      {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO && (
-        <div className={styles.submenus}>
-          {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
-            <Link className="go_back_link" href={"/"} passHref target="_top">
-              Voltar
+      <div className={styles.submenus}>
+        {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
+          <Link className="go_back_link" href={"/"} passHref target="_top">
+            Voltar
+          </Link>
+        )}
+        <Link href={"/catalogo-de-veiculos"} target="_top">
+          <MdDirectionsCarFilled />
+          Catálogo Veicular
+        </Link>
+      </div>
+      {modulo?.id === 1 &&
+        parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO && (
+          <div className={styles.submenus}>
+            {parseInt(user.nivel) >= NIVEIS_USUARIO.GERENCIA && (
+              <Link className="go_back_link" href={"/"} passHref target="_top">
+                Voltar
+              </Link>
+            )}
+            <Link href={"/catalogo-de-produtos"} target="_top">
+              <AiOutlineProduct />
+              Catálogo de Produtos
             </Link>
-          )}
-          <Link href={"/catalogo-de-produtos"} target="_top">
-            <AiOutlineProduct />
-            Catálogo de Produtos
-          </Link>
-          <Link
-            href={`/entidade/${handler}/almoxarifado/itens`}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <HiInboxArrowDown />
-            Visualizar armazem de itens
-          </Link>
-          <Link
-            href={"/procurar-remessa"}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <IoQrCodeOutline />
-            Buscar Remessa
-          </Link>
-        </div>
-      )}
+            <Link
+              href={`/entidade/${handler}/almoxarifado/itens`}
+              prefetch={false}
+              target="_top"
+              passHref
+            >
+              <HiInboxArrowDown />
+              Visualizar armazem de itens
+            </Link>
+            <Link
+              href={"/procurar-remessa"}
+              prefetch={false}
+              target="_top"
+              passHref
+            >
+              <IoQrCodeOutline />
+              Buscar Remessa
+            </Link>
+          </div>
+        )}
       <div className={styles.titulo_sessao}>
         <h2>
           <FaFingerprint />

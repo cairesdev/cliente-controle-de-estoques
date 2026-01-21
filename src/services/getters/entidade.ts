@@ -9,12 +9,13 @@ import {
   Produto,
   UnidadeDetalhe,
   Usuario,
+  Veiculo,
 } from "@/types/entidade";
 
 export class EntidadeRepository {
   private constructor(
     private readonly entidade: string,
-    private readonly token: string
+    private readonly token: string,
   ) {}
 
   static async create(): Promise<EntidadeRepository> {
@@ -91,6 +92,17 @@ export class EntidadeRepository {
       cache: "no-store",
       token: this.token,
       next: { tags: ["produtos"] },
+    });
+    return response.body.res;
+  }
+
+  async getListaVeiculos() {
+    const response = await backendFetch<Veiculo[]>({
+      url: API_ROUTES.lista_veiculos + "/" + this.entidade,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["veiculos"] },
     });
     return response.body.res;
   }
