@@ -211,7 +211,7 @@ export default async function AlmoxarifeHomepage({
       {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO &&
         modulo?.id == 1 && (
           <>
-            <div className={styles.titulo_se2ssao}>
+            <div className={styles.titulo_sessao}>
               <h2>
                 <IoLayersOutline />
                 Estoques disponíveis
@@ -237,8 +237,10 @@ export default async function AlmoxarifeHomepage({
         </div>
       )}
 
-      {modulo?.id === MODULO.VEICULAR &&
-        viajens?.map((item) => <ItemViagem key={item.id} item={item} />)}
+      <div className={styles.lista_entidades}>
+        {modulo?.id === MODULO.VEICULAR &&
+          viajens?.map((item) => <ItemViagem key={item.id} item={item} />)}
+      </div>
 
       <br />
       <br />

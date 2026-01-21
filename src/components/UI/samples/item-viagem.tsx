@@ -31,7 +31,7 @@ export default function ItemViagem({ item }: { item: Viagem }) {
       </div>
       <div className={styles.datas}>
         <span>Saída: {transformData(item.saida)}</span>
-        {item.chegada && <span>Chegada: {transformData(item.chegada)}</span>}
+        <span>Chegada: {transformData(item.chegada)}</span>
       </div>
     </div>
   );
