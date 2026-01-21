@@ -131,7 +131,7 @@ export default async function AlmoxarifeHomepage({
           )}
           <Link href={"/catalogo-de-veiculos"} target="_top">
             <MdDirectionsCarFilled />
-            Catálogo Veicular
+            Frota Municipal
           </Link>
         </div>
       )}
