@@ -42,6 +42,24 @@ export default function NovoVeiculoForm() {
           required
         />
       </div>
+      <div className={styles.input_container}>
+        <label>Modelo</label>
+        <input
+          type="text"
+          name="MODELO"
+          placeholder="Digite o modelo"
+          required
+        />
+      </div>
+      <div className={styles.input_container}>
+        <label>Placa</label>
+        <input
+          type="text"
+          name="PLACA"
+          placeholder="Digite a placa do veiculo"
+          required
+        />
+      </div>
       <Button htmlType="submit" rounded>
         Cadastrar
       </Button>
