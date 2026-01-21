@@ -4,7 +4,7 @@ import SessionExpiration from "@/components/session-expiration";
 import { normalizeSearch, tituloPagina } from "@/utils";
 import ItemSimples from "@/components/UI/item-simples";
 import { HiInboxArrowDown, HiOutlineCog6Tooth } from "react-icons/hi2";
-import styles from "@/styles/homepage.module.css";
+import styles from "@/styles/almoxarifado.module.css";
 import { RiDashboardLine } from "react-icons/ri";
 import { FaFingerprint } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
