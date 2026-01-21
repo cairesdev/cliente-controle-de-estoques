@@ -12,50 +12,77 @@
 
 .container_veiculo {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-  padding: 16px;
+  gap: 16px;
+  padding: 10px 14px;
+
+  background-color: var(--sky-lightest);
+  border: 1px solid var(--sky-ligther);
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background-color: #ffffff;
 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition:
-    transform 0.2s ease,
+    background-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .container_veiculo:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.nome {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.modelo {
-  font-size: 0.95rem;
-  color: #374151;
+  background-color: var(--blue-lightest);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .placa {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 10px;
+  min-width: 120px;
+
+  background-color: var(--primary-darkest);
+  color: white;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  border-radius: 6px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-weight: 600;
+  color: var(--ink-darker);
+  font-size: 0.95rem;
+}
+
+.modelo {
+  font-size: 0.8rem;
+  color: var(--sky-dark);
 }
 
 .status {
-  align-self: flex-start;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
+  padding: 4px 10px;
+
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
 
-  background-color: #e0f2fe;
-  color: #0369a1;
+  border-radius: 12px;
+
+  background-color: var(--yellow-lightest);
+  color: var(--yellow-base);
 }
