@@ -1,7 +1,6 @@
 import { GoBackButton } from "@/components/action-buttons";
-import ItemCatalogo from "@/components/UI/item-catalogo";
 import { EntidadeRepository } from "@/services/getters/entidade";
-import styles from "@/styles/homepage.module.css";
+import styles from "@/styles/sample/catalogo.module.css";
 import { RiDashboardLine } from "react-icons/ri";
 
 export default async function CatalogoPage() {
@@ -18,11 +17,18 @@ export default async function CatalogoPage() {
         <div className="ghost_traco" />
       </div>
 
-      {produtos?.map((item) => (
-        <ItemCatalogo item={item} key={item.id} />
-      ))}
+      <div className={styles.lista}>
+        {produtos?.map((item) => (
+          <div key={item.id} className={styles.item_container}>
+            <p className={styles.nome}>{item.nome}</p>
+            <span className={styles.unidade}>{item.und_medida}</span>
+          </div>
+        ))}
+      </div>
 
-      <GoBackButton />
+      <div className={styles.footer}>
+        <GoBackButton />
+      </div>
     </main>
   );
 }

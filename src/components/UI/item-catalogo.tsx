@@ -1,5 +1,5 @@
 import { Produto } from "@/types/entidade";
-import styles from "@/styles/components/item_catalogo.module.css";
+import styles from "@/styles/sample/catalogo.module.css";
 
 export default function ItemCatalogo({ item }: { item: Produto }) {
   return (

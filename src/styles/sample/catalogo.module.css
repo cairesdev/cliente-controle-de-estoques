@@ -1,0 +1,75 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 16px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.header_section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header_section h1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-darker);
+}
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.item_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 14px;
+  height: 44px;
+
+  background-color: var(--sky-lightest);
+  border: 1px solid var(--sky-ligther);
+  border-radius: 8px;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.item_container:hover {
+  background-color: var(--blue-lightest);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+.nome {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-darker);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.unidade {
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  padding: 4px 8px;
+  border-radius: 10px;
+
+  background-color: var(--sky-ligther);
+  color: var(--ink-base);
+}
+.footer {
+  margin-top: 12px;
+}
