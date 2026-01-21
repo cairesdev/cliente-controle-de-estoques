@@ -37,6 +37,7 @@ export type Veiculo = {
   modelo: string;
   placa: string;
   status: string;
+  cor: string;
 };
 
 export type Produto = {

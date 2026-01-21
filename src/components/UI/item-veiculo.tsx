@@ -7,7 +7,12 @@ export default function ItemVeiculo({ item }: { item: Veiculo }) {
     <div className={styles.container_veiculo}>
       <div className={styles.placa}>
         <FaTag size={14} />
-        <span>{item.placa}</span>
+        <span>{item.placa}</span>{" "}
+        <span
+          className={styles.colorDot}
+          title={item.cor}
+          style={{ backgroundColor: item.cor }}
+        />
       </div>
 
       <div className={styles.info}>

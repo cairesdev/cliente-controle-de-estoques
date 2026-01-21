@@ -17,6 +17,7 @@ export default function NovoVeiculoForm() {
       MARCA: String(form.get("MARCA")).toUpperCase(),
       MODELO: String(form.get("MODELO")).toUpperCase(),
       PLACA: String(form.get("PLACA")).toUpperCase(),
+      COR: String(form.get("COR")).toUpperCase(),
     };
 
     const isOk = await addVeiculo(payload);
@@ -46,6 +47,18 @@ export default function NovoVeiculoForm() {
           required
         />
       </div>
+
+      <div className={styles.input_container}>
+        <label>Cor</label>
+        <input
+          className={styles.color_input}
+          type="color"
+          name="COR"
+          placeholder="Cor do veiculo"
+          required
+        />
+      </div>
+
       <div className={styles.input_container}>
         <label>Placa</label>
         <input

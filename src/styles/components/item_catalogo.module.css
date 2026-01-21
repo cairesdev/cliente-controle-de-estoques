@@ -9,6 +9,12 @@
   background-color: var(--sky-lightest);
   padding: 10px 15px;
 }
+.colorDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--sky-ligther);
+}
 
 .container_veiculo {
   display: flex;
