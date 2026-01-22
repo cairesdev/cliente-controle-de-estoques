@@ -108,6 +108,7 @@ export class EntidadeRepository {
     });
     return response.body.res;
   }
+
   async getAllSolicitacoes() {
     const response = await backendFetch<SolicitacaoViagem[]>({
       url: API_ROUTES.lista_viajens + "solicitacoes/" + this.entidade,

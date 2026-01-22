@@ -213,7 +213,7 @@ export default async function AlmoxarifeHomepage({
       {filtred?.length === 0 && <p>Nenhuma unidade registrada.</p>}
 
       {parseInt(user.nivel) <= NIVEIS_USUARIO.ALMOXARIFADO &&
-        modulo?.id == 1 && (
+        modulo?.id == MODULO.ESCOLAR && (
           <>
             <div className={styles.titulo_sessao}>
               <h2>

@@ -2,6 +2,7 @@ export type ItemBasic = {
   id: string;
   nome: string;
   status: number;
+  id_tipo_unidade?: number;
 };
 
 export type ItemUnidade = {
