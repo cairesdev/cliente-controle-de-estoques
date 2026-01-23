@@ -18,7 +18,6 @@ export default async function DetalheViagemPage({
 
   return (
     <main className={styles.container}>
-      {/* HEADER */}
       <header className={styles.header}>
         <Link className="go_back_link" href={"/"} passHref target="_top">
           Voltar
@@ -30,7 +29,6 @@ export default async function DetalheViagemPage({
         </div>
       </header>
 
-      {/* DADOS PRINCIPAIS */}
       <section className={styles.grid}>
         <div className={styles.card}>
           <strong>Saída</strong>
@@ -53,13 +51,11 @@ export default async function DetalheViagemPage({
         </div>
       </section>
 
-      {/* MOTIVO */}
       <section className={styles.motivo}>
         <FaRoute />
         <p>{viagem?.motivo}</p>
       </section>
 
-      {/* RESPONSÁVEIS */}
       <section className={styles.info}>
         <div>
           <FaUser />
@@ -74,6 +70,16 @@ export default async function DetalheViagemPage({
           <span>Unidade: {viagem?.unidade}</span>
         </div>
       </section>
+      {!viagem?.chegada && (
+        <Link
+          className="go_back_link"
+          href={`/unidade/viagem/${viagem?.id}/concluir`}
+          passHref
+          target="_top"
+        >
+          Concluir Viagem
+        </Link>
+      )}
     </main>
   );
 }

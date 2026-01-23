@@ -11,7 +11,7 @@ export function DeleteArmazem({ id, token }: { id: string; token: string }) {
 
   async function handleDelete() {
     const confirmar = confirm(
-      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita."
+      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita.",
     );
 
     if (!confirmar) return;
@@ -32,7 +32,7 @@ export function DeleteItem({ id, token }: { id: string; token: string }) {
 
   async function handleDelete() {
     const confirmar = confirm(
-      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita."
+      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita.",
     );
 
     if (!confirmar) return;
@@ -90,7 +90,7 @@ export function DeleteItemTipo({
 
   async function handleDelete() {
     const confirmar = confirm(
-      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita."
+      "Tem certeza que deseja excluir este item?\nEssa ação não poderá ser desfeita.",
     );
 
     if (!confirmar) return;
@@ -112,7 +112,7 @@ export function DeleteUsuario({ id, token }: { id: string; token: string }) {
 
   async function handleDelete() {
     const confirmar = confirm(
-      "Tem certeza que deseja excluir este usuario?\nEssa ação não poderá ser desfeita."
+      "Tem certeza que deseja excluir este usuario?\nEssa ação não poderá ser desfeita.",
     );
 
     if (!confirmar) return;

@@ -1,0 +1,106 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: var(--sky-lightest);
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.status {
+  margin-left: auto;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.andamento {
+  background: var(--yellow-lightest);
+  color: var(--yellow-base);
+}
+
+.finalizada {
+  background: var(--blue-lightest);
+  color: var(--primary-darkest);
+}
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.kpi {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: var(--primary-darkest);
+  color: white;
+
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.kpi strong {
+  font-size: 1.2rem;
+}
+
+.kpi span {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: var(--sky-lightest);
+  padding: 12px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.motivo {
+  display: flex;
+  gap: 8px;
+
+  background: var(--yellow-lightest);
+  padding: 12px;
+  border-radius: 10px;
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  font-size: 0.85rem;
+}
+.concluir {
+  align-self: flex-end;
+
+  background: var(--primary-darkest);
+  color: white;
+  padding: 10px 16px;
+
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
