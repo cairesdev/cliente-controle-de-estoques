@@ -3,14 +3,16 @@
 import { Button } from "@/components/UI/button";
 import styles from "@/styles/components/forms.module.css";
 import { useRouter } from "next/navigation";
-import { addVeiculo } from "./action";
+import { addSolicitacaoViagem } from "./action";
 import { toast } from "react-toastify";
 import { Veiculo } from "@/types/entidade";
 
 export default function SolicitarVeiculoForm({
   veiculos,
+  idUnidade,
 }: {
   veiculos: Veiculo[];
+  idUnidade: string;
 }) {
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,17 +20,17 @@ export default function SolicitarVeiculoForm({
     const form = new FormData(e.currentTarget);
 
     const payload = {
-      NOME: String(form.get("NOME")).toUpperCase(),
-      MARCA: String(form.get("MARCA")).toUpperCase(),
-      MODELO: String(form.get("MODELO")).toUpperCase(),
-      PLACA: String(form.get("PLACA")).toUpperCase(),
-      COR: String(form.get("COR")).toUpperCase(),
+      RESPONSAVEL: String(form.get("RESPONSAVEL")).toUpperCase(),
+      MOTIVO: String(form.get("MOTIVO")).toUpperCase(),
+      DATA_VIAGEM: form.get("DATA"),
+      ID_VEICULO: form.get("VEICULO"),
+      UNIDADE: idUnidade,
     };
 
-    const isOk = await addVeiculo(payload);
+    const isOk = await addSolicitacaoViagem(payload);
     if (isOk) {
-      toast.success("Cadastrado com sucesso.");
-      router.push(`/catalogo-de-veiculos`);
+      toast.success("Solicitado com sucesso.");
+      router.push(`/`);
     } else {
       toast.warn("Tente novamente.");
     }
@@ -54,8 +56,12 @@ export default function SolicitarVeiculoForm({
         />
       </div>
       <div className={styles.input_container}>
-        <label>Nivel de usuário</label>
-        <select id="NIVEL" name="NIVEL">
+        <label>Data desejada</label>
+        <input type="date" name="DATA" required />
+      </div>
+      <div className={styles.input_container}>
+        <label>Veiculo desejado</label>
+        <select id="VEICULO" name="VEICULO">
           {veiculos.map((item) => (
             <option key={item.id} value={item.id}>
               {item.nome}

@@ -21,3 +21,22 @@ export async function addVeiculo(data: any) {
     return false;
   }
 }
+
+export async function addSolicitacaoViagem(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+  const entidade = session?.user.entidade_id;
+
+  const response = await backendFetch({
+    url: API_ROUTES.solicitacao_veicular + entidade + "/" + data.UNIDADE,
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    return true;
+  } else {
+    return false;
+  }
+}

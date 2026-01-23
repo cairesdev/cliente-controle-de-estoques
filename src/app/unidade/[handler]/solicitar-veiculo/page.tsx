@@ -3,7 +3,15 @@ import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/homepage.module.css";
 import { MdDirectionsCarFilled } from "react-icons/md";
 
-export default async function SolicitarVeiculoPage() {
+export default async function SolicitarVeiculoPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ handler: string | undefined }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { handler } = await params;
+
   const entidadeRepository = await EntidadeRepository.create();
   const veiculos = await entidadeRepository.getListaVeiculos();
 
@@ -16,7 +24,7 @@ export default async function SolicitarVeiculoPage() {
         </h1>
         <div className="ghost_traco" />
       </div>
-      <SolicitarVeiculoForm veiculos={veiculos!} />
+      <SolicitarVeiculoForm idUnidade={handler!} veiculos={veiculos!} />
     </main>
   );
 }
