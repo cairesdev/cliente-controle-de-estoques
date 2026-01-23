@@ -2,10 +2,14 @@ import { Viagem } from "@/types/entidade";
 import styles from "@/styles/sample/item_viagem.module.css";
 import { FaCarSide, FaRoute, FaUser, FaMapMarkerAlt } from "react-icons/fa";
 import { transformData } from "@/utils";
+import Link from "next/link";
 
 export default function ItemViagem({ item }: { item: Viagem }) {
   return (
-    <div className={styles.container}>
+    <Link
+      href={`/unidade/viagem/${item.id}/detalhes`}
+      className={styles.container}
+    >
       <div className={styles.placa}>
         <FaCarSide size={14} />
         <span>{item.placa}</span>
@@ -34,6 +38,6 @@ export default function ItemViagem({ item }: { item: Viagem }) {
         <span>Saída: {transformData(item.saida)}</span>
         <span>Chegada: {transformData(item.chegada)}</span>
       </div>
-    </div>
+    </Link>
   );
 }

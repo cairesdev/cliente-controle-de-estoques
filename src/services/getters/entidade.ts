@@ -131,6 +131,28 @@ export class EntidadeRepository {
     return response.body.res;
   }
 
+  async getViagensUnidade({ id }: { id: string }) {
+    const response = await backendFetch<Viagem[]>({
+      url: API_ROUTES.lista_viajens + id + "/unidade",
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["viajens"] },
+    });
+    return response.body.res;
+  }
+
+  async getViagemDetalhe({ id }: { id: string }) {
+    const response = await backendFetch<Viagem>({
+      url: API_ROUTES.lista_viajens + id + "/detalhes",
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["viajens"] },
+    });
+    return response.body.res;
+  }
+
   async getListaTipoUnidade() {
     const response = await backendFetch<ItemBasic[]>({
       url: API_ROUTES.tipo_unidade,

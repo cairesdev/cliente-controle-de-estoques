@@ -3,11 +3,11 @@ import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/unidade_veiculo.module.css";
 import Link from "next/link";
-import { FaCarSide } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
-import { IoAlertCircleSharp } from "react-icons/io5";
+import { MdTravelExplore } from "react-icons/md";
 import { RiDashboardLine } from "react-icons/ri";
+import ItemViagem from "./UI/samples/item-viagem";
 
 export default async function GaragemHomePage({
   handler,
@@ -21,6 +21,8 @@ export default async function GaragemHomePage({
   const unidade = await entidadeRepository.getUnidade({
     id: handler as string,
   });
+
+  const viajens = await entidadeRepository.getViagensUnidade({ id: handler });
 
   return (
     <main className={styles.homepage}>
@@ -56,11 +58,18 @@ export default async function GaragemHomePage({
             </Link>
           )}
           <Link href={`/unidade/${handler}/solicitar-veiculo`} target="_top">
-            <FaCarSide />
+            <MdTravelExplore />
             Solicitar veiculo
           </Link>
         </div>
       )}
+
+      <div className={styles.lista_entidades}>
+        {viajens?.map((item) => (
+          <ItemViagem key={item.id} item={item} />
+        ))}
+        {viajens?.length === 0 && <p>Nenhuma viagem registrada.</p>}
+      </div>
     </main>
   );
 }
