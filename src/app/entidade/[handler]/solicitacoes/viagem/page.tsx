@@ -2,7 +2,7 @@ import ItemSolicitacaoViagem from "@/components/UI/samples/item-solicitacao-viag
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/components/frota.module.css";
 import Link from "next/link";
-import { MdDirectionsCarFilled, MdTravelExplore } from "react-icons/md";
+import { MdTravelExplore } from "react-icons/md";
 
 export default async function SolicitacoesViagem({
   params,
@@ -35,7 +35,7 @@ export default async function SolicitacoesViagem({
           <ItemSolicitacaoViagem key={item.id} item={item} />
         ))}
         {solicitacoes?.length === 0 && (
-          <p className={styles.empty}>Nenhum veículo cadastrado.</p>
+          <p className={styles.empty}>Nenhum veículo solicitado.</p>
         )}
       </div>
     </main>

@@ -70,7 +70,7 @@ export default async function DetalheViagemPage({
           <span>Unidade: {viagem?.unidade}</span>
         </div>
       </section>
-      {!viagem?.chegada && (
+      {viagem?.saida !== null && !viagem?.chegada && (
         <Link
           className="go_back_link"
           href={`/unidade/viagem/${viagem?.id}/concluir`}
@@ -78,6 +78,16 @@ export default async function DetalheViagemPage({
           target="_top"
         >
           Concluir Viagem
+        </Link>
+      )}
+      {viagem?.saida === null && (
+        <Link
+          className="go_back_link"
+          href={`/unidade/viagem/${viagem?.id}/liberar`}
+          passHref
+          target="_top"
+        >
+          Iniciar Viagem
         </Link>
       )}
     </main>

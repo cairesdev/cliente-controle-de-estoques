@@ -64,6 +64,7 @@ export const API_ROUTES = {
   lista_viajens: "v1/garagem/viajens/",
   cadastro_veiculo: "v1/garagem/veiculos/",
   solicitacao_veicular: "v1/garagem/viajens/solicitacao/",
+  liberar_veiculo: "v1/garagem/viajens/liberacao/",
 };
 
 export const HttpStatus = {

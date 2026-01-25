@@ -235,7 +235,7 @@ export default async function AlmoxarifeHomepage({
         <div className={styles.titulo_sessao}>
           <h2>
             <MdDirectionsCarFilled />
-            Viagens realizadas
+            Viagens
           </h2>
           <div className="ghost_bar" />
         </div>
@@ -244,6 +244,7 @@ export default async function AlmoxarifeHomepage({
       <div className={styles.lista_entidades}>
         {modulo?.id === MODULO.VEICULAR &&
           viajens?.map((item) => <ItemViagem key={item.id} item={item} />)}
+        {viajens?.length === 0 && <p>Nenhuma viagem registrada.</p>}
       </div>
 
       <br />

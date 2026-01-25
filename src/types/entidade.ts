@@ -49,6 +49,9 @@ export type SolicitacaoViagem = {
   responsavel: string;
   motivo: string;
   status: string;
+  telefone_responsavel?: string;
+  resumo: string;
+  id_unidade?: string;
 };
 
 export type Viagem = {
@@ -63,6 +66,7 @@ export type Viagem = {
   km_inicial: number;
   km_final: string | null;
   veiculo: string;
+  liberacao: string;
 };
 
 export type Produto = {

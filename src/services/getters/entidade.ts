@@ -131,6 +131,17 @@ export class EntidadeRepository {
     return response.body.res;
   }
 
+  async getDetalheSolicitacao({ id }: { id: string }) {
+    const response = await backendFetch<SolicitacaoViagem>({
+      url: API_ROUTES.solicitacao_veicular + id,
+      method: "GET",
+      cache: "no-store",
+      token: this.token,
+      next: { tags: ["viajens"] },
+    });
+    return response.body.res;
+  }
+
   async getViagensUnidade({ id }: { id: string }) {
     const response = await backendFetch<Viagem[]>({
       url: API_ROUTES.lista_viajens + id + "/unidade",

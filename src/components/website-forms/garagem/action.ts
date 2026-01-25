@@ -41,6 +41,42 @@ export async function addSolicitacaoViagem(data: any) {
   }
 }
 
+export async function liberarViagem(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: API_ROUTES.liberar_veiculo + data.SOLICITACAO + "/" + data.UNIDADE,
+    method: "POST",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export async function iniciarViagem(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: API_ROUTES.liberar_veiculo + data.VIAGEM,
+    method: "PUT",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.CREATED) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export async function concluirViagem(data: any) {
   const session = await auth();
   const token = session?.user.access_token;

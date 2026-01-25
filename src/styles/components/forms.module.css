@@ -25,7 +25,8 @@
 }
 
 .input_container input,
-.input_container select {
+.input_container select,
+.input_container textarea {
   width: 100%;
   padding: 1.063rem 1rem;
   border-radius: 0.75rem;

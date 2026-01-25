@@ -24,6 +24,8 @@ export default function SolicitarVeiculoForm({
       MOTIVO: String(form.get("MOTIVO")).toUpperCase(),
       DATA_VIAGEM: form.get("DATA"),
       ID_VEICULO: form.get("VEICULO"),
+      TELEFONE_RESPONSAVEL: form.get("TELEFONE_RESPONSAVEL"),
+      RESUMO: form.get("RESUMO"),
       UNIDADE: idUnidade,
     };
 
@@ -47,36 +49,51 @@ export default function SolicitarVeiculoForm({
         />
       </div>
       <div className={styles.input_container}>
-        <label>Motivo da viagem</label>
+        <label>Telefone para contato</label>
         <input
           type="text"
-          name="MOTIVO"
-          placeholder="Razão da solicitação"
+          name="TELEFONE_RESPONSAVEL"
+          placeholder="Digite numero para contato"
           required
         />
       </div>
+
       <div className={styles.input_container}>
         <label>Data desejada</label>
-        <input type="date" name="DATA" required />
+        <input type="datetime-local" name="DATA" required />
       </div>
       <div className={styles.input_container}>
         <label>Veiculo desejado</label>
         <select id="VEICULO" name="VEICULO">
           {veiculos.map((item) => (
             <option key={item.id} value={item.id}>
-              {item.nome}
+              {item.nome} - {item.status}
             </option>
           ))}
         </select>
       </div>
+      <div className="ghost_traco" />
+      <div className={styles.input_container}>
+        <label>Resumo</label>
+        <input
+          type="text"
+          name="RESUMO"
+          placeholder="Razão da solicitação"
+          required
+        />
+      </div>
+      <div className={styles.input_container}>
+        <label>Motivo da Viagem</label>
+        <textarea
+          name="MOTIVO"
+          placeholder="Razão da solicitação"
+          maxLength={255}
+        />
+      </div>
       <Button htmlType="submit" rounded>
         Cadastrar
       </Button>
-      <Button
-        rounded
-        type="danger"
-        onClick={() => router.push(`/catalogo-de-veiculos`)}
-      >
+      <Button rounded type="danger" onClick={() => router.back()}>
         Cancelar
       </Button>
     </form>

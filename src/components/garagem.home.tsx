@@ -8,6 +8,7 @@ import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { MdTravelExplore } from "react-icons/md";
 import { RiDashboardLine } from "react-icons/ri";
 import ItemViagem from "./UI/samples/item-viagem";
+import { IoLayersOutline } from "react-icons/io5";
 
 export default async function GaragemHomePage({
   handler,
@@ -64,11 +65,60 @@ export default async function GaragemHomePage({
         </div>
       )}
 
+      <div className={styles.titulo_sessao}>
+        <h2>
+          <IoLayersOutline />
+          Viajens Liberadas
+        </h2>
+        <div className="ghost_bar" />
+      </div>
+
       <div className={styles.lista_entidades}>
-        {viajens?.map((item) => (
-          <ItemViagem key={item.id} item={item} />
-        ))}
-        {viajens?.length === 0 && <p>Nenhuma viagem registrada.</p>}
+        {viajens
+          ?.filter((v) => v.saida === null)
+          .map((item) => (
+            <ItemViagem key={item.id} item={item} />
+          ))}
+        {viajens?.filter((v) => v.saida === null)?.length === 0 && (
+          <p>Nenhuma viagem em liberação.</p>
+        )}
+      </div>
+
+      <div className={styles.titulo_sessao}>
+        <h2>
+          <IoLayersOutline />
+          Viajens em andamento
+        </h2>
+        <div className="ghost_bar" />
+      </div>
+
+      <div className={styles.lista_entidades}>
+        {viajens
+          ?.filter((v) => v.chegada === null && v.saida !== null)
+          .map((item) => (
+            <ItemViagem key={item.id} item={item} />
+          ))}
+        {viajens?.filter((v) => v.chegada === null && v.saida !== null)
+          ?.length === 0 && <p>Nenhuma viagem em andamento.</p>}
+      </div>
+
+      <div className={styles.titulo_sessao}>
+        <h2>
+          <IoLayersOutline />
+          Viajens realizadas
+        </h2>
+        <div className="ghost_bar" />
+      </div>
+
+      <div className={styles.lista_entidades}>
+        {viajens
+          ?.filter((v) => v.chegada !== null)
+          .map((item) => (
+            <ItemViagem key={item.id} item={item} />
+          ))}
+        {viajens?.filter((v) => v.chegada !== null)?.length === 0 && (
+          <p>Nenhuma viagem concluida.</p>
+        )}
       </div>
     </main>
   );

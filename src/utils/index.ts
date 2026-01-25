@@ -51,6 +51,7 @@ export function transformData(dataString: string | null): string {
   if (!possuiHorario) {
     return dataFormatada;
   }
+
   const horaFormatada = data.toLocaleTimeString("pt-BR", {
     hour: "2-digit",
     minute: "2-digit",
