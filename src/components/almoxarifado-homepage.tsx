@@ -83,13 +83,25 @@ export default async function AlmoxarifeHomepage({
           <p>
             Usuario: {user.nome} - {user.descricao}
           </p>
-          <Link
-            href={`/configuracoes/almoxarifado?trackId=${handler}`}
-            passHref
-            className={styles.options_user}
-          >
-            <HiOutlineCog6Tooth className="icon" />
-          </Link>
+          {modulo?.id === MODULO.VEICULAR && (
+            <Link
+              href={`/configuracoes/almoxarifado-veicular?trackId=${handler}`}
+              passHref
+              className={styles.options_user}
+            >
+              <HiOutlineCog6Tooth className="icon" />
+            </Link>
+          )}
+
+          {modulo?.id === MODULO.ESCOLAR && (
+            <Link
+              href={`/configuracoes/almoxarifado?trackId=${handler}`}
+              passHref
+              className={styles.options_user}
+            >
+              <HiOutlineCog6Tooth className="icon" />
+            </Link>
+          )}
         </div>
       </div>
 

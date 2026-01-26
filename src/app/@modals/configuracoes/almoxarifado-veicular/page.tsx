@@ -4,8 +4,7 @@ import styles from "@/styles/components/lista_config.module.css";
 import Link from "next/link";
 import { FaAngleRight, FaUserEdit } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
-import { MdAddCircleOutline } from "react-icons/md";
-import { GrCircleAlert } from "react-icons/gr";
+
 import { auth } from "@/auth";
 import { NIVEIS_USUARIO } from "@/constants/type-guard";
 
@@ -23,34 +22,6 @@ export default async function AlmConfigPage({
   return (
     <ModalComponent label="Configurações de Entidade">
       <ul className={styles.lista}>
-        <li>
-          <Link
-            href={`/entidade/${trackId}/solicitacoes`}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <span>
-              <GrCircleAlert className="icon" />
-            </span>
-            Solicitações <FaAngleRight color="6c7072" />
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            href={`/nova-remessa/${trackId}`}
-            prefetch={false}
-            target="_top"
-            passHref
-          >
-            <span>
-              <MdAddCircleOutline className="icon" />
-            </span>
-            Adicionar Remessa <FaAngleRight color="6c7072" />
-          </Link>
-        </li>
-
         {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
             <Link
@@ -66,6 +37,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
+
         {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
             <Link
@@ -81,6 +53,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
+
         {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
           <li>
             <Link
