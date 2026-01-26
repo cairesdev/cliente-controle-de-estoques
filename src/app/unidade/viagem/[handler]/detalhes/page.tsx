@@ -16,6 +16,15 @@ export default async function DetalheViagemPage({
     id: handler as string,
   });
 
+  const agora = new Date();
+  const dataLiberacao = viagem?.liberacao ? new Date(viagem.liberacao) : null;
+
+  const podeAntecipar =
+    viagem?.saida === null && dataLiberacao !== null && agora < dataLiberacao;
+
+  const podeIniciar =
+    viagem?.saida === null && dataLiberacao !== null && agora >= dataLiberacao;
+
   return (
     <main className={styles.container}>
       <header className={styles.header}>
@@ -30,6 +39,10 @@ export default async function DetalheViagemPage({
       </header>
 
       <section className={styles.grid}>
+        <div className={styles.card}>
+          <strong>Disponivel para retirada</strong>
+          <span>{transformData(viagem?.liberacao!)}</span>
+        </div>
         <div className={styles.card}>
           <strong>Saída</strong>
           <span>{transformData(viagem?.saida!)}</span>
@@ -70,6 +83,7 @@ export default async function DetalheViagemPage({
           <span>Unidade: {viagem?.unidade}</span>
         </div>
       </section>
+      {/* CONCLUIR VIAGEM */}
       {viagem?.saida !== null && !viagem?.chegada && (
         <Link
           className="go_back_link"
@@ -80,9 +94,23 @@ export default async function DetalheViagemPage({
           Concluir Viagem
         </Link>
       )}
-      {viagem?.saida === null && (
+
+      {/* ANTECIPAR VIAGEM */}
+      {podeAntecipar && (
         <Link
-          className="go_back_link"
+          className={`${styles.action} ${styles.antecipar}`}
+          href={`/unidade/viagem/${viagem?.id}/liberar?modo=antecipar`}
+          passHref
+          target="_top"
+        >
+          Antecipar Viagem
+        </Link>
+      )}
+
+      {/* INICIAR VIAGEM */}
+      {podeIniciar && (
+        <Link
+          className={`${styles.action} ${styles.iniciar}`}
           href={`/unidade/viagem/${viagem?.id}/liberar`}
           passHref
           target="_top"

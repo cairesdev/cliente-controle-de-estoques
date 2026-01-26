@@ -53,7 +53,6 @@ export default function LiberarVeiculoForm({
           ))}
         </select>
       </div>
-
       <Button htmlType="submit" rounded>
         Liberar
       </Button>

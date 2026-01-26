@@ -35,7 +35,7 @@ export default function ItemViagem({ item }: { item: Viagem }) {
         <span>Motorista: {item.motorista}</span>
       </div>
       <div className={styles.datas}>
-        <span>Liberado em: {transformData(item.liberacao)}</span>
+        <span>Disponivel para retirada: {transformData(item.liberacao)}</span>
         <span>Saída: {transformData(item.saida)}</span>
         <span>Chegada: {transformData(item.chegada)}</span>
       </div>

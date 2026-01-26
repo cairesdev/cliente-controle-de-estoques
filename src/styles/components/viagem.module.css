@@ -83,3 +83,23 @@
     align-items: flex-start;
   }
 }
+
+.action {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.iniciar {
+  background-color: var(--primary-base);
+  color: var(--sky-lightest);
+}
+
+.antecipar {
+  background-color: var(--yellow-lightest);
+  color: var(--yellow-dark);
+}

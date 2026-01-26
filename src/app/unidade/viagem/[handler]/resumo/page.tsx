@@ -16,12 +16,24 @@ function calcularDuracao(inicio?: string, fim?: string) {
 
   const start = new Date(inicio).getTime();
   const end = new Date(fim).getTime();
+
+  if (end <= start) return null;
+
   const diffMs = end - start;
 
-  const horas = Math.floor(diffMs / (1000 * 60 * 60));
-  const minutos = Math.floor((diffMs / (1000 * 60)) % 60);
+  const totalMinutos = Math.floor(diffMs / (1000 * 60));
 
-  return `${horas}h ${minutos}min`;
+  const dias = Math.floor(totalMinutos / (60 * 24));
+  const horas = Math.floor((totalMinutos % (60 * 24)) / 60);
+  const minutos = totalMinutos % 60;
+
+  let resultado = "";
+
+  if (dias > 0) resultado += `${dias}d `;
+  if (horas > 0 || dias > 0) resultado += `${horas}h `;
+  resultado += `${minutos}min`;
+
+  return resultado.trim();
 }
 
 export default async function ResumoViagem({
