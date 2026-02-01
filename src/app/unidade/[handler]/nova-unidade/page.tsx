@@ -1,7 +1,6 @@
 import FormUnidade from "@/components/website-forms/unidade/add-unidade";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import styles from "@/styles/homepage.module.css";
-import { parse } from "path";
 import { TbHomePlus } from "react-icons/tb";
 
 export default async function NovaUnidadePage({

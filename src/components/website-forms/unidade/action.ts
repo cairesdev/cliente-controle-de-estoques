@@ -18,7 +18,7 @@ export async function liberaDemanda(data: any) {
 
   if (response.status === HttpStatus.CREATED) {
     redirect(
-      `/comprovante/${response.body.res?.id}?code=${response.body.res?.codigo}`
+      `/comprovante/${response.body.res?.id}?code=${response.body.res?.codigo}`,
     );
   } else {
     console.log(response.body);
@@ -77,9 +77,9 @@ export async function novaSolicitacao(data: any) {
   if (response.status === HttpStatus.CREATED) {
     redirect(
       `/tracks/cadastrado?ref=${encodeURI("Solicitação")}&callback=${encodeURI(
-        `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}?categoria=${data.TIPO_ESTOQUE}`
+        `/unidade/${data.UNIDADE}/nova-solicitacao/${response.body.res}?categoria=${data.TIPO_ESTOQUE}`,
       )}`,
-      RedirectType.push
+      RedirectType.push,
     );
   } else {
     return false;
