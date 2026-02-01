@@ -21,8 +21,8 @@ export async function addEntidade(data: any) {
   } else {
     redirect(
       `/entidade/nova-entidade?code=${response.status}&message=${encodeURI(
-        response.body.message as string
-      )}`
+        response.body.message as string,
+      )}`,
     );
   }
 }
@@ -79,7 +79,7 @@ export async function criarArmazenamento(data: any) {
 
   if (response.status === HttpStatus.CREATED) {
     redirect(
-      `/nova-remessa/${data.ENTIDADE}/${response.body.res?.id}?type=new&method=${data.PLAN_TIPO}&code=${response.body.res?.codigo}`
+      `/nova-remessa/${data.ENTIDADE}/${response.body.res?.id}?type=new&method=${data.PLAN_TIPO}&code=${response.body.res?.codigo}`,
     );
   } else {
     console.log(response.body);
@@ -99,21 +99,21 @@ export async function novoRepresentante(data: any) {
 
   if (data.SENHA !== data.SENHA_CHECK) {
     redirect(
-      `/entidade/${data.ORGAO}/novo-representante?code=${HttpStatus.NOT_ACEPTABLE}`
+      `/entidade/${data.ORGAO}/novo-representante?code=${HttpStatus.NOT_ACEPTABLE}`,
     );
   }
 
   if (response.status === HttpStatus.CREATED) {
     redirect(
       `/tracks/cadastrado?ref=${encodeURI(
-        "Representante"
+        "Representante",
       )}&callback=${encodeURI(
-        `/entidade/representante?username=${data.LOGIN}`
-      )}`
+        `/entidade/representante?username=${data.LOGIN}`,
+      )}`,
     );
   } else {
     redirect(
-      `/entidade/${data.ORGAO}/novo-representante?code=${response.status}`
+      `/entidade/${data.ORGAO}/novo-representante?code=${response.status}`,
     );
   }
 }

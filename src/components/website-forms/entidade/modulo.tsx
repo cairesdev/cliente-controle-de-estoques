@@ -14,7 +14,7 @@ export default function FormModulo({ idEntidade }: { idEntidade: string }) {
       SAUDE: parseInt(form.get("SAUDE") as string) || 0,
       ASSISTENCIA_SOCIAL:
         parseInt(form.get("ASSISTENCIA_SOCIAL") as string) || 0,
-      OUTROS: parseInt(form.get("OUTROS") as string) || 0,
+      COMBUSTIVEL: parseInt(form.get("COMBUSTIVEL") as string) || 0,
     };
 
     addModulos(data);
@@ -43,8 +43,8 @@ export default function FormModulo({ idEntidade }: { idEntidade: string }) {
       </div>
 
       <div className={styles.checkbox_container}>
-        <input id="outros" type="checkbox" name="OUTROS" value="1" />
-        <label htmlFor="outros">Outros</label>
+        <input id="COMBUSTIVEL" type="checkbox" name="COMBUSTIVEL" value="1" />
+        <label htmlFor="COMBUSTIVEL">Controle Veicular</label>
       </div>
 
       <Button htmlType="submit" rounded>
