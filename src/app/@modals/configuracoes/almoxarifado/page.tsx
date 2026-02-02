@@ -66,7 +66,7 @@ export default async function AlmConfigPage({
             </Link>
           </li>
         )}
-        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
           <li>
             <Link
               href={`/entidade/${trackId}/novo-representante`}
