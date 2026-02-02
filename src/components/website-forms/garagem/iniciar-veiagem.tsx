@@ -48,7 +48,7 @@ export default function IniciarViagemForm({ idViagem }: { idViagem: string }) {
         />
       </div>
       <Button htmlType="submit" rounded>
-        Liberar
+        Iniciar Viagem
       </Button>
       <Button rounded type="danger" onClick={() => router.back()}>
         Cancelar

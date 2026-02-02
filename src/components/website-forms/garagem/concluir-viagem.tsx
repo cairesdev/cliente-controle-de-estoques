@@ -39,7 +39,7 @@ export default function ConcluirViagemForm({ idViagem }: { idViagem: string }) {
       </div>
 
       <Button htmlType="submit" rounded>
-        Cadastrar
+        Concluir Viagem
       </Button>
       <Button rounded type="danger" onClick={() => router.back()}>
         Cancelar

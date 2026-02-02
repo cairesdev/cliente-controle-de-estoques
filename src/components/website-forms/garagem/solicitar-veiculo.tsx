@@ -91,7 +91,7 @@ export default function SolicitarVeiculoForm({
         />
       </div>
       <Button htmlType="submit" rounded>
-        Cadastrar
+        Solicitar Veiculo
       </Button>
       <Button rounded type="danger" onClick={() => router.back()}>
         Cancelar
