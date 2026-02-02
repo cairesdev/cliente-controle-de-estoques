@@ -57,6 +57,10 @@ export function transformData(dataString: string | null): string {
     minute: "2-digit",
   });
 
+  if (horaFormatada === "00:00") {
+    return dataFormatada;
+  }
+
   return `${dataFormatada} ${horaFormatada}`;
 }
 

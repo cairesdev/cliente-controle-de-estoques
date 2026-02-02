@@ -18,18 +18,25 @@ export default function RegistroSolicitacao({
       href={
         tipo === "recebidas"
           ? `/entidade/solicitacao/${item.id}?trackId=${idOrigem}&unId=${item.id_unidade}&view=${tipo}`
-          : `/comprovante/solicitacao/${item.id}?trackId=${idOrigem}&unId=${item.id_unidade} `
+          : `/comprovante/solicitacao/${item.id}?trackId=${idOrigem}&unId=${item.id_unidade}`
       }
       target="_top"
     >
-      <div>
+      <div className={styles.main}>
         <h2>{item.nome}</h2>
-        <h4>Unidade Solicitante: {item.unidade}</h4>
+        <span className={styles.unidade}>
+          Unidade solicitante: {item.unidade}
+        </span>
         <p>Responsável: {item.solicitante}</p>
       </div>
-      <h4>Status: {item.status}</h4>
-      <p>Tipo: {item.tipo_solicitacao}</p>
-      <p>Enviada em: {transformData(item.data_solicitacao)}</p>
+
+      <div className={styles.meta}>
+        <span className={styles.status}>{item.status}</span>
+        <span className={styles.tipo}>{item.tipo_solicitacao}</span>
+        <span className={styles.data}>
+          {transformData(item.data_solicitacao)}
+        </span>
+      </div>
     </Link>
   );
 }
