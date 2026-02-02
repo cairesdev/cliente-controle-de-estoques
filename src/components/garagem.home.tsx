@@ -23,7 +23,7 @@ export default async function GaragemHomePage({
     id: handler as string,
   });
 
-  const viajens = await entidadeRepository.getViagensUnidade({ id: handler });
+  const viagens = await entidadeRepository.getViagensUnidade({ id: handler });
 
   return (
     <main className={styles.homepage}>
@@ -68,18 +68,18 @@ export default async function GaragemHomePage({
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayersOutline />
-          Viajens Liberadas
+          Viagens Liberadas
         </h2>
         <div className="ghost_bar" />
       </div>
 
       <div className={styles.lista_entidades}>
-        {viajens
+        {viagens
           ?.filter((v) => v.saida === null)
           .map((item) => (
             <ItemViagem key={item.id} item={item} />
           ))}
-        {viajens?.filter((v) => v.saida === null)?.length === 0 && (
+        {viagens?.filter((v) => v.saida === null)?.length === 0 && (
           <p>Nenhuma viagem em liberação.</p>
         )}
       </div>
@@ -87,36 +87,36 @@ export default async function GaragemHomePage({
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayersOutline />
-          Viajens em andamento
+          Viagens em andamento
         </h2>
         <div className="ghost_bar" />
       </div>
 
       <div className={styles.lista_entidades}>
-        {viajens
+        {viagens
           ?.filter((v) => v.chegada === null && v.saida !== null)
           .map((item) => (
             <ItemViagem key={item.id} item={item} />
           ))}
-        {viajens?.filter((v) => v.chegada === null && v.saida !== null)
+        {viagens?.filter((v) => v.chegada === null && v.saida !== null)
           ?.length === 0 && <p>Nenhuma viagem em andamento.</p>}
       </div>
 
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayersOutline />
-          Viajens realizadas
+          Viagens realizadas
         </h2>
         <div className="ghost_bar" />
       </div>
 
       <div className={styles.lista_entidades}>
-        {viajens
+        {viagens
           ?.filter((v) => v.chegada !== null)
           .map((item) => (
             <ItemViagem key={item.id} item={item} />
           ))}
-        {viajens?.filter((v) => v.chegada !== null)?.length === 0 && (
+        {viagens?.filter((v) => v.chegada !== null)?.length === 0 && (
           <p>Nenhuma viagem concluida.</p>
         )}
       </div>

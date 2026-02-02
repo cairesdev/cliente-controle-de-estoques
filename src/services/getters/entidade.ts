@@ -111,7 +111,7 @@ export class EntidadeRepository {
 
   async getAllSolicitacoes() {
     const response = await backendFetch<SolicitacaoViagem[]>({
-      url: API_ROUTES.lista_viajens + "solicitacoes/" + this.entidade,
+      url: API_ROUTES.lista_viagens + "solicitacoes/" + this.entidade,
       method: "GET",
       cache: "no-store",
       token: this.token,
@@ -122,11 +122,11 @@ export class EntidadeRepository {
 
   async getViagens() {
     const response = await backendFetch<Viagem[]>({
-      url: API_ROUTES.lista_viajens + this.entidade,
+      url: API_ROUTES.lista_viagens + this.entidade,
       method: "GET",
       cache: "no-store",
       token: this.token,
-      next: { tags: ["viajens"] },
+      next: { tags: ["viagens"] },
     });
     return response.body.res;
   }
@@ -137,29 +137,29 @@ export class EntidadeRepository {
       method: "GET",
       cache: "no-store",
       token: this.token,
-      next: { tags: ["viajens"] },
+      next: { tags: ["viagens"] },
     });
     return response.body.res;
   }
 
   async getViagensUnidade({ id }: { id: string }) {
     const response = await backendFetch<Viagem[]>({
-      url: API_ROUTES.lista_viajens + id + "/unidade",
+      url: API_ROUTES.lista_viagens + id + "/unidade",
       method: "GET",
       cache: "no-store",
       token: this.token,
-      next: { tags: ["viajens"] },
+      next: { tags: ["viagens"] },
     });
     return response.body.res;
   }
 
   async getViagemDetalhe({ id }: { id: string }) {
     const response = await backendFetch<Viagem>({
-      url: API_ROUTES.lista_viajens + id + "/detalhes",
+      url: API_ROUTES.lista_viagens + id + "/detalhes",
       method: "GET",
       cache: "no-store",
       token: this.token,
-      next: { tags: ["viajens"] },
+      next: { tags: ["viagens"] },
     });
     return response.body.res;
   }

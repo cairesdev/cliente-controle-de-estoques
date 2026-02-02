@@ -82,7 +82,7 @@ export async function concluirViagem(data: any) {
   const token = session?.user.access_token;
 
   const response = await backendFetch({
-    url: `v1/garagem/viajens/${data.VIAGEM}/concluir`,
+    url: `v1/garagem/viagens/${data.VIAGEM}/concluir`,
     method: "PUT",
     body: data,
     token,
