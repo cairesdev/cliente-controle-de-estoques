@@ -5,6 +5,7 @@ import FormItemSolicitacao from "@/components/website-forms/unidade/add-item-sol
 import { EntidadeRepository } from "@/services/getters/entidade";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
+import Link from "next/link";
 import { LuInbox } from "react-icons/lu";
 
 export default async function NovaSolicitacaoPage({
@@ -58,7 +59,15 @@ export default async function NovaSolicitacaoPage({
           <ItemSolicitacao tipo="lista" item={item!} key={item.id} />
         ))}
       </div>
-      {data?.itens.length !== 0 && <GoToHomeButton />}
+      {data?.itens.length !== 0 && (
+        <Link
+          className="go_back_link"
+          target="_self"
+          href={`/tracks/cadastrado?ref=Solicitação de Alimentos&callback=/`}
+        >
+          Concluir
+        </Link>
+      )}
       <br />
     </main>
   );

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { LuLayers } from "react-icons/lu";
 import styles from "@/styles/components/detahe_armazem.module.css";
 import { GoToHomeButton, PrintPageButton } from "@/components/action-buttons";
+import Link from "next/link";
 
 export default async function ComprovantePage({
   params,
@@ -47,7 +48,13 @@ export default async function ComprovantePage({
           <h4>Produtos registrados: {data?.estoque.qnt_disponivel}</h4>
           <h4>Status: {data?.estoque.status}</h4>
           <div>
-            <PrintPageButton />
+            <Link
+              className="go_back_link"
+              target="_blank"
+              href={`/comprovante/autenticacao/${handler}/liberacao-solicitacao?code=${code}`}
+            >
+              Imprimir
+            </Link>
             <GoToHomeButton />
           </div>
         </div>

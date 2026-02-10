@@ -45,6 +45,7 @@ export function normalizeSearch(str: string) {
 
 export function transformData(dataString: string | null): string {
   if (!dataString) return "Indeterminado";
+
   const data = new Date(dataString);
   const possuiHorario = /\d{2}:\d{2}/.test(dataString);
   const dataFormatada = data.toLocaleDateString("pt-BR");

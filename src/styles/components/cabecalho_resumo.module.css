@@ -1,10 +1,12 @@
 .homepage {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 
   padding: 16px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: var(--background);
 }
 .header_section {

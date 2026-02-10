@@ -51,6 +51,9 @@ export type ComprovanteCriacao = {
     status: string;
     despachante: string;
     solicitante: string;
+    unidade: string;
+    orgao: string;
+    cidade: string;
   } & SampleEstoque;
 };
 

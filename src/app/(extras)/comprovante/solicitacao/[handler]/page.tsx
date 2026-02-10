@@ -30,6 +30,8 @@ export default async function SolicitacaoPage({
   //   redirect(`/comprovante/${handler}?code=${data.solicitacao.codigo}`);
   // }
 
+  console.log(data);
+
   return (
     <main className={styles.homepage}>
       <div className={styles.header_section}>
