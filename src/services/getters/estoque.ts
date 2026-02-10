@@ -170,6 +170,23 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+  static async concluirSolicitacao({
+    id,
+    token,
+  }: {
+    id: string;
+    token: string;
+  }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.concluir_remessa + id,
+      method: "PUT",
+      cache: "no-store",
+      token: token,
+      next: { tags: ["remessa", id] },
+    });
+
+    return response.body.res;
+  }
   static async deleteEstoque({ id, token }: { id: string; token: string }) {
     const response = await backendFetch<string>({
       url: API_ROUTES.delete_remessa + id,

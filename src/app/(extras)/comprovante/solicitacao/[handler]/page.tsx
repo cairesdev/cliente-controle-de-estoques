@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { ConcluirSolicitacao } from "@/components/action-buttons";
 import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detalhe_solicitacao.module.css";
@@ -26,11 +28,7 @@ export default async function SolicitacaoPage({
     idUnidade: unId,
   });
 
-  // if (data?.solicitacao.status === "Liberado") {
-  //   redirect(`/comprovante/${handler}?code=${data.solicitacao.codigo}`);
-  // }
-
-  console.log(data);
+  const session = await auth();
 
   return (
     <main className={styles.homepage}>
@@ -38,6 +36,14 @@ export default async function SolicitacaoPage({
         <h1>
           {data?.solicitacao.status}: {data?.solicitacao.nome}
         </h1>
+        {data?.solicitacao.status === "Liberado" && (
+          <ConcluirSolicitacao
+            solicitacao={handler as string}
+            token={session?.user.access_token!}
+            code={data?.solicitacao.codigo!}
+            remessa={data?.solicitacao.estoque!}
+          />
+        )}
         <div className="ghost_traco" />
       </div>
       <div>
@@ -48,7 +54,6 @@ export default async function SolicitacaoPage({
         <p>Unidade solicitante: {data?.solicitacao.unidade}</p>
         <p>Representante: {data?.solicitacao.solicitante}</p>
       </div>
-
       <div className={styles.titulo_sessao}>
         <h2>
           <IoLayers />
@@ -56,7 +61,6 @@ export default async function SolicitacaoPage({
         </h2>
         <div className="ghost_bar" />
       </div>
-
       <div className={styles.lista_itens}>
         {data?.itens.map((item) => (
           <ItemSolicitacao tipo="comprovante" item={item} key={item.id} />

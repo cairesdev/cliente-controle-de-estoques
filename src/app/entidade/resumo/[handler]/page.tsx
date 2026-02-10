@@ -10,6 +10,7 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/cabecalho_resumo.module.css";
 import { transformData } from "@/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LuLayers } from "react-icons/lu";
 
@@ -53,7 +54,13 @@ export default async function ResumoEstoquePage({
           <h4>Setor: {data?.remessa.tipo_estoque}</h4>
           <h4>Produtos registrados: {data?.remessa.qnt_registrada}</h4>
           <div className={styles.btn_area}>
-            <PrintPageButton />
+            <Link
+              className="go_back_link"
+              target="_blank"
+              href={`/comprovante/autenticacao/${handler}/resumo-estoque?code=${data?.remessa.codigo}`}
+            >
+              Imprimir
+            </Link>
             <GoToHomeButton />
             {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
               <DeleteArmazem

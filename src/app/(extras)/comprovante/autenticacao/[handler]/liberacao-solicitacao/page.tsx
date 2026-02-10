@@ -80,6 +80,7 @@ export default async function ComprovantePrintPage({
                 width={110}
                 height={110}
               /> */}
+              Código: {data?.estoque.codigo}
             </div>
           </div>
         </div>
@@ -135,6 +136,7 @@ export default async function ComprovantePrintPage({
       <br />
       <br />
       <p>Impresso em: {new Date().toLocaleDateString("pt-br")}</p>
+      <br />
       <PrintPageButton /> <GoToHomeButton />
     </main>
   );

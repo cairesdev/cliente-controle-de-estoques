@@ -6,6 +6,45 @@ import { EstoqueRepository } from "@/services/getters/estoque";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
+export function ConcluirSolicitacao({
+  solicitacao,
+  token,
+  remessa,
+  code,
+}: {
+  solicitacao: string;
+  token: string;
+  remessa: string;
+  code: string;
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja concluir esta solicitação?\nEssa ação não poderá ser desfeita.",
+    );
+
+    if (!confirmar) return;
+    toast.warn("Atualizando...");
+    await EstoqueRepository.concluirSolicitacao({ id: solicitacao, token });
+    toast.success("Atualizado com sucesso.");
+    router.push(
+      `/comprovante/autenticacao/${remessa}/liberacao-solicitacao?code=${code}`,
+    );
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="primary"
+      title="Concluir Solicitação"
+    >
+      Concluir Solicitação
+    </Button>
+  );
+}
+
 export function DeleteArmazem({ id, token }: { id: string; token: string }) {
   const router = useRouter();
 

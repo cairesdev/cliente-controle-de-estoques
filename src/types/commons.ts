@@ -66,6 +66,8 @@ export type Solicitacao = {
   id_unidade: string;
   tipo_solicitacao?: string;
   data_encerramento?: string;
+  codigo?: string;
+  estoque?: string;
 } & IStatusSolicitacao;
 
 export type ProdutoSolicitacao = {
@@ -97,5 +99,11 @@ export interface ResumoRemessa {
 }
 
 export interface IStatusSolicitacao {
-  status: "Liberado" | "Enviado" | "Pendente" | "Recebido" | "Cancelado";
+  status:
+    | "Liberado"
+    | "Enviado"
+    | "Pendente"
+    | "Recebido"
+    | "Cancelado"
+    | "Concluído";
 }
