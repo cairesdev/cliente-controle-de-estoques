@@ -71,6 +71,7 @@ export default function NovoRepresentante({
           ))}
         </select>
       </div>
+
       {nivelUsuario === 1 && (
         <div className={styles.input_container}>
           <label>Unidade Responsável</label>
@@ -83,6 +84,7 @@ export default function NovoRepresentante({
           </select>
         </div>
       )}
+
       {nivelUsuario === 2 && (
         <div className={styles.input_container}>
           <label>Tipo de Almoxarifado</label>
@@ -95,6 +97,7 @@ export default function NovoRepresentante({
           </select>
         </div>
       )}
+
       <h2>Informações de login</h2>
       <div className="ghost_bar" />
 

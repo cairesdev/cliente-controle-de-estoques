@@ -45,8 +45,9 @@ export default async function NovoRepresentantePage({
   });
 
   const session = await auth();
+
   const nivelLiberado = TipoUsuario.filter(
-    (item) => item.id < parseInt(session?.user.nivel!),
+    (item) => item.id <= parseInt(session?.user.nivel!),
   );
 
   return (
