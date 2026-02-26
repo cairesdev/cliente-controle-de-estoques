@@ -62,7 +62,7 @@ export default async function ResumoEstoquePage({
               Imprimir
             </Link>
             <GoToHomeButton />
-            {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.GERENCIA && (
+            {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
               <DeleteArmazem
                 id={handler!}
                 token={session?.user.access_token!}
