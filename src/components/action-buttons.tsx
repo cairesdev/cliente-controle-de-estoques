@@ -172,3 +172,103 @@ export function DeleteUsuario({ id, token }: { id: string; token: string }) {
     </Button>
   );
 }
+
+export function DeleteArmazens({
+  idEntidade,
+  token,
+}: {
+  idEntidade: string;
+  token: string;
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir?\nEssa ação não poderá ser desfeita.",
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteAllArmazem({ idEntidade, token });
+    toast.success("Deletado com sucesso");
+    router.refresh();
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="danger"
+      title="Excluir todos os estoques da entidade."
+      leading={<BiTrash size={18} />}
+    >
+      Excluir todos os estoques
+    </Button>
+  );
+}
+export function DeleteArmazensUnidade({
+  idUnidade,
+  token,
+}: {
+  idUnidade: string;
+  token: string;
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir?\nEssa ação não poderá ser desfeita.",
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteAllArmazemUnidade({ idUnidade, token });
+    toast.success("Deletado com sucesso");
+    router.refresh();
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="danger"
+      title="Excluir todos os estoques da unidade."
+      leading={<BiTrash size={18} />}
+    >
+      Excluir todos os estoques
+    </Button>
+  );
+}
+export function DeleteSolicitacoesUnidade({
+  idUnidade,
+  token,
+}: {
+  idUnidade: string;
+  token: string;
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir?\nEssa ação não poderá ser desfeita.",
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteAllSolicitacaoUnidade({ idUnidade, token });
+    toast.success("Deletado com sucesso");
+    router.refresh();
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="danger"
+      title="Excluir todos as solicitações da unidade."
+      leading={<BiTrash size={18} />}
+    >
+      Excluir todas as solicitações
+    </Button>
+  );
+}

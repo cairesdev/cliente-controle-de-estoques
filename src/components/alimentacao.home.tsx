@@ -13,6 +13,7 @@ import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EntidadeRepository } from "@/services/getters/entidade";
 import ItemEstoque from "./UI/samples/item-estoque";
 import { IoAlertCircleSharp } from "react-icons/io5";
+import { DeleteArmazensUnidade } from "./action-buttons";
 
 export default async function AlimentacaoHomePage({
   search,
@@ -100,6 +101,12 @@ export default async function AlimentacaoHomePage({
             <IoQrCodeOutline />
             Buscar Remessa
           </Link>
+          {parseInt(user.nivel) >= NIVEIS_USUARIO.ALMOXARIFADO && (
+            <DeleteArmazensUnidade
+              token={user.access_token}
+              idUnidade={handler!}
+            />
+          )}
         </div>
       )}
       <div className={styles.titulo_sessao}>

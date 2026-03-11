@@ -17,6 +17,7 @@ import { MODULO, NIVEIS_USUARIO, TipoModulo } from "@/constants/type-guard";
 import ItemEstoque from "@/components/UI/samples/item-estoque";
 import { MdDirectionsCarFilled, MdTravelExplore } from "react-icons/md";
 import ItemViagem from "./UI/samples/item-viagem";
+import { DeleteArmazens } from "./action-buttons";
 
 export default async function AlmoxarifeHomepage({
   search,
@@ -134,6 +135,7 @@ export default async function AlmoxarifeHomepage({
           <Link target="_self" href={`/entidade/${handler}/almoxarifado`}>
             Geral
           </Link>
+          <DeleteArmazens idEntidade={handler!} token={user.access_token} />
         </div>
       )}
       {modulo?.id === MODULO.VEICULAR && (

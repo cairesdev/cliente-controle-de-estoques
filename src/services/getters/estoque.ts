@@ -263,4 +263,53 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
+  static async deleteAllArmazem({
+    idEntidade,
+    token,
+  }: {
+    idEntidade: string;
+    token: string;
+  }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.deleteAllArmazem + idEntidade,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
+  static async deleteAllArmazemUnidade({
+    idUnidade,
+    token,
+  }: {
+    idUnidade: string;
+    token: string;
+  }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.deleteAllArmazemUnidade + idUnidade,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
+  static async deleteAllSolicitacaoUnidade({
+    idUnidade,
+    token,
+  }: {
+    idUnidade: string;
+    token: string;
+  }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.deleteAllSolicitacaoUnidade + idUnidade,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
 }

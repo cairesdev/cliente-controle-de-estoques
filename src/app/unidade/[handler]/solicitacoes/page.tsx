@@ -1,4 +1,7 @@
+import { auth } from "@/auth";
+import { DeleteSolicitacoesUnidade } from "@/components/action-buttons";
 import RegistroSolicitacao from "@/components/UI/samples/registro-solicitacao";
+import { NIVEIS_USUARIO } from "@/constants/type-guard";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/homepage.module.css";
 import Link from "next/link";
@@ -11,6 +14,7 @@ export default async function SolicitacaoPage({
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
+  const session = await auth();
 
   const estoqueRepository = await EstoqueRepository.create();
   const itens = await estoqueRepository.getSolicitacoes({
@@ -22,6 +26,12 @@ export default async function SolicitacaoPage({
       <div className={styles.header_section}>
         <h1>Solicitações</h1>
         <div className="ghost_traco" />
+        {parseInt(session?.user.nivel!) >= NIVEIS_USUARIO.ALMOXARIFADO && (
+          <DeleteSolicitacoesUnidade
+            token={session?.user.access_token!}
+            idUnidade={handler!}
+          />
+        )}
       </div>
       <div className={styles.lista_entidades}>
         {itens
