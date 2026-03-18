@@ -24,6 +24,7 @@ export enum NIVEIS_USUARIO {
 export const TipoUsuario = [
   { nome: "Gerente de aplicação", id: NIVEIS_USUARIO.GERENCIA },
   { nome: "Almoxarifado da entidade", id: NIVEIS_USUARIO.ALMOXARIFADO },
+  { nome: "Nutricionista", id: NIVEIS_USUARIO.ALMOXARIFADO },
   { nome: "Representante de unidade", id: NIVEIS_USUARIO.RESPONSAVEL },
 ];
 
