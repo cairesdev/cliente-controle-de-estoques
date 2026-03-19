@@ -23,8 +23,6 @@ export default async function NovaSolicitacaoPage({
     [key: string]: string;
   };
 
-  const entidadeRepository = await EntidadeRepository.create();
-
   const estoqueRepository = await EstoqueRepository.create();
   const data = await estoqueRepository.getSolicitacao({
     id: solicitacao!,
@@ -63,7 +61,7 @@ export default async function NovaSolicitacaoPage({
         <Link
           className="go_back_link"
           target="_self"
-          href={`/tracks/cadastrado?ref=Solicitação de Alimentos&callback=/`}
+          href={`/tracks/cadastrado?ref=Solicitação de Alimentos&callback=/unidade/${handler}/solicitacoes`}
         >
           Concluir
         </Link>

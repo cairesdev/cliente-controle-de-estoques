@@ -3,6 +3,7 @@ import styles from "@/styles/components/forms.module.css";
 import { Button } from "@/components/UI/button";
 import React from "react";
 import { updateUsuario } from "./action";
+import { GoBackButton } from "@/components/action-buttons";
 
 export default function UpdatePassForm({ user }: { user: string }) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,9 +32,12 @@ export default function UpdatePassForm({ user }: { user: string }) {
           required
         />
       </div>
-      <Button htmlType="submit" rounded>
-        Cadastrar
-      </Button>
+      <div className="div_buttons">
+        <Button htmlType="submit" rounded>
+          Atualizar
+        </Button>
+        <GoBackButton />
+      </div>
     </form>
   );
 }

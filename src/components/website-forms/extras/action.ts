@@ -35,19 +35,44 @@ export async function updateUsuario(data: any) {
 
   if (data.SENHA !== data.SENHA_CHECK) {
     redirect(
-      `/configuracoes/usuarios/renew-pass?code=${HttpStatus.NOT_ACEPTABLE}&user=${data.USER}`
+      `/configuracoes/usuarios/renew-pass?code=${HttpStatus.NOT_ACEPTABLE}&user=${data.USER}`,
     );
   }
 
   if (response.status === HttpStatus.OK) {
     redirect(
       `/tracks/cadastrado?ref=${encodeURI("Nova senha")}&callback=${encodeURI(
-        `/configuracoes/usuarios`
-      )}`
+        `/configuracoes/usuarios`,
+      )}`,
     );
   } else {
     redirect(
-      `/configuracoes/usuarios/renew-pass?code=${response.status}&user=${data.USER}`
+      `/configuracoes/usuarios/renew-pass?code=${response.status}&user=${data.USER}`,
+    );
+  }
+}
+export async function updateUsuarioBasics(data: any) {
+  const session = await auth();
+  const token = session?.user.access_token;
+
+  const response = await backendFetch({
+    url: API_ROUTES.update_pass + data.USER,
+    method: "PATCH",
+    body: data,
+    token,
+  });
+
+  if (response.status === HttpStatus.OK) {
+    redirect(
+      `/tracks/cadastrado?ref=${encodeURI("Atualização de usuário")}&callback=${encodeURI(
+        `/configuracoes/usuarios`,
+      )}`,
+    );
+  } else {
+    redirect(
+      `/tracks/redirect?message=${encodeURI(response.body.message!)}&callback=${encodeURI(
+        `/configuracoes/usuarios`,
+      )}`,
     );
   }
 }

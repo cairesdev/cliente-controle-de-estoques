@@ -151,3 +151,19 @@ select {
   padding: 10px 19px;
   border-radius: 12px;
 }
+
+.div_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px 10px;
+}
+
+.div_buttons button,
+.div_buttons .go_back_link {
+  flex: 1;
+  width: 100%;
+}

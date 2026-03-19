@@ -21,6 +21,17 @@ export default function ItemUsuario({
       </p>
       <div>
         <Button
+          type="primary"
+          rounded
+          onClick={() =>
+            router.push(
+              `/configuracoes/usuarios/atualizar-dados?user=${item.id}`,
+            )
+          }
+        >
+          Alterar Informações
+        </Button>
+        <Button
           type="alternative"
           rounded
           onClick={() =>

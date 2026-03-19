@@ -61,7 +61,7 @@ export default async function SolicitacaoPage({
         ))}
       </div>
 
-      <div>
+      <div className="div_buttons">
         {data?.solicitacao.status !== "Liberado" && (
           <Link
             className="go_back_link"
