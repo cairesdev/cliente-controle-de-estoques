@@ -296,6 +296,7 @@ export class EstoqueRepository {
 
     return response.body.res;
   }
+
   static async deleteAllSolicitacaoUnidade({
     idUnidade,
     token,
@@ -305,6 +306,22 @@ export class EstoqueRepository {
   }) {
     const response = await backendFetch<string>({
       url: API_ROUTES.deleteAllSolicitacaoUnidade + idUnidade,
+      method: "DELETE",
+      cache: "no-store",
+      token: token,
+    });
+
+    return response.body.res;
+  }
+  static async deleteSolicitacao({
+    idSolicitacao,
+    token,
+  }: {
+    idSolicitacao: string;
+    token: string;
+  }) {
+    const response = await backendFetch<string>({
+      url: API_ROUTES.deleteSolicitacao + idSolicitacao,
       method: "DELETE",
       cache: "no-store",
       token: token,

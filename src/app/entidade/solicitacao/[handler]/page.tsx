@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { DeleteSolicitacao } from "@/components/action-buttons";
 import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detalhe_solicitacao.module.css";
@@ -13,6 +15,8 @@ export default async function SolicitacaoPage({
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { handler } = await params;
+
+  const session = await auth();
 
   const { trackId, unId } = (await searchParams) as {
     [key: string]: string;
@@ -33,6 +37,7 @@ export default async function SolicitacaoPage({
         </h1>
         <div className="ghost_traco" />
       </div>
+
       <div>
         <h2>
           Solicitado em: {transformData(data?.solicitacao.data_solicitacao!)}
@@ -79,6 +84,10 @@ export default async function SolicitacaoPage({
         >
           Voltar
         </Link>
+        <DeleteSolicitacao
+          idSolicitacao={handler as string}
+          token={session?.user.access_token as string}
+        />
       </div>
     </main>
   );

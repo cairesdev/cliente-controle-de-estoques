@@ -272,3 +272,39 @@ export function DeleteSolicitacoesUnidade({
     </Button>
   );
 }
+export function DeleteSolicitacao({
+  idSolicitacao,
+  token,
+}: {
+  idSolicitacao: string;
+  token: string;
+}) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir?\nEssa ação não poderá ser desfeita.",
+    );
+
+    if (!confirmar) return;
+
+    await EstoqueRepository.deleteSolicitacao({
+      idSolicitacao,
+      token,
+    });
+    toast.success("Deletado com sucesso");
+    router.back();
+  }
+
+  return (
+    <Button
+      onClick={handleDelete}
+      rounded
+      type="danger"
+      title="Excluir solicitação"
+      leading={<BiTrash size={18} />}
+    >
+      Excluir Solicitação
+    </Button>
+  );
+}

@@ -70,6 +70,7 @@ export const API_ROUTES = {
   deleteAllArmazem: "v1/armazem/estoques/all/",
   deleteAllArmazemUnidade: "v1/armazem/estoques/unidade/all/",
   deleteAllSolicitacaoUnidade: "v1/armazem/unidade/solicitacoes/all/",
+  deleteSolicitacao: "v1/solicitacao/solicitacao/danger-zone/",
 };
 
 export const HttpStatus = {

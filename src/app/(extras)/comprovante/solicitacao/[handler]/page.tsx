@@ -1,5 +1,8 @@
 import { auth } from "@/auth";
-import { ConcluirSolicitacao } from "@/components/action-buttons";
+import {
+  ConcluirSolicitacao,
+  DeleteSolicitacao,
+} from "@/components/action-buttons";
 import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detalhe_solicitacao.module.css";
@@ -67,6 +70,10 @@ export default async function SolicitacaoPage({
         ))}
       </div>
 
+      <DeleteSolicitacao
+        idSolicitacao={handler as string}
+        token={session?.user.access_token as string}
+      />
       <div>
         <Link
           className="go_back_link"
