@@ -102,7 +102,9 @@ export async function adicionarItensSolicitacao(data: any) {
   });
 
   if (response.status === HttpStatus.CREATED) {
-    return true;
+    return "Adicionado.";
+  } else if (response.status === HttpStatus.CONFLICT) {
+    return response.body.message as string;
   } else {
     return false;
   }

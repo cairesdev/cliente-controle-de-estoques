@@ -28,11 +28,11 @@ export default function FormItemSolicitacao({
     };
 
     const isAdd = await adicionarItensSolicitacao(payload);
-    if (isAdd) {
-      router.refresh();
-      toast.success("Item adicionado com sucesso!");
+    if (!isAdd) {
+      alert("Algo deu errado, tente novamente.");
     } else {
-      alert("Algo deu errado!");
+      toast.info(isAdd);
+      router.refresh();
     }
   };
 
