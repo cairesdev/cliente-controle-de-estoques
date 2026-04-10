@@ -44,12 +44,12 @@ export default function LiberaSolicitacao({
   const handleChange = (id: string, value: number, produto: LiberaProduto) => {
     setRetiradas((prev) => {
       const listaProduto = prev.filter((r) =>
-        produto.disponiveis.some((d) => d.id === r.id)
+        produto.disponiveis.some((d) => d.id === r.id),
       );
 
       const totalAtual = listaProduto.reduce(
         (acc, r) => acc + (r.id === id ? value : r.qnt_liberada),
-        0
+        0,
       );
 
       if (totalAtual > produto.qnt_solicitada) return prev;
