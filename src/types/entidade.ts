@@ -92,4 +92,5 @@ export type Usuario = {
   nivel: number;
   login: string;
   id: string;
+  unidade: string;
 };

@@ -1,5 +1,8 @@
 import { auth } from "@/auth";
-import { DeleteSolicitacao } from "@/components/action-buttons";
+import {
+  DeleteSolicitacao,
+  PrintPageButton,
+} from "@/components/action-buttons";
 import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
 import styles from "@/styles/components/detalhe_solicitacao.module.css";
@@ -88,6 +91,7 @@ export default async function SolicitacaoPage({
           idSolicitacao={handler as string}
           token={session?.user.access_token as string}
         />
+        <PrintPageButton />
       </div>
     </main>
   );

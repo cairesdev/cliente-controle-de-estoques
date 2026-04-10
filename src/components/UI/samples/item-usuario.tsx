@@ -15,9 +15,9 @@ export default function ItemUsuario({
   const router = useRouter();
   return (
     <div className={styles.item_usuario}>
-      <h2>Usuario: {item.login}</h2>
+      <h2>{item.login}</h2>
       <p>
-        Nome/cargo: {item.nome} - {item.descricao}
+        {item.nome} - {item.descricao} - {item.unidade}
       </p>
       <div>
         <Button

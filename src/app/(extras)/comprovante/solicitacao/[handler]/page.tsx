@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import {
   ConcluirSolicitacao,
   DeleteSolicitacao,
+  PrintPageButton,
 } from "@/components/action-buttons";
 import ItemSolicitacao from "@/components/UI/samples/item-solicitacao";
 import { EstoqueRepository } from "@/services/getters/estoque";
@@ -83,6 +84,7 @@ export default async function SolicitacaoPage({
           Voltar
         </Link>
       </div>
+      <PrintPageButton />
     </main>
   );
 }
