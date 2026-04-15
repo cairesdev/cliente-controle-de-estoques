@@ -62,7 +62,7 @@ export function transformData(dataString: string | null): string {
     return dataFormatada;
   }
 
-  return `${dataFormatada} ${horaFormatada}`;
+  return dataFormatada;
 }
 
 export function DiasAteVencer(data: string): number {

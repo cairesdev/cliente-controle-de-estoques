@@ -115,7 +115,6 @@ export default async function ComprovantePrintPage({
       <br />
       <div>
         <p>Solicitante: {data?.estoque.solicitante}</p>
-        <p>Despachante: {data?.estoque.despachante}</p>
       </div>
       <br />
       <br />
