@@ -122,7 +122,7 @@ export default async function ComprovantePrintPage({
       <footer className={styles.footer}>
         <div>
           <p>____________________________________</p>
-          <p>Despachante</p>
+          <p></p>
         </div>
         <div>
           <p>____________________________________</p>
