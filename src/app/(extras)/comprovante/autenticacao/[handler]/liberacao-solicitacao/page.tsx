@@ -80,7 +80,7 @@ export default async function ComprovantePrintPage({
                 width={110}
                 height={110}
               /> */}
-              Código: {data?.estoque.codigo}
+              {data?.estoque.codigo}
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default async function ComprovantePrintPage({
             <th>Produto</th>
             <th>Qtd. Liberada</th>
             <th>Validade</th>
-            <th>Codigo / Origem</th>
+            {/* <th>Codigo / Origem</th> */}
           </tr>
         </thead>
         <tbody>
@@ -103,9 +103,9 @@ export default async function ComprovantePrintPage({
                 {item.qnt_entrada} {item.und_medida}
               </td>
               <td>{transformData(item.data_validade)}</td>
-              <td>
+              {/* <td>
                 {item.origem?.codigo} – {item.origem?.nome}
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
@@ -120,6 +120,10 @@ export default async function ComprovantePrintPage({
       <br />
       <br />
       <footer className={styles.footer}>
+        <div>
+          <p>____________________________________</p>
+          <p>Despachante</p>
+        </div>
         <div>
           <p>____________________________________</p>
           <p>Entregador</p>
